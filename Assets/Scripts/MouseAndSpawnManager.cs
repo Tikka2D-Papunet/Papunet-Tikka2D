@@ -156,7 +156,6 @@ public class MouseAndSpawnManager : MonoBehaviour
 
         if (checkDistance)
         {
-            //float distance = Vector3.Distance(dart.transform.position, dartBoardCenter.transform.position);
             float distance = Vector3.Distance(childCastpointPosition, dartBoardCenter.transform.position);
             Debug.Log("Distance: " + distance);
             if (distance != 100)
@@ -435,7 +434,7 @@ public class MouseAndSpawnManager : MonoBehaviour
         }
         else
         {
-            throwForce = 3;
+            throwForce = 4.5f;
         }
     }
 
@@ -497,20 +496,20 @@ public class MouseAndSpawnManager : MonoBehaviour
                 }
             }
 
-            if(spin)
+            /*if(spin)
             {
                 if(spinCounter <= spinTime)
                 {
                     spinCounter += Time.deltaTime;
-                    //float randomSpin = Random.Range(1, -1);
-                    //dart.transform.Rotate(0, 0, randomSpin);
+                    float randomSpin = Random.Range(-5, 5);
+                    dart.transform.Rotate(0, 0, randomSpin);
                 }
                 else
                 {
                     spinCounter = 0;
                     spin = false;
                 }
-            }
+            }*/
 
             if (pressMouse && releaseMouse && startThrowCount == false)
             {
