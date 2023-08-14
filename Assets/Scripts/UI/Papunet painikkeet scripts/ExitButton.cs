@@ -32,4 +32,9 @@ public class ExitButton : MonoBehaviour
             speechBubble.gameObject.SetActive(false);
         }
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
