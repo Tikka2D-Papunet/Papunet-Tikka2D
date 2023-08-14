@@ -22,7 +22,7 @@ public class Dart : MonoBehaviour
 
 
     [Header("Dart Hit Parameters")]
-    [SerializeField] Transform castPoint;
+    public Transform castPoint;
     public int score;
     public float checkIfHitCounter;
 
@@ -41,6 +41,11 @@ public class Dart : MonoBehaviour
     int currentDartIndex;
 
     public bool enoughPowerOnThrowFetch;
+
+    public Transform GetChildObjectTransform()
+    {
+        return castPoint;
+    }
 
     private void Awake()
     {

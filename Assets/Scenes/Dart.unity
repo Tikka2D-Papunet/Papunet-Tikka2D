@@ -708,6 +708,7 @@ MonoBehaviour:
   startThrowCount: 0
   howManyDartsThrown: 0
   enoughPowerOnThrow: 0
+  dartCastpointPosition: {fileID: 0}
 --- !u!4 &249641582
 Transform:
   m_ObjectHideFlags: 0

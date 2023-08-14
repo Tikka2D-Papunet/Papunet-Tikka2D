@@ -105,9 +105,6 @@ public class MouseAndSpawnManager : MonoBehaviour
         flying = dart.GetComponent<Dart>().flying;
         checkDistance = dart.GetComponent<Dart>().checkDistance;
 
-        float distance = Vector3.Distance(testDistance.transform.position, dartBoardCenter.transform.position);
-        Debug.Log("Distance test: " + distance);
-
         MouseLogic();
 
         EnergyBarLogic();
@@ -151,47 +148,60 @@ public class MouseAndSpawnManager : MonoBehaviour
 
     void CalculateDistance()
     {
+        Transform childTransform = dart.GetChildObjectTransform();
+        Vector3 childCastpointPosition = childTransform.position;
+
         if (checkDistance)
         {
-            float distance = Vector3.Distance(dart.transform.position, dartBoardCenter.transform.position);
+            //float distance = Vector3.Distance(dart.transform.position, dartBoardCenter.transform.position);
+            float distance = Vector3.Distance(childCastpointPosition, dartBoardCenter.transform.position);
             Debug.Log("Distance: " + distance);
             if (distance != 100)
             {
                 if (distance < 0.52f)
                 {
                     scoreBool1 = true;
+                    Debug.Log("Hit 10");
                 }
                 else if (distance > 0.52f && distance < 1.014f)
                 {
                     scoreBool2 = true;
+                    Debug.Log("Hit 9");
                 }
                 else if (distance > 1.014f && distance < 1.49f)
                 {
                     scorebool3 = true;
+                    Debug.Log("Hit 8");
                 }
                 else if (distance > 1.49f && distance < 1.99f)
                 {
                     scoreBool4 = true;
+                    Debug.Log("Hit 7");
                 }
                 else if (distance > 1.99f && distance < 2.485f)
                 {
                     scoreBool5 = true;
+                    Debug.Log("Hit 6");
                 }
                 else if (distance > 2.485f && distance < 2.98f)
                 {
                     scoreBool6 = true;
+                    Debug.Log("Hit 5");
                 }
                 else if (distance > 2.98f && distance < 3.46f)
                 {
                     scoreBool7 = true;
+                    Debug.Log("Hit 4");
                 }
                 else if (distance > 3.46f && distance < 3.97f)
                 {
                     scoreBool8 = true;
+                    Debug.Log("Hit 3");
                 }
                 else if (distance > 3.97f && distance < 4.46f)
                 {
                     scoreBool9 = true;
+                    Debug.Log("Hit 2");
                 }
             }
         }
