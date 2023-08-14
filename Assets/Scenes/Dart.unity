@@ -707,6 +707,7 @@ MonoBehaviour:
   testDistance: {fileID: 1985271975}
   startThrowCount: 0
   howManyDartsThrown: 0
+  enoughPowerOnThrow: 0
 --- !u!4 &249641582
 Transform:
   m_ObjectHideFlags: 0
@@ -2854,6 +2855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaSmanager: {fileID: 249641581}
+  score: 0
   publicScore: 0
   endings:
   - {fileID: 768768448}

@@ -81,6 +81,10 @@ public class MouseAndSpawnManager : MonoBehaviour
     float lateralForce = 3.5f;
     float lateralDirection;
 
+    float spinTime = 0.5f;
+    float spinCounter = 0;
+    bool spin = false;
+
     private void Awake()
     {
         energybar = FindObjectOfType<Energybar>();
@@ -455,8 +459,9 @@ public class MouseAndSpawnManager : MonoBehaviour
                 if (Input.GetMouseButtonUp(0) && pressMouse)
                 {
                     dart.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                    float randomSpin = Random.Range(-spinForce, spinForce);
-                    dart.transform.Rotate(0, 0, randomSpin);
+                    spin = true;
+                    //float randomSpin = Random.Range(-spinForce, spinForce);
+                    //dart.transform.Rotate(0, 0, randomSpin);
                     dart.GetComponent<Rigidbody2D>().AddForce(Vector2.up * throwForce, ForceMode2D.Impulse);
 
                     increaseEnergy = false;
@@ -471,6 +476,21 @@ public class MouseAndSpawnManager : MonoBehaviour
                     {
                         enoughPowerOnThrow = true;
                     }
+                }
+            }
+
+            if(spin)
+            {
+                if(spinCounter <= spinTime)
+                {
+                    spinCounter += Time.deltaTime;
+                    //float randomSpin = Random.Range(1, -1);
+                    //dart.transform.Rotate(0, 0, randomSpin);
+                }
+                else
+                {
+                    spinCounter = 0;
+                    spin = false;
                 }
             }
 

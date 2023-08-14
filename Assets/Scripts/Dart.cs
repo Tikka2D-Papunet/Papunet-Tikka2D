@@ -15,7 +15,8 @@ public class Dart : MonoBehaviour
     public Camera cam;
     public MouseAndSpawnManager manager;
     float throwForce;
-    float lateralForce = 3.5f;
+    //float lateralForce = 3.5f;
+    float lateralForce = 7f;
     float lateralDirection; // don't delete
     float shrinkinSpeed = 0.5f; // Dart shrinking speed after throwed
 
@@ -99,7 +100,7 @@ public class Dart : MonoBehaviour
         else
         {
             Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = new Vector3(crosshair.transform.position.x + 2, crosshair.transform.position.y,
+            transform.position = new Vector3(crosshair.transform.position.x + 4, crosshair.transform.position.y - 2,
                 transform.position.z);
         }
 
