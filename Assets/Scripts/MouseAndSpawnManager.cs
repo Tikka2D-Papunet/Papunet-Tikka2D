@@ -105,6 +105,9 @@ public class MouseAndSpawnManager : MonoBehaviour
         flying = dart.GetComponent<Dart>().flying;
         checkDistance = dart.GetComponent<Dart>().checkDistance;
 
+        float distance = Vector3.Distance(testDistance.transform.position, dartBoardCenter.transform.position);
+        Debug.Log("Distance test: " + distance);
+
         MouseLogic();
 
         EnergyBarLogic();
@@ -202,6 +205,11 @@ public class MouseAndSpawnManager : MonoBehaviour
                 {
                     scoreBool9 = true;
                     Debug.Log("Hit 2");
+                }
+                else if(distance > 4.46f && distance < 4.99f)
+                {
+                    scoreBool10 = true;
+                    Debug.Log("Hit 1");
                 }
             }
         }
