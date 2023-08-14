@@ -8,11 +8,12 @@ public class Crosshair : MonoBehaviour
 
     SpriteRenderer sprite;
 
-    [Header("Cursor Positions")]
-    Vector3 mousePosition;
+    Vector3 mousePosition; // Cursor position
 
     [Header("Crosshair Movement Speeds")]
-    float moveSpeed = 0.003f;
+    float moveSpeed = 0.001f; // Conrolled crosshair speed
+    float controlledMoveSpeed = 100f;
+    float originalControlledMoveSpeed;
     float originalSpeed;
 
     [Header("Crosshair Distances")]
@@ -35,6 +36,12 @@ public class Crosshair : MonoBehaviour
     float newX;
     float newY;
 
+    //[Header("Controlled Mouse Targeting Parameters")]
+    float moveRange = 1;
+    Vector3 startPos;
+    Vector3 targetPos;
+    bool movingRight = true;
+
     private void Start()
     {
         originalSpeed = moveSpeed;
@@ -43,6 +50,10 @@ public class Crosshair : MonoBehaviour
             startPosition = transform.position;
         }
         sprite = GetComponent<SpriteRenderer>();
+
+        originalControlledMoveSpeed = controlledMoveSpeed;
+
+        startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
     private void Update()
@@ -78,10 +89,12 @@ public class Crosshair : MonoBehaviour
         if (mouseDown) // When mouse button is pressed down the crosshair movement slows down
         {
             moveSpeed = 0.001f;
+            controlledMoveSpeed = 0.005f;
         }
         else
         {
             moveSpeed = originalSpeed;
+            controlledMoveSpeed = originalControlledMoveSpeed;
         }
 
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -92,13 +105,13 @@ public class Crosshair : MonoBehaviour
         if (distance > maxDistance) // if crosshairs distance to cursor is larger than maxDistance return crosshair back to minimun distance
         {
             transform.position = Vector3.Lerp(transform.position, mousePosition,
-                Time.deltaTime * 10f);
+                Time.deltaTime * controlledMoveSpeed);
         }
 
 
         if (!running) // Changes crosshairs movement direction randomly 1
         {
-            StartCoroutine(changeDirection());
+            StartCoroutine(ChangeDirection());
         }
         transform.position += direction * moveSpeed;
     }
@@ -128,7 +141,7 @@ public class Crosshair : MonoBehaviour
             moveSpeed = 0.0005f;
             if (!running) // Changes crosshairs movement direction randomly 1
             {
-                StartCoroutine(changeDirection());
+                StartCoroutine(ChangeDirection());
             }
             transform.position += direction * moveSpeed;
         }
@@ -147,7 +160,7 @@ public class Crosshair : MonoBehaviour
         distance = Vector3.Distance(mousePosition, transform.position);
     }
 
-    IEnumerator changeDirection()
+    IEnumerator ChangeDirection()
     {
         // Changes crosshairs movement direction randomly 2
 
