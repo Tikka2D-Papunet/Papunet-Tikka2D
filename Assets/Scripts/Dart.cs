@@ -36,6 +36,7 @@ public class Dart : MonoBehaviour
     int DartsThrown;
 
     [SerializeField] SpriteRenderer sprite;
+    Renderer rend;
 
     [Header("Fetch Current Dart Index")]
     int currentDartIndex;
@@ -58,6 +59,7 @@ public class Dart : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         rb2d.bodyType = RigidbodyType2D.Kinematic;
+        rend = GetComponent<Renderer>();
     }
 
     public void Update()
@@ -100,6 +102,11 @@ public class Dart : MonoBehaviour
                 rb2d.bodyType = RigidbodyType2D.Static;
                 rb2d.AddForce(Vector2.zero);
                 checkDistance = true;
+                rend.sortingOrder = 1;
+            }
+            else
+            {
+                rend.sortingOrder = 1;
             }
         }
         else
