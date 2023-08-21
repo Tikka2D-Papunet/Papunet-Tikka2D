@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Hand : MonoBehaviour
 {
-    public static bool controlMouseTargeting = true;
-    public static bool automaticMouseTargeting;
-
     public GameObject crosshair;
     public GameObject manager;
 

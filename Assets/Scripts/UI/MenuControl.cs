@@ -12,12 +12,18 @@ public class MenuControl : MonoBehaviour
     {
         Crosshair.controlMouseTargeting = true;
         Crosshair.automaticMouseTargeting = false;
+
+        FollowCursor.controlMouseTargeting = true;
+        FollowCursor.automaticMouseTargeting = false;
     }
 
     public void LoadAutomaticMouseTargeting()
     {
         Crosshair.automaticMouseTargeting = true;
         Crosshair.controlMouseTargeting = false;
+
+        FollowCursor.automaticMouseTargeting = true;
+        FollowCursor.controlMouseTargeting = false;
     }
 
     public void AutomaticThrowForce()

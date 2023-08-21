@@ -11,14 +11,14 @@ public class Crosshair : MonoBehaviour
     Vector3 mousePosition; // Cursor position
 
     [Header("Crosshair Movement Speeds")]
-    float moveSpeed = 0.001f; // Conrolled crosshair speed
+    float moveSpeed = 2.5f; // Conrolled crosshair speed
     float controlledMoveSpeed = 100f;
     float originalControlledMoveSpeed;
     float originalSpeed;
 
     [Header("Crosshair Distances")]
     float distance;
-    float maxDistance = 1f;
+    float maxDistance = 2f;
 
     public Vector3 direction = Vector3.up; // (0, 0, 0)
     bool running = false;
@@ -41,6 +41,10 @@ public class Crosshair : MonoBehaviour
     Vector3 startPos;
     Vector3 targetPos;
     bool movingRight = true;
+
+    Vector3 wayPoint;
+    [SerializeField] Transform followCursorPosition;
+    float range = 0.2f;
 
     private void Start()
     {
@@ -68,8 +72,6 @@ public class Crosshair : MonoBehaviour
             Debug.Log("automaticMouseTargeting päällä");
             AutomaticMouseTargeting();
         }
-
-
     }
 
     void ControlMouseTargeting()
@@ -86,6 +88,22 @@ public class Crosshair : MonoBehaviour
             sprite.enabled = true;
         }
 
+        if (Vector3.Distance(transform.position, wayPoint) > 2.5f)
+        {
+            moveSpeed = 100;
+            SetNewDestination();
+        }
+        else
+        {
+            moveSpeed = originalSpeed;
+        }
+
+        transform.position = Vector3.MoveTowards(transform.position, wayPoint, speed * Time.deltaTime);
+        if (Vector3.Distance(transform.position, wayPoint) < range)
+        {
+            SetNewDestination();
+        }
+
         if (mouseDown) // When mouse button is pressed down the crosshair movement slows down
         {
             moveSpeed = 0.001f;
@@ -96,24 +114,12 @@ public class Crosshair : MonoBehaviour
             moveSpeed = originalSpeed;
             controlledMoveSpeed = originalControlledMoveSpeed;
         }
+    }
 
-        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0;
-
-        distance = Vector3.Distance(mousePosition, transform.position);
-
-        if (distance > maxDistance) // if crosshairs distance to cursor is larger than maxDistance return crosshair back to minimun distance
-        {
-            transform.position = Vector3.Lerp(transform.position, mousePosition,
-                Time.deltaTime * controlledMoveSpeed);
-        }
-
-
-        if (!running) // Changes crosshairs movement direction randomly 1
-        {
-            StartCoroutine(ChangeDirection());
-        }
-        transform.position += direction * moveSpeed;
+    void SetNewDestination()
+    {
+        wayPoint = new Vector3(followCursorPosition.position.x + Random.Range(-maxDistance, maxDistance),
+            followCursorPosition.position.y + Random.Range(-maxDistance, maxDistance));
     }
 
     void AutomaticMouseTargeting()
