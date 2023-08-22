@@ -25,7 +25,7 @@ public class Crosshair : MonoBehaviour
 
     [Header("MouseAndSpawnManager Boolean Fetches")]
     public MouseAndSpawnManager manager;
-    bool mouseDown;
+    public bool mouseDown;
     bool startThrowCountFetch;
 
     [Header("Automatic Crosshair Parameters")]
@@ -88,31 +88,29 @@ public class Crosshair : MonoBehaviour
             sprite.enabled = true;
         }
 
-        if (Vector3.Distance(transform.position, wayPoint) > 2.5f)
-        {
-            moveSpeed = 100;
-            SetNewDestination();
-        }
-        else
-        {
-            moveSpeed = originalSpeed;
-        }
-
-        transform.position = Vector3.MoveTowards(transform.position, wayPoint, speed * Time.deltaTime);
-        if (Vector3.Distance(transform.position, wayPoint) < range)
-        {
-            SetNewDestination();
-        }
-
         if (mouseDown) // When mouse button is pressed down the crosshair movement slows down
         {
-            moveSpeed = 0.001f;
-            controlledMoveSpeed = 0.005f;
+            moveSpeed = 1;
+            transform.position = Vector3.MoveTowards(transform.position, wayPoint, moveSpeed * Time.deltaTime);
         }
         else
         {
             moveSpeed = originalSpeed;
-            controlledMoveSpeed = originalControlledMoveSpeed;
+            transform.position = Vector3.MoveTowards(transform.position, wayPoint, moveSpeed * Time.deltaTime);
+        }
+
+        if (Vector3.Distance(transform.position, wayPoint) > 2.5f)
+        {
+            moveSpeed = 40;
+            SetNewDestination();
+        }
+        else
+        {
+            moveSpeed = originalSpeed;
+            if (Vector3.Distance(transform.position, wayPoint) < range)
+            {
+                SetNewDestination();
+            }
         }
     }
 
