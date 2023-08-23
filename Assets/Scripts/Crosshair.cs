@@ -11,8 +11,8 @@ public class Crosshair : MonoBehaviour
     Vector3 mousePosition; // Cursor position
 
     [Header("Crosshair Movement Speeds")]
-    float moveSpeed = 2.5f; // Conrolled crosshair speed
-    float controlledMoveSpeed = 100f;
+    float moveSpeed = 2.5f; // Controlled crosshair speed
+    float controlledMoveSpeed = 100f; // controlled aiming move speed
     float originalControlledMoveSpeed;
     float originalSpeed;
 
@@ -29,7 +29,7 @@ public class Crosshair : MonoBehaviour
     bool startThrowCountFetch;
 
     [Header("Automatic Crosshair Parameters")]
-    float speed = 2;
+    float speed = 2; // automatic crosshair speed
     float rangeX = 5;
     float rangeY = 3;
     Vector2 startPosition;
@@ -43,8 +43,11 @@ public class Crosshair : MonoBehaviour
     bool movingRight = true;
 
     Vector3 wayPoint;
-    [SerializeField] Transform followCursorPosition;
-    float range = 0.2f;
+    [SerializeField] Transform followCursor;
+    float minRange = 0.5f;
+    float range;
+    float randomX, randomY;
+    float distanceToCursor;
 
     private void Start()
     {
@@ -79,6 +82,11 @@ public class Crosshair : MonoBehaviour
         mouseDown = manager.GetComponent<MouseAndSpawnManager>().mouseDown;
         startThrowCountFetch = manager.GetComponent<MouseAndSpawnManager>().startThrowCount;
 
+        range = Vector2.Distance(transform.position, wayPoint);
+        distanceToCursor = Vector2.Distance(transform.position, followCursor.position);
+
+        transform.position = Vector2.MoveTowards(transform.position, wayPoint, moveSpeed * Time.deltaTime);
+
         if (startThrowCountFetch)
         {
             sprite.enabled = false;
@@ -90,24 +98,20 @@ public class Crosshair : MonoBehaviour
 
         if (mouseDown) // When mouse button is pressed down the crosshair movement slows down
         {
-            moveSpeed = 1;
-            transform.position = Vector3.MoveTowards(transform.position, wayPoint, moveSpeed * Time.deltaTime);
+            moveSpeed = 1.8f;
         }
         else
         {
             moveSpeed = originalSpeed;
-            transform.position = Vector3.MoveTowards(transform.position, wayPoint, moveSpeed * Time.deltaTime);
         }
 
-        if (Vector3.Distance(transform.position, wayPoint) > 2.5f)
+        if(distanceToCursor > maxDistance)
         {
-            moveSpeed = 40;
             SetNewDestination();
         }
         else
         {
-            moveSpeed = originalSpeed;
-            if (Vector3.Distance(transform.position, wayPoint) < range)
+            if(range < minRange)
             {
                 SetNewDestination();
             }
@@ -116,8 +120,10 @@ public class Crosshair : MonoBehaviour
 
     void SetNewDestination()
     {
-        wayPoint = new Vector3(followCursorPosition.position.x + Random.Range(-maxDistance, maxDistance),
-            followCursorPosition.position.y + Random.Range(-maxDistance, maxDistance));
+        randomX = Random.Range(-maxDistance, maxDistance);
+        randomY = Random.Range(-maxDistance, maxDistance);
+
+        wayPoint = new Vector2(followCursor.position.x + randomX, followCursor.position.y + randomY);
     }
 
     void AutomaticMouseTargeting()

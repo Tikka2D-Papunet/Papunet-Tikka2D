@@ -2257,7 +2257,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 1, z: 0}
   manager: {fileID: 249641581}
-  followCursorPosition: {fileID: 755018778}
+  mouseDown: 0
+  followCursor: {fileID: 755018778}
 --- !u!212 &891485670
 SpriteRenderer:
   m_ObjectHideFlags: 0

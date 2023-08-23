@@ -10,7 +10,7 @@ public class FollowCursor : MonoBehaviour
     Vector3 mousePosition;
 
     float distance; // distance to cursor
-    float maxDistance = 1; // max distance to cursor
+    float maxDistance = 0; // max distance to cursor
     float followSpeed = 10; // crosshair cursor follow speed
 
     private void Update()
