@@ -18,7 +18,7 @@ public class Dart : MonoBehaviour
     //float lateralForce = 3.5f;
     float lateralForce = 7f;
     float lateralDirection; // don't delete
-    float shrinkinSpeed = 0.5f; // Dart shrinking speed after throwed
+    float shrinkinSpeed = 0.6f; // Dart shrinking speed after throwed 0.5f original
 
 
     [Header("Dart Hit Parameters")]
@@ -112,8 +112,9 @@ public class Dart : MonoBehaviour
         else
         {
             Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = new Vector3(crosshair.transform.position.x + 4, crosshair.transform.position.y - 2,
+            transform.position = new Vector3(crosshair.transform.position.x + 4.7f, crosshair.transform.position.y - 2.25f,
                 transform.position.z);
+            transform.rotation = Quaternion.Euler(0, 0, 31);
         }
 
         Debug.Log("Throw Force: " + throwForce);
