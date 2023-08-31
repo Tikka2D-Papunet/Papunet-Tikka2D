@@ -17,7 +17,7 @@ public class MouseAndSpawnManager : MonoBehaviour
     bool flying;
 
     float maxForce = 15;
-    float forceFactor = 5;
+    float forceFactor = 8;
 
     public Energybar energybar;
     [SerializeField] float maxEnergy = 100;
