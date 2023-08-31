@@ -36,7 +36,15 @@ public class Crosshair : MonoBehaviour
     float newX;
     float newY;
 
-    //[Header("Controlled Mouse Targeting Parameters")]
+    [Header("Controlled Mouse Targeting Parameters")]
+    [SerializeField] GameObject[] waypoints;
+    int currentWaypointIndex = 0;
+    float automaticMouseSpeed = 3;
+    float originalAutomaticMouseSpeed;
+    bool startSpeed = true;
+    float startMaxTime = 0.000000001f;
+    float startCounter = 0;
+
     float moveRange = 1;
     Vector3 startPos;
     Vector3 targetPos;
@@ -61,6 +69,8 @@ public class Crosshair : MonoBehaviour
         originalControlledMoveSpeed = controlledMoveSpeed;
 
         startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        originalAutomaticMouseSpeed = automaticMouseSpeed;
     }
 
     private void Update()
@@ -140,6 +150,37 @@ public class Crosshair : MonoBehaviour
             sprite.enabled = true;
         }
 
+
+        if (startSpeed)
+        {
+            automaticMouseSpeed = 27;
+            if (startMaxTime > startCounter)
+            {
+                startCounter += Time.deltaTime;
+            }
+            else
+            {
+                automaticMouseSpeed = originalAutomaticMouseSpeed;
+                startSpeed = false;
+            }
+        }
+        else
+        {
+            if (Vector3.Distance(transform.position, waypoints[currentWaypointIndex].transform.position) < 1.5f)
+            {
+                automaticMouseSpeed -= Time.deltaTime;
+            }
+            else if (automaticMouseSpeed <= 0)
+            {
+                automaticMouseSpeed = originalAutomaticMouseSpeed;
+            }
+            else
+            {
+                automaticMouseSpeed = originalAutomaticMouseSpeed;
+            }
+        }
+
+
         if (mouseDown) // When mouse button is pressed down the crosshair movement slows down
         {
             if (distance > maxDistance) // if crosshairs distance to center of the darts board is larger than maxDistance return crosshair back to minimun distance
@@ -155,19 +196,28 @@ public class Crosshair : MonoBehaviour
             }
             transform.position += direction * moveSpeed;
         }
-        else
+        /*else
         {
             moveSpeed = originalSpeed;
 
             newX = Mathf.PingPong(Time.time * speed, rangeX * 2) - rangeX;
             newY = Mathf.PingPong(Time.time * speed, rangeY * 2) - rangeY;
             transform.position = startPosition + new Vector2(newX, newY);
+        }*/
+        else
+        {
+            if (Vector3.Distance(transform.position, waypoints[currentWaypointIndex].transform.position) < .1f)
+            {
+                currentWaypointIndex++;
+                if (currentWaypointIndex >= waypoints.Length)
+                {
+                    currentWaypointIndex = 0;
+                }
+            }
+
+            transform.position = Vector3.MoveTowards(transform.position,
+                waypoints[currentWaypointIndex].transform.position, automaticMouseSpeed * Time.deltaTime);
         }
-
-        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0;
-
-        distance = Vector3.Distance(mousePosition, transform.position);
     }
 
     IEnumerator ChangeDirection()
