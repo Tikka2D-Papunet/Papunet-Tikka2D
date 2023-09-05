@@ -177,12 +177,12 @@ public class MouseAndSpawnManager : MonoBehaviour
                     scorebool3 = true;
                     Debug.Log("Hit 8");
                 }
-                else if (distance > 1.442f && distance < 1.942f)
+                else if (distance > 1.442f && distance < 1.95f)
                 {
                     scoreBool4 = true;
                     Debug.Log("Hit 7");
                 }
-                else if (distance > 1.942f && distance < 2.421f)
+                else if (distance > 1.95f && distance < 2.421f)
                 {
                     scoreBool5 = true;
                     Debug.Log("Hit 6");
