@@ -18,6 +18,12 @@ public class MenuControl : MonoBehaviour
 
         Rotate.controlMouseTargeting = true;
         Rotate.automaticMouseTargeting = false;
+
+        MouseAimingButton.controlMouseTargeting = true;
+        MouseAimingButton.automaticMouseTargeting = false;
+
+        AutomaticAimingButton.controlMouseTargeting = true;
+        AutomaticAimingButton.automaticMouseTargeting = false;
     }
 
     public void LoadAutomaticMouseTargeting()
@@ -30,6 +36,12 @@ public class MenuControl : MonoBehaviour
 
         Rotate.automaticMouseTargeting = true;
         Rotate.controlMouseTargeting = false;
+
+        MouseAimingButton.automaticMouseTargeting = true;
+        MouseAimingButton.controlMouseTargeting = false;
+
+        AutomaticAimingButton.automaticMouseTargeting = true;
+        AutomaticAimingButton.controlMouseTargeting = false;
     }
 
     public void AutomaticThrowForce()
@@ -39,6 +51,12 @@ public class MenuControl : MonoBehaviour
 
         Dart.automaticThrowForce = true;
         Dart.controlledThrowForce = false;
+
+        AutomaticThrowForceButton.automaticThrowForce = true;
+        AutomaticThrowForceButton.controlledThrowForce = false;
+
+        ControlledThrowForceButton.automaticThrowForce = true;
+        ControlledThrowForceButton.controlledThrowForce = false;
     }
 
     public void ControlledThrowForce()
@@ -48,5 +66,11 @@ public class MenuControl : MonoBehaviour
 
         Dart.controlledThrowForce = true;
         Dart.automaticThrowForce = false;
+
+        AutomaticThrowForceButton.controlledThrowForce = true;
+        AutomaticThrowForceButton.automaticThrowForce = false;
+
+        ControlledThrowForceButton.controlledThrowForce = true;
+        ControlledThrowForceButton.automaticThrowForce = false;
     }
 }
