@@ -528,18 +528,4 @@ public class MouseAndSpawnManager : MonoBehaviour
     {
         GameObject dart = Instantiate(dartPrefab, mousePos, Quaternion.identity);
     }
-
-    void TakeDamage(float damage)
-    {
-        currentEnergy -= damage;
-
-        energybar.SetEnergy(currentEnergy);
-    }
-
-    void AddHealth(float health)
-    {
-        currentEnergy += health;
-
-        energybar.SetEnergy(currentEnergy);
-    }
 }
