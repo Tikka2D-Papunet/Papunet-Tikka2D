@@ -15,6 +15,9 @@ public class MenuControl : MonoBehaviour
 
         FollowCursor.controlMouseTargeting = true;
         FollowCursor.automaticMouseTargeting = false;
+
+        Rotate.controlMouseTargeting = true;
+        Rotate.automaticMouseTargeting = false;
     }
 
     public void LoadAutomaticMouseTargeting()
@@ -24,6 +27,9 @@ public class MenuControl : MonoBehaviour
 
         FollowCursor.automaticMouseTargeting = true;
         FollowCursor.controlMouseTargeting = false;
+
+        Rotate.automaticMouseTargeting = true;
+        Rotate.controlMouseTargeting = false;
     }
 
     public void AutomaticThrowForce()
