@@ -106,7 +106,7 @@ public class MouseAndSpawnManager : MonoBehaviour
         checkDistance = dart.GetComponent<Dart>().checkDistance;
 
         float distance = Vector3.Distance(testDistance.transform.position, dartBoardCenter.transform.position);
-        //Debug.Log("Distance test: " + distance);
+        Debug.Log("Distance test: " + distance);
 
         MouseLogic();
 
@@ -162,52 +162,52 @@ public class MouseAndSpawnManager : MonoBehaviour
             //Debug.Log("Distance: " + distance);
             if (distance != 100)
             {
-                if (distance < 0.52f)
+                if (distance < 0.475f)
                 {
                     scoreBool1 = true;
                     Debug.Log("Hit 10");
                 }
-                else if (distance > 0.52f && distance < 1.014f)
+                else if (distance > 0.475f && distance < 0.966f)
                 {
                     scoreBool2 = true;
                     Debug.Log("Hit 9");
                 }
-                else if (distance > 1.014f && distance < 1.49f)
+                else if (distance > 0.966f && distance < 1.442f)
                 {
                     scorebool3 = true;
                     Debug.Log("Hit 8");
                 }
-                else if (distance > 1.49f && distance < 1.99f)
+                else if (distance > 1.442f && distance < 1.942f)
                 {
                     scoreBool4 = true;
                     Debug.Log("Hit 7");
                 }
-                else if (distance > 1.99f && distance < 2.485f)
+                else if (distance > 1.942f && distance < 2.421f)
                 {
                     scoreBool5 = true;
                     Debug.Log("Hit 6");
                 }
-                else if (distance > 2.485f && distance < 2.98f)
+                else if (distance > 2.421f && distance < 2.912f)
                 {
                     scoreBool6 = true;
                     Debug.Log("Hit 5");
                 }
-                else if (distance > 2.98f && distance < 3.46f)
+                else if (distance > 2.912f && distance < 3.394f)
                 {
                     scoreBool7 = true;
                     Debug.Log("Hit 4");
                 }
-                else if (distance > 3.46f && distance < 3.97f)
+                else if (distance > 3.394f && distance < 3.885f)
                 {
                     scoreBool8 = true;
                     Debug.Log("Hit 3");
                 }
-                else if (distance > 3.97f && distance < 4.46f)
+                else if (distance > 3.885f && distance < 4.363f)
                 {
                     scoreBool9 = true;
                     Debug.Log("Hit 2");
                 }
-                else if(distance > 4.46f && distance < 4.99f)
+                else if(distance > 4.363f && distance < 4.851f)
                 {
                     scoreBool10 = true;
                     Debug.Log("Hit 1");
@@ -436,7 +436,8 @@ public class MouseAndSpawnManager : MonoBehaviour
         }
         else
         {
-            throwForce = 4.5f;
+            //throwForce = 4.5f;
+            throwForce = 4.0f;
         }
     }
 
