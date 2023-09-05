@@ -730,6 +730,7 @@ MonoBehaviour:
   maxEnergy: 100
   currentEnergy: 0
   increaseEnergy: 0
+  increasingForce: 1
   mouseDown: 0
   score: 0
   scoreText: {fileID: 835765289}
@@ -3542,7 +3543,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 20c71062ab54dc34c9b1538c0737acbf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ed460ac0cc6527346b1b0e9c76a93003, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
