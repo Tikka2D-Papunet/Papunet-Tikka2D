@@ -24,7 +24,7 @@ public class MouseAndSpawnManager : MonoBehaviour
     public float currentEnergy;
     public bool increaseEnergy = false;
 
-    bool increasingForce = true;
+    public bool increasingForce = true;
 
     float spinForce = 100f;
 
@@ -89,7 +89,7 @@ public class MouseAndSpawnManager : MonoBehaviour
     {
         energybar = FindObjectOfType<Energybar>();
         energybar.SetMaxEnergy(maxEnergy);
-        currentEnergy = 0;
+        currentEnergy = 100;
         cam = FindObjectOfType<Camera>();
     }
 
@@ -106,13 +106,14 @@ public class MouseAndSpawnManager : MonoBehaviour
         checkDistance = dart.GetComponent<Dart>().checkDistance;
 
         float distance = Vector3.Distance(testDistance.transform.position, dartBoardCenter.transform.position);
-        Debug.Log("Distance test: " + distance);
+        //Debug.Log("Distance test: " + distance);
 
         MouseLogic();
 
         EnergyBarLogic();
 
         Debug.Log("throwForce MouseAndSpawn: " + throwForce);
+        //Debug.Log("Increasing force: " + increasingForce);
 
         CalculateDistance();
     }
@@ -121,7 +122,7 @@ public class MouseAndSpawnManager : MonoBehaviour
     {
         if (controlledThrowForce)
         {
-            if (increasingForce)
+            if (increasingForce == false)
             {
                 if (increaseEnergy)
                 {
@@ -129,7 +130,7 @@ public class MouseAndSpawnManager : MonoBehaviour
                 }
                 else
                 {
-                    currentEnergy = 0;
+                    currentEnergy = 100;
                 }
             }
             else
@@ -140,12 +141,13 @@ public class MouseAndSpawnManager : MonoBehaviour
                 }
                 else
                 {
-                    currentEnergy = 0;
+                    currentEnergy = 100;
                 }
             }
 
 
             energybar.SetEnergy(currentEnergy);
+            //Debug.Log("Current energy: " + currentEnergy);
         }
     }
 
@@ -157,7 +159,7 @@ public class MouseAndSpawnManager : MonoBehaviour
         if (checkDistance)
         {
             float distance = Vector3.Distance(childCastpointPosition, dartBoardCenter.transform.position);
-            Debug.Log("Distance: " + distance);
+            //Debug.Log("Distance: " + distance);
             if (distance != 100)
             {
                 if (distance < 0.52f)
@@ -405,7 +407,7 @@ public class MouseAndSpawnManager : MonoBehaviour
         {
             if (increasingForce)
             {
-                if (currentEnergy < 100)
+                if (currentEnergy > 0)
                 {
                     if (throwForce < maxForce)
                     {
@@ -419,7 +421,7 @@ public class MouseAndSpawnManager : MonoBehaviour
             }
             else
             {
-                if (currentEnergy > 0)
+                if (currentEnergy < 100)
                 {
                     if (throwForce > 0)
                     {
@@ -489,7 +491,7 @@ public class MouseAndSpawnManager : MonoBehaviour
                     releaseMouse = true;
                     howManyDartsThrown++;
                     currentDartIndex++;
-                    if (currentEnergy > 20)
+                    if (currentEnergy < 80)
                     {
                         enoughPowerOnThrow = true;
                     }

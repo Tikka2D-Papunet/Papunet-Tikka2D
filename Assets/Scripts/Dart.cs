@@ -117,7 +117,7 @@ public class Dart : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 31);
         }
 
-        Debug.Log("Throw Force: " + throwForce);
+        //Debug.Log("Throw Force: " + throwForce);
     }
 
     void Fly()
