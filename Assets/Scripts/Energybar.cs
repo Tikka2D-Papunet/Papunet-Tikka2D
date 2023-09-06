@@ -10,6 +10,8 @@ public class Energybar : MonoBehaviour
     public MouseAndSpawnManager MaSmanager;
     int howManyDartsThrown;
 
+    bool showEnergybarFetch; // fetches boolean from MouseAndSpawnManager
+
     private void Start()
     {
         if(MouseAndSpawnManager.automaticThrowForce)
@@ -22,11 +24,22 @@ public class Energybar : MonoBehaviour
     private void Update()
     {
         howManyDartsThrown = MaSmanager.GetComponent<MouseAndSpawnManager>().howManyDartsThrown;
+        showEnergybarFetch = MaSmanager.GetComponent<MouseAndSpawnManager>().showEnergybar;
 
         if(howManyDartsThrown > 4)
         {
             fill.enabled = false;
             border.enabled = false;
+        }
+        else if(showEnergybarFetch == false)
+        {
+            fill.enabled = false;
+            border.enabled = false;
+        }
+        else
+        {
+            fill.enabled = true;
+            border.enabled = true;
         }
     }
 

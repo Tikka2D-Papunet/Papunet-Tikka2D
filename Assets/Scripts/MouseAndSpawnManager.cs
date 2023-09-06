@@ -85,6 +85,8 @@ public class MouseAndSpawnManager : MonoBehaviour
     float spinCounter = 0;
     bool spin = false;
 
+    public bool showEnergybar = false; // shows energybar if you press mouse
+
     private void Awake()
     {
         energybar = FindObjectOfType<Energybar>();
@@ -465,6 +467,7 @@ public class MouseAndSpawnManager : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0) && releaseMouse == false)
                 {
+                    showEnergybar = true;
                     mouseDown = true;
                     throwForce = 0;
                     increaseEnergy = true;
@@ -496,6 +499,7 @@ public class MouseAndSpawnManager : MonoBehaviour
                     {
                         enoughPowerOnThrow = true;
                     }
+                    showEnergybar = false;
                 }
             }
 
