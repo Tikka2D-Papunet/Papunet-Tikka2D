@@ -4206,6 +4206,14 @@ PrefabInstance:
       propertyPath: MaSmanager
       value: 
       objectReference: {fileID: 249641581}
+    - target: {fileID: 6065409380923372874, guid: 4beb55463212845498ccd817aa777164, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6065409380923372874, guid: 4beb55463212845498ccd817aa777164, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -149
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4beb55463212845498ccd817aa777164, type: 3}
 --- !u!114 &6065409380596582536 stripped

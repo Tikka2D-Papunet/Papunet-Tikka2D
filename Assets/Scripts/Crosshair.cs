@@ -11,7 +11,7 @@ public class Crosshair : MonoBehaviour
     Vector3 mousePosition; // Cursor position
 
     [Header("Crosshair Movement Speeds")]
-    float moveSpeed = 2.8f; // Controlled crosshair speed
+    float moveSpeed = 2.2f; // Controlled crosshair speed
     float controlledMoveSpeed = 100f; // controlled aiming move speed
     float originalControlledMoveSpeed;
     float originalSpeed;
@@ -108,7 +108,7 @@ public class Crosshair : MonoBehaviour
 
         if (mouseDown) // When mouse button is pressed down the crosshair movement slows down
         {
-            moveSpeed = 2.1f;
+            moveSpeed = 1.5f;
         }
         else
         {
