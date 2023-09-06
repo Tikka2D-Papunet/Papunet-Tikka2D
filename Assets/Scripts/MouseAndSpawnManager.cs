@@ -32,16 +32,16 @@ public class MouseAndSpawnManager : MonoBehaviour
 
     [Header("Scoring")]
     [SerializeField] public int score = 0;
-    bool scoreBool1 = false;
-    bool scoreBool2 = false;
-    bool scorebool3 = false;
-    bool scoreBool4 = false;
-    bool scoreBool5 = false;
-    bool scoreBool6 = false;
-    bool scoreBool7 = false;
-    bool scoreBool8 = false;
-    bool scoreBool9 = false;
-    bool scoreBool10 = false;
+    public bool scoreBool1 = false;
+    public bool scoreBool2 = false;
+    public bool scoreBool3 = false;
+    public bool scoreBool4 = false;
+    public bool scoreBool5 = false;
+    public bool scoreBool6 = false;
+    public bool scoreBool7 = false;
+    public bool scoreBool8 = false;
+    public bool scoreBool9 = false;
+    public bool scoreBool10 = false;
     float scoreCounter1;
     float scoreCounter2;
     float scoreCounter3;
@@ -87,6 +87,9 @@ public class MouseAndSpawnManager : MonoBehaviour
 
     public bool showEnergybar = false; // shows energybar if you press mouse
 
+    public Transform childTransform;
+    public Vector3 childCastpointPosition;
+
     private void Awake()
     {
         energybar = FindObjectOfType<Energybar>();
@@ -100,6 +103,8 @@ public class MouseAndSpawnManager : MonoBehaviour
         Instantiate(dartPrefab);
         dart = FindObjectOfType<Dart>();
         dartObject = GameObject.FindGameObjectWithTag("Dart");
+
+
     }
 
     private void Update()
@@ -155,8 +160,8 @@ public class MouseAndSpawnManager : MonoBehaviour
 
     void CalculateDistance()
     {
-        Transform childTransform = dart.GetChildObjectTransform();
-        Vector3 childCastpointPosition = childTransform.position;
+        childTransform = dart.GetChildObjectTransform();
+        childCastpointPosition = childTransform.position;
 
         if (checkDistance)
         {
@@ -176,7 +181,7 @@ public class MouseAndSpawnManager : MonoBehaviour
                 }
                 else if (distance > 0.966f && distance < 1.442f)
                 {
-                    scorebool3 = true;
+                    scoreBool3 = true;
                     Debug.Log("Hit 8");
                 }
                 else if (distance > 1.442f && distance < 1.95f)
@@ -253,7 +258,7 @@ public class MouseAndSpawnManager : MonoBehaviour
             scoreCounter2 = 0;
         }
 
-        if (scorebool3)
+        if (scoreBool3)
         {
             if (scoreCounter3 < scoreMaxTime)
             {
@@ -263,7 +268,7 @@ public class MouseAndSpawnManager : MonoBehaviour
             }
             else
             {
-                scorebool3 = false;
+                scoreBool3 = false;
             }
         }
         else
