@@ -467,7 +467,10 @@ public class MouseAndSpawnManager : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0) && releaseMouse == false)
                 {
-                    showEnergybar = true;
+                    if(controlledThrowForce)
+                    {
+                        showEnergybar = true;
+                    }
                     mouseDown = true;
                     throwForce = 0;
                     increaseEnergy = true;
@@ -499,7 +502,10 @@ public class MouseAndSpawnManager : MonoBehaviour
                     {
                         enoughPowerOnThrow = true;
                     }
-                    showEnergybar = false;
+                    if(controlledThrowForce)
+                    {
+                        showEnergybar = false;
+                    }
                 }
             }
 
