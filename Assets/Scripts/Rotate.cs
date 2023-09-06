@@ -7,7 +7,7 @@ public class Rotate : MonoBehaviour
     public static bool controlMouseTargeting = true;
     public static bool automaticMouseTargeting;
 
-    float rotateSpeed = 10;
+    float rotateSpeed = 12; // original speed 10
     Vector3 rotateDirection = Vector3.forward;
     float rotateDirectionMaxTime;
     float rotateDirectionCounter = 0;
