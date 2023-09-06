@@ -102,11 +102,11 @@ public class Dart : MonoBehaviour
                 rb2d.bodyType = RigidbodyType2D.Static;
                 rb2d.AddForce(Vector2.zero);
                 checkDistance = true;
-                rend.sortingOrder = 2;
+                rend.sortingOrder = 3;
             }
             else
             {
-                rend.sortingOrder = 2;
+                rend.sortingOrder = 3;
             }
         }
         else
