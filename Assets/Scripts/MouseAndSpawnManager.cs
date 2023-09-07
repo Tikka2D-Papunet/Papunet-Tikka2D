@@ -171,199 +171,73 @@ public class MouseAndSpawnManager : MonoBehaviour
             {
                 if (distance < 0.475f)
                 {
-                    scoreBool1 = true;
+                    scoreBool10 = true;
                     Debug.Log("Hit 10");
                 }
                 else if (distance > 0.475f && distance < 0.966f)
                 {
-                    scoreBool2 = true;
+                    scoreBool9 = true;
                     Debug.Log("Hit 9");
                 }
                 else if (distance > 0.966f && distance < 1.442f)
                 {
-                    scoreBool3 = true;
+                    scoreBool8 = true;
                     Debug.Log("Hit 8");
                 }
                 else if (distance > 1.442f && distance < 1.95f)
                 {
-                    scoreBool4 = true;
+                    scoreBool7 = true;
                     Debug.Log("Hit 7");
                 }
                 else if (distance > 1.95f && distance < 2.421f)
                 {
-                    scoreBool5 = true;
+                    scoreBool6 = true;
                     Debug.Log("Hit 6");
                 }
                 else if (distance > 2.421f && distance < 2.912f)
                 {
-                    scoreBool6 = true;
+                    scoreBool5 = true;
                     Debug.Log("Hit 5");
                 }
                 else if (distance > 2.912f && distance < 3.394f)
                 {
-                    scoreBool7 = true;
+                    scoreBool4 = true;
                     Debug.Log("Hit 4");
                 }
                 else if (distance > 3.394f && distance < 3.885f)
                 {
-                    scoreBool8 = true;
+                    scoreBool3 = true;
                     Debug.Log("Hit 3");
                 }
                 else if (distance > 3.885f && distance < 4.363f)
                 {
-                    scoreBool9 = true;
+                    scoreBool2 = true;
                     Debug.Log("Hit 2");
                 }
                 else if(distance > 4.363f && distance < 4.851f)
                 {
-                    scoreBool10 = true;
+                    scoreBool1 = true;
                     Debug.Log("Hit 1");
                 }
             }
         }
 
-        if (scoreBool1)
+        if (scoreBool10)
         {
-            if (scoreCounter1 < scoreMaxTime)
+            if (scoreCounter10 < scoreMaxTime)
             {
-                scoreCounter1 += Time.deltaTime;
+                scoreCounter10 += Time.deltaTime;
                 score += 10;
                 scoreText.text = score + " pistettä";
             }
             else
             {
-                scoreBool1 = false;
+                scoreBool10 = false;
             }
         }
         else
         {
-            scoreCounter1 = 0;
-        }
-
-        if (scoreBool2)
-        {
-            if (scoreCounter2 < scoreMaxTime)
-            {
-                scoreCounter2 += Time.deltaTime;
-                score += 9;
-                scoreText.text = score + " pistettä";
-            }
-            else
-            {
-                scoreBool2 = false;
-            }
-        }
-        else
-        {
-            scoreCounter2 = 0;
-        }
-
-        if (scoreBool3)
-        {
-            if (scoreCounter3 < scoreMaxTime)
-            {
-                scoreCounter3 += Time.deltaTime;
-                score += 8;
-                scoreText.text = score + " pistettä";
-            }
-            else
-            {
-                scoreBool3 = false;
-            }
-        }
-        else
-        {
-            scoreCounter3 = 0;
-        }
-
-        if (scoreBool4)
-        {
-            if (scoreCounter4 < scoreMaxTime)
-            {
-                scoreCounter4 += Time.deltaTime;
-                score += 7;
-                scoreText.text = score + " pistettä";
-            }
-            else
-            {
-                scoreBool4 = false;
-            }
-        }
-        else
-        {
-            scoreCounter4 = 0;
-        }
-
-        if (scoreBool5)
-        {
-            if (scoreCounter5 < scoreMaxTime)
-            {
-                scoreCounter5 += Time.deltaTime;
-                score += 6;
-                scoreText.text = score + " pistettä";
-            }
-            else
-            {
-                scoreBool5 = false;
-            }
-        }
-        else
-        {
-            scoreCounter5 = 0;
-        }
-
-        if (scoreBool6)
-        {
-            if (scoreCounter6 < scoreMaxTime)
-            {
-                scoreCounter6 += Time.deltaTime;
-                score += 5;
-                scoreText.text = score + " pistettä";
-            }
-            else
-            {
-                scoreBool6 = false;
-            }
-        }
-        else
-        {
-            scoreCounter6 = 0;
-        }
-
-        if (scoreBool7)
-        {
-            if (scoreCounter7 < scoreMaxTime)
-            {
-                scoreCounter7 += Time.deltaTime;
-                score += 4;
-                scoreText.text = score + " pistettä";
-            }
-            else
-            {
-                scoreBool7 = false;
-            }
-        }
-        else
-        {
-            scoreCounter7 = 0;
-        }
-
-        if (scoreBool8)
-        {
-            if (scoreCounter8 < scoreMaxTime)
-            {
-                scoreCounter8 += Time.deltaTime;
-                score += 3;
-                scoreText.text = score + " pistettä";
-            }
-            else
-            {
-                scoreBool8 = false;
-            }
-        }
-        else
-        {
-            scoreCounter8 = 0;
+            scoreCounter10 = 0;
         }
 
         if (scoreBool9)
@@ -371,7 +245,7 @@ public class MouseAndSpawnManager : MonoBehaviour
             if (scoreCounter9 < scoreMaxTime)
             {
                 scoreCounter9 += Time.deltaTime;
-                score += 2;
+                score += 9;
                 scoreText.text = score + " pistettä";
             }
             else
@@ -384,22 +258,148 @@ public class MouseAndSpawnManager : MonoBehaviour
             scoreCounter9 = 0;
         }
 
-        if (scoreBool10)
+        if (scoreBool8)
         {
-            if (scoreCounter10 < scoreMaxTime)
+            if (scoreCounter8 < scoreMaxTime)
             {
-                scoreCounter10 += Time.deltaTime;
+                scoreCounter8 += Time.deltaTime;
+                score += 8;
+                scoreText.text = score + " pistettä";
+            }
+            else
+            {
+                scoreBool8 = false;
+            }
+        }
+        else
+        {
+            scoreCounter8 = 0;
+        }
+
+        if (scoreBool7)
+        {
+            if (scoreCounter7 < scoreMaxTime)
+            {
+                scoreCounter7 += Time.deltaTime;
+                score += 7;
+                scoreText.text = score + " pistettä";
+            }
+            else
+            {
+                scoreBool7 = false;
+            }
+        }
+        else
+        {
+            scoreCounter7 = 0;
+        }
+
+        if (scoreBool6)
+        {
+            if (scoreCounter6 < scoreMaxTime)
+            {
+                scoreCounter6 += Time.deltaTime;
+                score += 6;
+                scoreText.text = score + " pistettä";
+            }
+            else
+            {
+                scoreBool6 = false;
+            }
+        }
+        else
+        {
+            scoreCounter6 = 0;
+        }
+
+        if (scoreBool5)
+        {
+            if (scoreCounter5 < scoreMaxTime)
+            {
+                scoreCounter5 += Time.deltaTime;
+                score += 5;
+                scoreText.text = score + " pistettä";
+            }
+            else
+            {
+                scoreBool5 = false;
+            }
+        }
+        else
+        {
+            scoreCounter5 = 0;
+        }
+
+        if (scoreBool4)
+        {
+            if (scoreCounter4 < scoreMaxTime)
+            {
+                scoreCounter4 += Time.deltaTime;
+                score += 4;
+                scoreText.text = score + " pistettä";
+            }
+            else
+            {
+                scoreBool4 = false;
+            }
+        }
+        else
+        {
+            scoreCounter4 = 0;
+        }
+
+        if (scoreBool3)
+        {
+            if (scoreCounter3 < scoreMaxTime)
+            {
+                scoreCounter3 += Time.deltaTime;
+                score += 3;
+                scoreText.text = score + " pistettä";
+            }
+            else
+            {
+                scoreBool3 = false;
+            }
+        }
+        else
+        {
+            scoreCounter3 = 0;
+        }
+
+        if (scoreBool2)
+        {
+            if (scoreCounter2 < scoreMaxTime)
+            {
+                scoreCounter2 += Time.deltaTime;
+                score += 2;
+                scoreText.text = score + " pistettä";
+            }
+            else
+            {
+                scoreBool2 = false;
+            }
+        }
+        else
+        {
+            scoreCounter2 = 0;
+        }
+
+        if (scoreBool1)
+        {
+            if (scoreCounter1 < scoreMaxTime)
+            {
+                scoreCounter1 += Time.deltaTime;
                 score += 1;
                 scoreText.text = score + " pistettä";
             }
             else
             {
-                scoreBool10 = false;
+                scoreBool1 = false;
             }
         }
         else
         {
-            scoreCounter10 = 0;
+            scoreCounter1 = 0;
         }
     }
 

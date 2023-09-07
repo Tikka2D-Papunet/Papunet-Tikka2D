@@ -51,7 +51,14 @@ public class Star : MonoBehaviour
         }
         else
         {
-            sprite10.enabled = false;
+            if(maxTime >= counter)
+            {
+                counter += Time.deltaTime;
+            }
+            else
+            {
+                sprite10.enabled = false;
+            }
         }
     }
 }
