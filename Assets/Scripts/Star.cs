@@ -7,9 +7,8 @@ public class Star : MonoBehaviour
     [SerializeField] GameObject mouseAndSpawnManager;
     bool scoreBool1Fetch, scoreBool2Fetch, scoreBool3Fetch, scoreBool4Fetch, scoreBool5Fetch, scoreBool6Fetch,
         scoreBool7Fetch, scoreBool8Fetch, scoreBool9Fetch, scoreBool10Fetch;
-    [SerializeField] GameObject star10;
-    int index;
-    SpriteRenderer sprite10;
+    [SerializeField] GameObject star1, star2, star3, star4, star5, star6, star7, star8, star9, star10;
+    SpriteRenderer sprite1, sprite2, sprite3, sprite4, sprite5, sprite6, sprite7, sprite8, sprite9, sprite10;
 
     float maxTime = 1.2f;
     float counter;
@@ -18,6 +17,15 @@ public class Star : MonoBehaviour
 
     private void Start()
     {
+        sprite1 = star1.GetComponent<SpriteRenderer>();
+        sprite2 = star2.GetComponent<SpriteRenderer>();
+        sprite3 = star3.GetComponent<SpriteRenderer>();
+        sprite4 = star4.GetComponent<SpriteRenderer>();
+        sprite5 = star5.GetComponent<SpriteRenderer>();
+        sprite6 = star6.GetComponent<SpriteRenderer>();
+        sprite7 = star7.GetComponent<SpriteRenderer>();
+        sprite8 = star8.GetComponent<SpriteRenderer>();
+        sprite9 = star9.GetComponent<SpriteRenderer>();
         sprite10 = star10.GetComponent<SpriteRenderer>();
     }
 
@@ -45,19 +53,24 @@ public class Star : MonoBehaviour
 
     void Stars()
     {
-        if(scoreBool1Fetch)
+        if(scoreBool10Fetch)
         {
+            star10.transform.position = childCastPointPositionFetch;
             sprite10.enabled = true;
         }
         else
         {
-            if(maxTime >= counter)
+            if(sprite10.enabled == true)
             {
-                counter += Time.deltaTime;
-            }
-            else
-            {
-                sprite10.enabled = false;
+                if(maxTime >= counter)
+                {
+                    counter += Time.deltaTime;
+                }
+                else
+                {
+                    sprite10.enabled = false;
+                    counter = 0;
+                }
             }
         }
     }
