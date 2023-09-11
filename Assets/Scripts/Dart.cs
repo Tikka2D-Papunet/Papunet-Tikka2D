@@ -64,13 +64,6 @@ public class Dart : MonoBehaviour
         rend = GetComponent<Renderer>();
     }
 
-    IEnumerator ShowDartAfterThrow()
-    {
-        yield return new WaitForSeconds(0.2f);
-
-        sprite.enabled = true;
-    }
-
     public void Update()
     {
         DartsThrown = manager.GetComponent<MouseAndSpawnManager>().howManyDartsThrown;
@@ -100,8 +93,6 @@ public class Dart : MonoBehaviour
 
         if (throwed)
         {
-            //sprite.enabled = true;
-            //StartCoroutine(ShowDartAfterThrow());
             Invoke("ShowDart", 0.2f);
             if (maxTime > timer)
             {
@@ -114,11 +105,11 @@ public class Dart : MonoBehaviour
                 rb2d.bodyType = RigidbodyType2D.Static;
                 rb2d.AddForce(Vector2.zero);
                 checkDistance = true;
-                rend.sortingOrder = 3;
+                StartCoroutine(ChangeLayerOrder());
             }
             else
             {
-                rend.sortingOrder = 3;
+                StartCoroutine(ChangeLayerOrder());
             }
         }
         else
@@ -144,6 +135,13 @@ public class Dart : MonoBehaviour
         lateralDirection = Random.Range(-1, 1);
         rb2d.velocity = new Vector2(-lateralForce, rb2d.velocity.y);
         throwed = true;
+    }
+
+    IEnumerator ChangeLayerOrder()
+    {
+        yield return new WaitForSeconds(0.4f);
+
+        rend.sortingOrder = 3;
     }
 
     void DestroyDart()
