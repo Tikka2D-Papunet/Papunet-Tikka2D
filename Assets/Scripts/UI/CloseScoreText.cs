@@ -6,7 +6,7 @@ public class CloseScoreText : MonoBehaviour
     public MouseAndSpawnManager MaSmanager;
     int dartThrowsCount;
     public TextMeshProUGUI scoreText;
-    float maxTime = 1;
+    float maxTime = 2;
     float counter = 0;
 
     private void Update()

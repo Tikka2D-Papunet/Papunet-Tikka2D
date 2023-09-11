@@ -6,6 +6,7 @@ public class Hand : MonoBehaviour
 {
     public GameObject crosshair;
     public GameObject manager;
+    public GameObject kasiiii;
 
     //SpriteRenderer sprite;
     bool invisible = false;
@@ -21,6 +22,13 @@ public class Hand : MonoBehaviour
         //sprite = GetComponent<SpriteRenderer>();
     }
 
+    IEnumerator HandDisappearAfterGame()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        kasiiii.gameObject.SetActive(false);
+    }
+
     private void Update()
     {
         dartsThrown = manager.GetComponent<MouseAndSpawnManager>().howManyDartsThrown;
@@ -28,6 +36,7 @@ public class Hand : MonoBehaviour
         if (dartsThrown == 5)
         {
             //sprite.enabled = false;
+            StartCoroutine(HandDisappearAfterGame());
         }
 
         FollowCrosshair();
@@ -44,7 +53,8 @@ public class Hand : MonoBehaviour
 
         if (startCounting)
         {
-            //sprite.enabled = false;
+            /*//sprite.enabled = false;
+            kasiiii.gameObject.SetActive(false);
 
             if (maxTime > counter)
             {
@@ -53,17 +63,16 @@ public class Hand : MonoBehaviour
             else
             {
                 //sprite.enabled = true;
+                kasiiii.gameObject.SetActive(true);
                 invisible = false;
                 startCounting = false;
                 counter = 0;
-            }
+            }*/
         }
     }
 
     void FollowCrosshair()
     {
-        /*transform.position = new Vector3(crosshair.transform.position.x - 2f, crosshair.transform.position.y - 3.6f,
-    transform.position.z);*/
         transform.position = new Vector3(crosshair.transform.position.x - 2f, crosshair.transform.position.y - 3.6f,
 transform.position.z);
     }

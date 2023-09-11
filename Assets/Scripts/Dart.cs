@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEditor.U2D;
 
 public class Dart : MonoBehaviour
 {
@@ -100,7 +101,8 @@ public class Dart : MonoBehaviour
         if (throwed)
         {
             //sprite.enabled = true;
-            StartCoroutine(ShowDartAfterThrow());
+            //StartCoroutine(ShowDartAfterThrow());
+            Invoke("ShowDart", 0.2f);
             if (maxTime > timer)
             {
                 timer += Time.deltaTime;
@@ -147,5 +149,10 @@ public class Dart : MonoBehaviour
     void DestroyDart()
     {
         sprite.enabled = false;
+    }
+
+    void ShowDart()
+    {
+        sprite.enabled = true;
     }
 }

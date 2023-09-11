@@ -9,7 +9,7 @@ public class EndingTransparentBackground : MonoBehaviour
     int howManyDartsThrownFetch;
 
     float counter;
-    float maxTime = 1;
+    float maxTime = 2;
 
     private void Start()
     {
