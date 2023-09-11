@@ -90,6 +90,8 @@ public class MouseAndSpawnManager : MonoBehaviour
     public Transform childTransform;
     public Vector3 childCastpointPosition;
 
+    public GameObject handAnim; // käsiii hand animations
+
     private void Awake()
     {
         energybar = FindObjectOfType<Energybar>();
@@ -103,8 +105,7 @@ public class MouseAndSpawnManager : MonoBehaviour
         Instantiate(dartPrefab);
         dart = FindObjectOfType<Dart>();
         dartObject = GameObject.FindGameObjectWithTag("Dart");
-
-
+        handAnim.GetComponent<Animator>();
     }
 
     private void Update()
@@ -489,6 +490,8 @@ public class MouseAndSpawnManager : MonoBehaviour
 
                 if (Input.GetMouseButtonUp(0) && pressMouse)
                 {
+                    handAnim.GetComponent<Animator>().SetTrigger("Throw");
+
                     dart.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                     spin = true;
                     //float randomSpin = Random.Range(-spinForce, spinForce);
@@ -503,6 +506,7 @@ public class MouseAndSpawnManager : MonoBehaviour
                     releaseMouse = true;
                     howManyDartsThrown++;
                     currentDartIndex++;
+
                     if (currentEnergy < 80)
                     {
                         enoughPowerOnThrow = true;

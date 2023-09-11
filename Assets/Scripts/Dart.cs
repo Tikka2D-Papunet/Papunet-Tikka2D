@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Dart : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class Dart : MonoBehaviour
     //float lateralForce = 3.5f;
     float lateralForce = 7f;
     float lateralDirection; // don't delete
-    float shrinkinSpeed = 0.6f; // Dart shrinking speed after throwed 0.5f original
+    float shrinkinSpeed = 0.6f; // Dart shrinking speed after throwed 0.6f original
 
 
     [Header("Dart Hit Parameters")]
@@ -62,6 +63,13 @@ public class Dart : MonoBehaviour
         rend = GetComponent<Renderer>();
     }
 
+    IEnumerator ShowDartAfterThrow()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        sprite.enabled = true;
+    }
+
     public void Update()
     {
         DartsThrown = manager.GetComponent<MouseAndSpawnManager>().howManyDartsThrown;
@@ -91,7 +99,8 @@ public class Dart : MonoBehaviour
 
         if (throwed)
         {
-            sprite.enabled = true;
+            //sprite.enabled = true;
+            StartCoroutine(ShowDartAfterThrow());
             if (maxTime > timer)
             {
                 timer += Time.deltaTime;

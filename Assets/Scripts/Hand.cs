@@ -62,7 +62,9 @@ public class Hand : MonoBehaviour
 
     void FollowCrosshair()
     {
-        transform.position = new Vector3(crosshair.transform.position.x + 7f, crosshair.transform.position.y - 14.5f,
-    transform.position.z);
+        /*transform.position = new Vector3(crosshair.transform.position.x - 2f, crosshair.transform.position.y - 3.6f,
+    transform.position.z);*/
+        transform.position = new Vector3(crosshair.transform.position.x - 2f, crosshair.transform.position.y - 3.6f,
+transform.position.z);
     }
 }
