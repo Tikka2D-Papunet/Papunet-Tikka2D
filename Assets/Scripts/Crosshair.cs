@@ -29,9 +29,9 @@ public class Crosshair : MonoBehaviour
     bool startThrowCountFetch;
 
     [Header("Automatic Crosshair Parameters")]
-    float speed = 2; // automatic crosshair speed
-    float rangeX = 5;
-    float rangeY = 3;
+    //float speed = 2; // automatic crosshair speed
+    //float rangeX = 5;
+    //float rangeY = 3;
     Vector2 startPosition;
     float newX;
     float newY;
@@ -45,10 +45,10 @@ public class Crosshair : MonoBehaviour
     float startMaxTime = 0.000000001f;
     float startCounter = 0;
 
-    float moveRange = 1;
+    //float moveRange = 1;
     Vector3 startPos;
     Vector3 targetPos;
-    bool movingRight = true;
+    //bool movingRight = true;
 
     Vector3 wayPoint;
     [SerializeField] Transform followCursor;

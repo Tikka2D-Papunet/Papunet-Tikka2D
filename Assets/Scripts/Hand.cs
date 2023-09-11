@@ -12,8 +12,8 @@ public class Hand : MonoBehaviour
     bool invisible = false;
     bool startCounting = false;
 
-    float maxTime = 1.1f;
-    float counter = 0;
+    //float maxTime = 1.1f;
+    //float counter = 0;
 
     int dartsThrown;
 

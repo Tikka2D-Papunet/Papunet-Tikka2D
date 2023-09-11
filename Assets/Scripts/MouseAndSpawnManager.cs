@@ -26,7 +26,7 @@ public class MouseAndSpawnManager : MonoBehaviour
 
     public bool increasingForce = true;
 
-    float spinForce = 100f;
+    //float spinForce = 100f;
 
     public bool mouseDown = false;
 
@@ -78,12 +78,12 @@ public class MouseAndSpawnManager : MonoBehaviour
 
     public bool enoughPowerOnThrow;
 
-    float lateralForce = 3.5f;
+    //float lateralForce = 3.5f;
     float lateralDirection;
 
-    float spinTime = 0.5f;
-    float spinCounter = 0;
-    bool spin = false;
+    //float spinTime = 0.5f;
+    //float spinCounter = 0;
+    //bool spin = false;
 
     public bool showEnergybar = false; // shows energybar if you press mouse
 
@@ -493,7 +493,7 @@ public class MouseAndSpawnManager : MonoBehaviour
                     handAnim.GetComponent<Animator>().SetTrigger("Throw");
 
                     dart.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                    spin = true;
+                    //spin = true;
                     //float randomSpin = Random.Range(-spinForce, spinForce);
                     //dart.transform.Rotate(0, 0, randomSpin);
                     dart.GetComponent<Rigidbody2D>().AddForce(Vector2.up * throwForce, ForceMode2D.Impulse);
