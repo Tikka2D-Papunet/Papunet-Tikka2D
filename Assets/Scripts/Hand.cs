@@ -7,7 +7,7 @@ public class Hand : MonoBehaviour
     public GameObject crosshair;
     public GameObject manager;
 
-    SpriteRenderer sprite;
+    //SpriteRenderer sprite;
     bool invisible = false;
     bool startCounting = false;
 
@@ -18,7 +18,7 @@ public class Hand : MonoBehaviour
 
     private void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
+        //sprite = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -27,7 +27,7 @@ public class Hand : MonoBehaviour
 
         if (dartsThrown == 5)
         {
-            sprite.enabled = false;
+            //sprite.enabled = false;
         }
 
         FollowCrosshair();
@@ -44,7 +44,7 @@ public class Hand : MonoBehaviour
 
         if (startCounting)
         {
-            sprite.enabled = false;
+            //sprite.enabled = false;
 
             if (maxTime > counter)
             {
@@ -52,7 +52,7 @@ public class Hand : MonoBehaviour
             }
             else
             {
-                sprite.enabled = true;
+                //sprite.enabled = true;
                 invisible = false;
                 startCounting = false;
                 counter = 0;
@@ -62,7 +62,7 @@ public class Hand : MonoBehaviour
 
     void FollowCrosshair()
     {
-        transform.position = new Vector3(crosshair.transform.position.x + 4.8f, crosshair.transform.position.y - 4.7f,
+        transform.position = new Vector3(crosshair.transform.position.x + 7f, crosshair.transform.position.y - 14.5f,
     transform.position.z);
     }
 }

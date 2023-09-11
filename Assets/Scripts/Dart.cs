@@ -91,6 +91,7 @@ public class Dart : MonoBehaviour
 
         if (throwed)
         {
+            sprite.enabled = true;
             if (maxTime > timer)
             {
                 timer += Time.deltaTime;
