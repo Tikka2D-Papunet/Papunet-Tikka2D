@@ -134,8 +134,9 @@ public class Dart : MonoBehaviour
     void ThrowDart()
     {
         flying = false;
-        lateralDirection = Random.Range(-1, 1);
-        rb2d.velocity = new Vector2(-lateralForce, rb2d.velocity.y);
+        lateralDirection = Random.Range(6.5f, 7.5f);
+        //rb2d.velocity = new Vector2(-lateralForce, rb2d.velocity.y);
+        rb2d.velocity = new Vector2(-lateralDirection, rb2d.velocity.y);
         throwed = true;
     }
 
