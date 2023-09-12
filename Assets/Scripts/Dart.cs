@@ -117,7 +117,7 @@ public class Dart : MonoBehaviour
         else
         {
             Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = new Vector3(crosshair.transform.position.x + 3.4f, crosshair.transform.position.y - 1.0f,
+            transform.position = new Vector3(crosshair.transform.position.x + 3.4f, crosshair.transform.position.y - 0.75f,
                 transform.position.z);
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
