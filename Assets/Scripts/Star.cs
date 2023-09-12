@@ -11,9 +11,6 @@ public class Star : MonoBehaviour
 
     Vector3 childCastPointPositionFetch;
 
-    private void Start()
-    {
-    }
 
     private void Update()
     {
@@ -41,17 +38,18 @@ public class Star : MonoBehaviour
     {
         if(scoreBool10Fetch)
         {
-            star10.transform.position = childCastPointPositionFetch;
-            star10 = Instantiate(star10, childCastPointPositionFetch, Quaternion.identity);
-        }
-        else
-        {
-            //star10.transform.Translate(transform.position.x, 0.5f, transform.position.z);
+            StartCoroutine(SpawnStar10());
         }
     }
 
     IEnumerator SpawnStar10()
     {
         yield return new WaitForSeconds(0.1f);
+
+        transform.position = childCastPointPositionFetch;
+
+        GameObject starPrefab = Instantiate(star10, transform.position, Quaternion.identity);
+        Rigidbody2D rb2d = starPrefab.GetComponent<Rigidbody2D>();
+        rb2d.velocity = new Vector2(0, 2);
     }
 }
