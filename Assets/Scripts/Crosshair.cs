@@ -196,14 +196,6 @@ public class Crosshair : MonoBehaviour
             }
             transform.position += direction * moveSpeed;
         }
-        /*else
-        {
-            moveSpeed = originalSpeed;
-
-            newX = Mathf.PingPong(Time.time * speed, rangeX * 2) - rangeX;
-            newY = Mathf.PingPong(Time.time * speed, rangeY * 2) - rangeY;
-            transform.position = startPosition + new Vector2(newX, newY);
-        }*/
         else
         {
             if (Vector3.Distance(transform.position, waypoints[currentWaypointIndex].transform.position) < .1f)

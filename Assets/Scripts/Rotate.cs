@@ -14,6 +14,10 @@ public class Rotate : MonoBehaviour
     public float changeRotateDirection;
     public bool checkRotateDirectionMaxTime = true;
 
+    bool checkRotateSpeedMaxTime = true;
+    float rotateSpeedMaxTime;
+    float rotateSpeedCounter = 0;
+
     private void Update()
     {
         if(automaticMouseTargeting)
@@ -43,6 +47,24 @@ public class Rotate : MonoBehaviour
             else
             {
                 rotateDirection = Vector3.back;
+            }
+
+            if(checkRotateSpeedMaxTime)
+            {
+                rotateSpeedMaxTime = Random.Range(3, 5);
+                checkRotateSpeedMaxTime = false;
+            }
+
+            if(rotateSpeedMaxTime > rotateSpeedCounter)
+            {
+                rotateSpeedCounter += Time.deltaTime;
+            }
+            else
+            {
+                rotateSpeed = Random.Range(12, 16);
+                rotateSpeedMaxTime = 0;
+                rotateSpeedCounter = 0;
+                checkRotateSpeedMaxTime = true;
             }
 
             transform.Rotate(rotateDirection, rotateSpeed * Time.deltaTime);
