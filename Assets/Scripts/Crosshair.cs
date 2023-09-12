@@ -108,7 +108,8 @@ public class Crosshair : MonoBehaviour
 
         if (mouseDown) // When mouse button is pressed down the crosshair movement slows down
         {
-            moveSpeed = 1.5f;
+            //moveSpeed = 1.5f;
+            moveSpeed = 0;
         }
         else
         {

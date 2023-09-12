@@ -723,7 +723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 519420031}
   throwForce: 0
-  dartPrefab: {fileID: 316487305377593182, guid: 9c3044217db65c340895de1d156e6caa, type: 3}
+  dartPrefab: {fileID: 5699712521307408954, guid: 6265d1d07b1811a4f99a8a14f5b19841, type: 3}
   currentDartIndex: 0
   dart: {fileID: 316487305377593179, guid: 9c3044217db65c340895de1d156e6caa, type: 3}
   energybar: {fileID: 6065409380596582538}

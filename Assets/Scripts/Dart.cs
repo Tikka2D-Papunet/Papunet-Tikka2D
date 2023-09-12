@@ -37,7 +37,10 @@ public class Dart : MonoBehaviour
     int DartsThrown;
 
     [SerializeField] SpriteRenderer sprite;
-    Renderer rend;
+    public GameObject childObject;
+    SpriteRenderer childSprite;
+    public GameObject childObjectAnimator;
+    Animator childAnim;
 
     [Header("Fetch Current Dart Index")]
     int currentDartIndex;
@@ -60,7 +63,8 @@ public class Dart : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         rb2d.bodyType = RigidbodyType2D.Kinematic;
-        rend = GetComponent<Renderer>();
+        childSprite = childObject.GetComponent<SpriteRenderer>();
+        childAnim = childObjectAnimator.GetComponent<Animator>();
     }
 
     public void Update()
@@ -93,11 +97,10 @@ public class Dart : MonoBehaviour
         if (throwed)
         {
             Invoke("ShowDart", 0.2f);
+            childAnim.enabled = true;
             if (maxTime > timer)
             {
                 timer += Time.deltaTime;
-                transform.localScale -= new Vector3(shrinkinSpeed * Time.deltaTime,
-                    shrinkinSpeed * Time.deltaTime, 0);
             }
             else if (enoughPowerOnThrowFetch | automaticThrowForce)
             {
@@ -114,9 +117,9 @@ public class Dart : MonoBehaviour
         else
         {
             Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = new Vector3(crosshair.transform.position.x + 4.7f, crosshair.transform.position.y - 2.25f,
+            transform.position = new Vector3(crosshair.transform.position.x + 3.4f, crosshair.transform.position.y - 1.0f,
                 transform.position.z);
-            transform.rotation = Quaternion.Euler(0, 0, 31);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
         //Debug.Log("Throw Force: " + throwForce);
@@ -140,16 +143,16 @@ public class Dart : MonoBehaviour
     {
         yield return new WaitForSeconds(0.4f);
 
-        rend.sortingOrder = 3;
+        childSprite.sortingOrder = 3;
     }
 
     void DestroyDart()
     {
-        sprite.enabled = false;
+        childSprite.enabled = false;
     }
 
     void ShowDart()
     {
-        sprite.enabled = true;
+        childSprite.enabled = true;
     }
 }
