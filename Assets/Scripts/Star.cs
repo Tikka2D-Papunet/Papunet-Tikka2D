@@ -51,5 +51,8 @@ public class Star : MonoBehaviour
         GameObject starPrefab = Instantiate(star10, transform.position, Quaternion.identity);
         Rigidbody2D rb2d = starPrefab.GetComponent<Rigidbody2D>();
         rb2d.velocity = new Vector2(0, 2);
+
+        yield return new WaitForSeconds(1.5f);
+        Destroy(starPrefab);
     }
 }

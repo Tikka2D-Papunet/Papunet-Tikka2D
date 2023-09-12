@@ -905,7 +905,7 @@ MonoBehaviour:
   star7: {fileID: 4198769393228003697, guid: 070dbcedafa9a8347a4de075eea1536c, type: 3}
   star8: {fileID: 8925416794777366571, guid: 93fee29d7349b9f43a33ab02fb2de354, type: 3}
   star9: {fileID: 7851829830902710558, guid: 4d01c562cb56d9542b2a466205919d02, type: 3}
-  star10: {fileID: 3267803829081747856, guid: aac8a64163fcf67418bb287fea8be019, type: 3}
+  star10: {fileID: 4047832940910662567, guid: aac8a64163fcf67418bb287fea8be019, type: 3}
 --- !u!4 &405263514
 Transform:
   m_ObjectHideFlags: 0
