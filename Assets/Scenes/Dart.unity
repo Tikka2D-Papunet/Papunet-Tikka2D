@@ -3700,6 +3700,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 575586766}
     m_Modifications:
+    - target: {fileID: 4832224160219777478, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
+      propertyPath: hoverSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c4a92265ccde43e4eb982967eaaa58f4, type: 3}
+    - target: {fileID: 4832224160219777480, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 36176b02e3c98e449b32a7da080d58d5, type: 3}
     - target: {fileID: 4832224160219777483, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3836,6 +3844,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hlayoutgroup
       objectReference: {fileID: 0}
+    - target: {fileID: 4832224161112515107, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
+      propertyPath: hoverSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6a3d39915ed831f46a40d40bdaa3a04e, type: 3}
     - target: {fileID: 4832224161112515108, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3852,6 +3864,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4832224161112515109, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2702be7565d90d64ab14a66271ab1340, type: 3}
+    - target: {fileID: 4832224161364253964, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2eb7333c471c33f4185be4e807f7c964, type: 3}
     - target: {fileID: 4832224161364253966, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3868,6 +3888,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4832224161364253967, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
+      propertyPath: hoverSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fe881321a60468246ade2b2bafd013af, type: 3}
     - target: {fileID: 4832224161555419336, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -3992,6 +4016,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4832224162309882393, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
+      propertyPath: hoverSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f4736610a56570f468dcd150f4bf666a, type: 3}
     - target: {fileID: 4832224162309882394, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4008,6 +4036,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4832224162309882395, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5b29912e432de4b4e8caca00c7785ec7, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
 --- !u!114 &1512996667 stripped
