@@ -16,7 +16,6 @@ public class Dart : MonoBehaviour
     public Camera cam;
     public MouseAndSpawnManager manager;
     float throwForce;
-    //float lateralForce = 3.5f;
     float lateralForce = 7f;
     float lateralDirection; // don't delete
     float shrinkinSpeed = 0.6f; // Dart shrinking speed after throwed 0.6f original
@@ -121,8 +120,6 @@ public class Dart : MonoBehaviour
                 transform.position.z);
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-
-        //Debug.Log("Throw Force: " + throwForce);
     }
 
     void Fly()
@@ -135,7 +132,6 @@ public class Dart : MonoBehaviour
     {
         flying = false;
         lateralDirection = Random.Range(6.5f, 7.5f);
-        //rb2d.velocity = new Vector2(-lateralForce, rb2d.velocity.y);
         rb2d.velocity = new Vector2(-lateralDirection, rb2d.velocity.y);
         throwed = true;
     }

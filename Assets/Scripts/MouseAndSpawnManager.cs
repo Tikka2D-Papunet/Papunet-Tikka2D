@@ -26,8 +26,6 @@ public class MouseAndSpawnManager : MonoBehaviour
 
     public bool increasingForce = true;
 
-    //float spinForce = 100f;
-
     public bool mouseDown = false;
 
     [Header("Scoring")]
@@ -75,15 +73,8 @@ public class MouseAndSpawnManager : MonoBehaviour
     bool releaseMouse = false;
 
     public int howManyDartsThrown = 0; // Counter for dart throws.
-
     public bool enoughPowerOnThrow;
-
-    //float lateralForce = 3.5f;
     float lateralDirection;
-
-    //float spinTime = 0.5f;
-    //float spinCounter = 0;
-    //bool spin = false;
 
     public bool showEnergybar = false; // shows energybar if you press mouse
 
@@ -114,14 +105,11 @@ public class MouseAndSpawnManager : MonoBehaviour
         checkDistance = dart.GetComponent<Dart>().checkDistance;
 
         float distance = Vector3.Distance(testDistance.transform.position, dartBoardCenter.transform.position);
-        Debug.Log("Distance test: " + distance);
+        //Debug.Log("Distance test: " + distance);
 
         MouseLogic();
 
         EnergyBarLogic();
-
-        Debug.Log("throwForce MouseAndSpawn: " + throwForce);
-        //Debug.Log("Increasing force: " + increasingForce);
 
         CalculateDistance();
     }
@@ -155,7 +143,6 @@ public class MouseAndSpawnManager : MonoBehaviour
 
 
             energybar.SetEnergy(currentEnergy);
-            //Debug.Log("Current energy: " + currentEnergy);
         }
     }
 
@@ -167,7 +154,6 @@ public class MouseAndSpawnManager : MonoBehaviour
         if (checkDistance)
         {
             float distance = Vector3.Distance(childCastpointPosition, dartBoardCenter.transform.position);
-            //Debug.Log("Distance: " + distance);
             if (distance != 100)
             {
                 if (distance < 0.475f)
@@ -444,7 +430,6 @@ public class MouseAndSpawnManager : MonoBehaviour
         }
         else
         {
-            //throwForce = 4.5f;
             throwForce = 4.0f;
         }
     }
@@ -493,9 +478,6 @@ public class MouseAndSpawnManager : MonoBehaviour
                     handAnim.GetComponent<Animator>().SetTrigger("Throw");
 
                     dart.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                    //spin = true;
-                    //float randomSpin = Random.Range(-spinForce, spinForce);
-                    //dart.transform.Rotate(0, 0, randomSpin);
                     dart.GetComponent<Rigidbody2D>().AddForce(Vector2.up * throwForce, ForceMode2D.Impulse);
 
                     increaseEnergy = false;
@@ -518,20 +500,6 @@ public class MouseAndSpawnManager : MonoBehaviour
                 }
             }
 
-            /*if(spin)
-            {
-                if(spinCounter <= spinTime)
-                {
-                    spinCounter += Time.deltaTime;
-                    float randomSpin = Random.Range(-5, 5);
-                    dart.transform.Rotate(0, 0, randomSpin);
-                }
-                else
-                {
-                    spinCounter = 0;
-                    spin = false;
-                }
-            }*/
 
             if (pressMouse && releaseMouse && startThrowCount == false)
             {
