@@ -86,6 +86,11 @@ public class MouseAndSpawnManager : MonoBehaviour
 
     [SerializeField] AudioClip ähSound;
     [SerializeField] AudioClip hitSound;
+    [SerializeField] AudioClip throwPastSound;
+    [SerializeField] AudioClip wauSound;
+    bool isHitSoundPlayed = false;
+    bool isThrownPastSoundPlayed = false;
+    bool isWauSoundPlayed = false;
 
     private void Awake()
     {
@@ -158,12 +163,14 @@ public class MouseAndSpawnManager : MonoBehaviour
         if (checkDistance)
         {
             float distance = Vector3.Distance(childCastpointPosition, dartBoardCenter.transform.position);
-            if (distance != 100)
+            if (distance < 4.851f)
             {
+                DartHitsBoard();
                 if (distance < 0.475f)
                 {
                     scoreBool10 = true;
                     Debug.Log("Hit 10");
+                    WauSound();
                 }
                 else if (distance > 0.475f && distance < 0.966f)
                 {
@@ -210,6 +217,10 @@ public class MouseAndSpawnManager : MonoBehaviour
                     scoreBool1 = true;
                     Debug.Log("Hit 1");
                 }
+            }
+            else
+            {
+                DartThrownPastTheBoard();
             }
         }
 
@@ -481,6 +492,9 @@ public class MouseAndSpawnManager : MonoBehaviour
                 {
                     handAnim.GetComponent<Animator>().SetTrigger("Throw");
                     SoundManager.instance.PlaySound(ähSound);
+                    isHitSoundPlayed = false;
+                    isThrownPastSoundPlayed = false;
+                    isWauSoundPlayed = false;
 
                     dart.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                     dart.GetComponent<Rigidbody2D>().AddForce(Vector2.up * throwForce, ForceMode2D.Impulse);
@@ -520,5 +534,32 @@ public class MouseAndSpawnManager : MonoBehaviour
     void Throw()
     {
         GameObject dart = Instantiate(dartPrefab, mousePos, Quaternion.identity);
+    }
+
+    void DartHitsBoard()
+    {
+        if(!isHitSoundPlayed)
+        {
+            SoundManager.instance.PlaySound(hitSound);
+            isHitSoundPlayed = true;
+        }
+    }
+
+    void DartThrownPastTheBoard()
+    {
+        if(!isThrownPastSoundPlayed)
+        {
+            SoundManager.instance.PlaySound(throwPastSound);
+            isThrownPastSoundPlayed = true;
+        }
+    }
+
+    void WauSound()
+    {
+        if(!isWauSoundPlayed)
+        {
+            SoundManager.instance.PlaySound(wauSound);
+            isWauSoundPlayed = true;
+        }
     }
 }

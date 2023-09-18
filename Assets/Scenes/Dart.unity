@@ -756,6 +756,8 @@ MonoBehaviour:
   handAnim: {fileID: 1296378576}
   "\xE4hSound": {fileID: 8300000, guid: 53160397f45fd854fa2f8f29134674e6, type: 3}
   hitSound: {fileID: 8300000, guid: ad97eef579bae9142a8ff29956dd8f2a, type: 3}
+  throwPastSound: {fileID: 8300000, guid: 090d22b9f768fe64b95d91f63c0821fb, type: 3}
+  wauSound: {fileID: 8300000, guid: a31dd75339e1cc24aba584b877f39898, type: 3}
 --- !u!4 &249641582
 Transform:
   m_ObjectHideFlags: 0
