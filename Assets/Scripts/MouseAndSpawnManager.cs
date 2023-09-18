@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class MouseAndSpawnManager : MonoBehaviour
 {
@@ -82,6 +83,9 @@ public class MouseAndSpawnManager : MonoBehaviour
     public Vector3 childCastpointPosition;
 
     public GameObject handAnim; // käsiii hand animations
+
+    [SerializeField] AudioClip ähSound;
+    [SerializeField] AudioClip hitSound;
 
     private void Awake()
     {
@@ -476,6 +480,7 @@ public class MouseAndSpawnManager : MonoBehaviour
                 if (Input.GetMouseButtonUp(0) && pressMouse)
                 {
                     handAnim.GetComponent<Animator>().SetTrigger("Throw");
+                    SoundManager.instance.PlaySound(ähSound);
 
                     dart.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                     dart.GetComponent<Rigidbody2D>().AddForce(Vector2.up * throwForce, ForceMode2D.Impulse);
