@@ -839,6 +839,11 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &345915754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4832224160651273695, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
+  m_PrefabInstance: {fileID: 1512996666}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &362952589
 GameObject:
   m_ObjectHideFlags: 0
@@ -3704,6 +3709,26 @@ PrefabInstance:
       propertyPath: hoverSprite
       value: 
       objectReference: {fileID: 21300000, guid: c4a92265ccde43e4eb982967eaaa58f4, type: 3}
+    - target: {fileID: 4832224160219777478, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
+      propertyPath: soundOnHoverSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c4a92265ccde43e4eb982967eaaa58f4, type: 3}
+    - target: {fileID: 4832224160219777478, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
+      propertyPath: soundOffHoverSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b3cb60fb0eaee324782dc78926adc93e, type: 3}
+    - target: {fileID: 4832224160219777478, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
+      propertyPath: soundOnSpeechBubble
+      value: 
+      objectReference: {fileID: 345915754}
+    - target: {fileID: 4832224160219777478, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
+      propertyPath: soundOnOriginalSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 36176b02e3c98e449b32a7da080d58d5, type: 3}
+    - target: {fileID: 4832224160219777478, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
+      propertyPath: soundOffOriginalSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6765640e94cee8a4f98102e4f4dbe9c6, type: 3}
     - target: {fileID: 4832224160219777480, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
       propertyPath: m_Sprite
       value: 

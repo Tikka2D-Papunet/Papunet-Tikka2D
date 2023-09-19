@@ -3,33 +3,58 @@ using UnityEngine.UI;
 
 public class ListenButton : MonoBehaviour
 {
+    //public static ListenButton instance { get; set; }
     Button button;
     Image buttonImage;
-    Sprite originalSprite;
-    public Sprite hoverSprite;
-    public GameObject speechBubble;
+    [SerializeField] Sprite soundOnOriginalSprite;
+    [SerializeField] Sprite soundOffOriginalSprite;
+    public Sprite soundOnHoverSprite;
+    public GameObject soundOnSpeechBubble;
+    public Sprite soundOffHoverSprite;
+    public GameObject soundOffSpeechBubble;
+
+    public static bool staticSoundOn = true;
+    public bool soundOn = true;
 
     void Start()
     {
         button = GetComponent<Button>();
         buttonImage = button.image;
-        originalSprite = buttonImage.sprite;
-        speechBubble.gameObject.SetActive(false);
+        soundOnOriginalSprite = buttonImage.sprite;
+        soundOnSpeechBubble.gameObject.SetActive(false);
     }
 
     public void Update()
     {
-        if (RectTransformUtility.RectangleContainsScreenPoint(buttonImage.rectTransform,
-            Input.mousePosition))
+        if(soundOn)
         {
-            buttonImage.sprite = hoverSprite;
-            speechBubble.gameObject.SetActive(true);
+            if (RectTransformUtility.RectangleContainsScreenPoint(buttonImage.rectTransform,
+    Input.mousePosition))
+            {
+                buttonImage.sprite = soundOnHoverSprite;
+                soundOnSpeechBubble.gameObject.SetActive(true);
 
+            }
+            else
+            {
+                buttonImage.sprite = soundOnOriginalSprite;
+                soundOnSpeechBubble.gameObject.SetActive(false);
+            }
         }
         else
         {
-            buttonImage.sprite = originalSprite;
-            speechBubble.gameObject.SetActive(false);
+            if (RectTransformUtility.RectangleContainsScreenPoint(buttonImage.rectTransform,
+    Input.mousePosition))
+            {
+                buttonImage.sprite = soundOffHoverSprite;
+                //soundOnSpeechBubble.gameObject.SetActive(true);
+
+            }
+            else
+            {
+                buttonImage.sprite = soundOffOriginalSprite;
+                //soundOnSpeechBubble.gameObject.SetActive(false);
+            }
         }
     }
 }
