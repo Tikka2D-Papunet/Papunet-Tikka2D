@@ -46,6 +46,8 @@ public class Dart : MonoBehaviour
 
     public bool enoughPowerOnThrowFetch;
 
+    bool dontThrowManagerFetch; // fetching dont throw from MouseAndSpawnManager that fetches original dont throw from ListenButton
+
     public Transform GetChildObjectTransform()
     {
         return castPoint;
@@ -70,6 +72,7 @@ public class Dart : MonoBehaviour
     {
         DartsThrown = manager.GetComponent<MouseAndSpawnManager>().howManyDartsThrown;
         enoughPowerOnThrowFetch = manager.GetComponent<MouseAndSpawnManager>().enoughPowerOnThrow;
+        dontThrowManagerFetch = manager.GetComponent<MouseAndSpawnManager>().dontThrowFetch;
 
         if (DartsThrown == 5)
         {
@@ -83,14 +86,17 @@ public class Dart : MonoBehaviour
 
         throwForce = manager.GetComponent<MouseAndSpawnManager>().throwForce;
 
-        if (Input.GetMouseButtonDown(0))
+        if(!dontThrowManagerFetch)
         {
-            Fly();
-        }
+            if (Input.GetMouseButtonDown(0))
+            {
+                Fly();
+            }
 
-        if (Input.GetMouseButtonUp(0) && flying)
-        {
-            ThrowDart();
+            if (Input.GetMouseButtonUp(0) && flying)
+            {
+                ThrowDart();
+            }
         }
 
         if (throwed)

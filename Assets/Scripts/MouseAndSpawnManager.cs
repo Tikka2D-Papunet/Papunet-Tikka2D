@@ -93,7 +93,7 @@ public class MouseAndSpawnManager : MonoBehaviour
     bool isWauSoundPlayed = false;
 
     public GameObject listenButton;
-    bool dontThrowFetch; // from CursorManager
+    public bool dontThrowFetch; // from CursorManager
 
     private void Awake()
     {
@@ -475,7 +475,7 @@ public class MouseAndSpawnManager : MonoBehaviour
 
             if (startThrowCount == false)
             {
-                if (Input.GetMouseButtonDown(0) && releaseMouse == false)
+                if (Input.GetMouseButtonDown(0) && releaseMouse == false && dontThrowFetch == false)
                 {
                     if(controlledThrowForce)
                     {
@@ -487,12 +487,12 @@ public class MouseAndSpawnManager : MonoBehaviour
                     pressMouse = true;
                 }
 
-                if (Input.GetMouseButton(0) && flying && releaseMouse == false)
+                if (Input.GetMouseButton(0) && flying && releaseMouse == false && dontThrowFetch == false)
                 {
                     IncreaseForce();
                 }
 
-                if (Input.GetMouseButtonUp(0) && pressMouse)
+                if (Input.GetMouseButtonUp(0) && pressMouse && dontThrowFetch == false)
                 {
                     handAnim.GetComponent<Animator>().SetTrigger("Throw");
                     SoundManager.instance.PlaySound(ähSound);
