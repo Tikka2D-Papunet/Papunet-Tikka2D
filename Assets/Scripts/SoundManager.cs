@@ -16,7 +16,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        isMuted = AudioListener.pause;
+        isMuted = source.mute;
     }
 
     public void PlaySound(AudioClip sound)
@@ -27,6 +27,6 @@ public class SoundManager : MonoBehaviour
     public void SoundOn()
     {
         isMuted = !isMuted;
-        AudioListener.pause = isMuted;
+        source.mute = isMuted;
     }
 }
