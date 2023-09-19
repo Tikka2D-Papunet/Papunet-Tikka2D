@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class ListenButton : MonoBehaviour
 {
-    //public static ListenButton instance { get; set; }
     Button button;
     Image buttonImage;
     [SerializeField] Sprite soundOnOriginalSprite;
