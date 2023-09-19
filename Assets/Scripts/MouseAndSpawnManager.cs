@@ -92,6 +92,9 @@ public class MouseAndSpawnManager : MonoBehaviour
     bool isThrownPastSoundPlayed = false;
     bool isWauSoundPlayed = false;
 
+    public GameObject listenButton;
+    bool dontThrowFetch; // from CursorManager
+
     private void Awake()
     {
         energybar = FindObjectOfType<Energybar>();
@@ -115,6 +118,7 @@ public class MouseAndSpawnManager : MonoBehaviour
 
         float distance = Vector3.Distance(testDistance.transform.position, dartBoardCenter.transform.position);
         //Debug.Log("Distance test: " + distance);
+        dontThrowFetch = listenButton.GetComponent<ListenButton>().dontThrow;
 
         MouseLogic();
 

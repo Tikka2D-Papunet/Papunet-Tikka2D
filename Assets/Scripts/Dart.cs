@@ -16,9 +16,9 @@ public class Dart : MonoBehaviour
     public Camera cam;
     public MouseAndSpawnManager manager;
     float throwForce;
-    float lateralForce = 7f;
+    //float lateralForce = 7f;
     float lateralDirection; // don't delete
-    float shrinkinSpeed = 0.6f; // Dart shrinking speed after throwed 0.6f original
+    //float shrinkinSpeed = 0.6f; // Dart shrinking speed after throwed 0.6f original
 
 
     [Header("Dart Hit Parameters")]

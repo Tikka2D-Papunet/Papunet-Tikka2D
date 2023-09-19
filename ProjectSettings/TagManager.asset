@@ -8,6 +8,7 @@ TagManager:
   - DartBoardCenter
   - Crosshair
   - DartBoard
+  - ListenButton
   layers:
   - Default
   - TransparentFX
