@@ -48,6 +48,9 @@ public class Dart : MonoBehaviour
 
     bool dontThrowManagerFetch; // fetching dont throw from MouseAndSpawnManager that fetches original dont throw from ListenButton
 
+    [SerializeField] GameObject childShadow;
+    SpriteRenderer shadowSprite;
+
     public Transform GetChildObjectTransform()
     {
         return castPoint;
@@ -66,6 +69,7 @@ public class Dart : MonoBehaviour
         rb2d.bodyType = RigidbodyType2D.Kinematic;
         childSprite = childObject.GetComponent<SpriteRenderer>();
         childAnim = childObjectAnimator.GetComponent<Animator>();
+        shadowSprite = childShadow.GetComponent<SpriteRenderer>();
     }
 
     public void Update()
@@ -113,6 +117,7 @@ public class Dart : MonoBehaviour
                 rb2d.AddForce(Vector2.zero);
                 checkDistance = true;
                 StartCoroutine(ChangeLayerOrder());
+                StartCoroutine(ShowShadow());
             }
             else
             {
@@ -147,6 +152,13 @@ public class Dart : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
 
         childSprite.sortingOrder = 3;
+    }
+
+    IEnumerator ShowShadow()
+    {
+        yield return new WaitForSeconds(0.08f);
+
+        shadowSprite.sortingOrder = 2;
     }
 
     void DestroyDart()
