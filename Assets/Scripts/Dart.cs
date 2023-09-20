@@ -159,15 +159,18 @@ public class Dart : MonoBehaviour
         yield return new WaitForSeconds(0.08f);
 
         shadowSprite.sortingOrder = 2;
+        //shadowSprite.enabled = true;
     }
 
     void DestroyDart()
     {
         childSprite.enabled = false;
+        shadowSprite.enabled = false;
     }
 
     void ShowDart()
     {
         childSprite.enabled = true;
+        //shadowSprite.enabled = true;
     }
 }
