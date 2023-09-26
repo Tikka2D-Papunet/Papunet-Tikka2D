@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EndingTransparentBackground : MonoBehaviour
 {
-    SpriteRenderer sprite;
+    Image backgroundImage;
     public MouseAndSpawnManager MaSmanager;
     int howManyDartsThrownFetch;
 
@@ -13,7 +14,7 @@ public class EndingTransparentBackground : MonoBehaviour
 
     private void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
+        backgroundImage = GetComponent<Image>();
     }
 
     private void Update()
@@ -27,11 +28,13 @@ public class EndingTransparentBackground : MonoBehaviour
                 counter += Time.deltaTime;
             }
             else
-                sprite.enabled = true;
+            {
+                backgroundImage.enabled = true;
+            }
         }
         else
         {
-            sprite.enabled = false;
+            backgroundImage.enabled = false;
         }
     }
 }
