@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Rotate : MonoBehaviour
 {
-    public static bool controlMouseTargeting = true;
-    public static bool automaticMouseTargeting;
+    public static bool controlMouseTargeting;
+    public static bool automaticMouseTargeting = true;
 
     float rotateSpeed = 12; // original speed 10
     Vector3 rotateDirection = Vector3.forward;

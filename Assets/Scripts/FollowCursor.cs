@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FollowCursor : MonoBehaviour
 {
-    public static bool controlMouseTargeting = true;
-    public static bool automaticMouseTargeting;
+    public static bool controlMouseTargeting;
+    public static bool automaticMouseTargeting = true;
 
     Vector3 mousePosition;
 
