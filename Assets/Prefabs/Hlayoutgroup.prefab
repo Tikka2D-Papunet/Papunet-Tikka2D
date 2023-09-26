@@ -1,5 +1,81 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &66801526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 66801529}
+  - component: {fileID: 66801528}
+  - component: {fileID: 66801527}
+  m_Layer: 5
+  m_Name: Kuuntele_PuhekuplaOff
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &66801529
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66801526}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4832224160219777483}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -60, y: -132.7372}
+  m_SizeDelta: {x: 578, y: 264}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &66801528
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66801526}
+  m_CullTransparentMesh: 1
+--- !u!114 &66801527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66801526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 3dd6a1bd9a7f3504aabe5a3c02fd3c55, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &4832224160219777482
 GameObject:
   m_ObjectHideFlags: 0
@@ -33,6 +109,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4832224160651273692}
+  - {fileID: 66801529}
   m_Father: {fileID: 4832224160659677064}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -69,7 +146,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 71fbad34cb1e1d247b14009959d1d4c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 36176b02e3c98e449b32a7da080d58d5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -122,7 +199,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4832224160219777480}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: SoundOn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4832224160219777478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,8 +224,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2058fe866dd19f4ba4d24ea7a9630d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSprite: {fileID: 21300000, guid: 090fbdde282b5144db4ded5bed882345, type: 3}
-  speechBubble: {fileID: 4832224160651273695}
+  soundOnOriginalSprite: {fileID: 21300000, guid: 36176b02e3c98e449b32a7da080d58d5, type: 3}
+  soundOffOriginalSprite: {fileID: 21300000, guid: 6765640e94cee8a4f98102e4f4dbe9c6, type: 3}
+  soundOnHoverSprite: {fileID: 21300000, guid: c4a92265ccde43e4eb982967eaaa58f4, type: 3}
+  soundOnSpeechBubble: {fileID: 4832224160651273695}
+  soundOffHoverSprite: {fileID: 21300000, guid: b3cb60fb0eaee324782dc78926adc93e, type: 3}
+  soundOffSpeechBubble: {fileID: 66801526}
+  soundManager: {fileID: 0}
+  dontThrow: 0
 --- !u!1 &4832224160651273695
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +259,7 @@ RectTransform:
   m_GameObject: {fileID: 4832224160651273695}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4832224160219777483}
@@ -172,8 +267,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -59, y: -142.00009}
-  m_SizeDelta: {x: 435, y: 225}
+  m_AnchoredPosition: {x: -132, y: -132.7372}
+  m_SizeDelta: {x: 819, y: 264}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4832224160651273690
 CanvasRenderer:
@@ -203,7 +298,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e26a2aeb22ca0fa4da192b6e664b370c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9aefe943cbfa1f84da2b53620fa060ba, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -349,7 +444,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9491815828feec04d8fa729b6fdbb002, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2702be7565d90d64ab14a66271ab1340, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -415,7 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12a9d743cf69e2a4fbc8dd47c167dbad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSprite: {fileID: 21300000, guid: bb40d4f00cf0c354eb7c77c5a8c01988, type: 3}
+  hoverSprite: {fileID: 21300000, guid: 6a3d39915ed831f46a40d40bdaa3a04e, type: 3}
   speechBubble: {fileID: 4832224161555419338}
 --- !u!1 &4832224161364254001
 GameObject:
@@ -486,7 +581,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5dd75e49ba300b54ebd02487b5798a35, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2eb7333c471c33f4185be4e807f7c964, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -508,7 +603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0c15354d1d74d84a99badf8e98247f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSprite: {fileID: 21300000, guid: d9538352ad95c5845937a2f65ad8c70c, type: 3}
+  hoverSprite: {fileID: 21300000, guid: fe881321a60468246ade2b2bafd013af, type: 3}
   speechBubble: {fileID: 4832224161777114333}
 --- !u!114 &4832224161364253962
 MonoBehaviour:
@@ -581,7 +676,7 @@ RectTransform:
   m_GameObject: {fileID: 4832224161555419338}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4832224161112515108}
@@ -589,8 +684,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -60, y: -143}
-  m_SizeDelta: {x: 435, y: 225}
+  m_AnchoredPosition: {x: -85, y: -132.7372}
+  m_SizeDelta: {x: 677, y: 264}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4832224161555419337
 CanvasRenderer:
@@ -620,7 +715,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 131e75aa93f87c547b0f953c9247169f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fc331161b8850724a8299ad649c9fd54, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -657,7 +752,7 @@ RectTransform:
   m_GameObject: {fileID: 4832224161777114333}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4832224161364253966}
@@ -665,8 +760,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -205, y: -142}
-  m_SizeDelta: {x: 732, y: 225}
+  m_AnchoredPosition: {x: -60, y: -132.73718}
+  m_SizeDelta: {x: 578, y: 264}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4832224161777114328
 CanvasRenderer:
@@ -696,7 +791,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7fdeeabe5475c0149ab55ce0cafd75f0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 962bc6ec8c42809418efd5b9fe5e0a41, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -733,7 +828,7 @@ RectTransform:
   m_GameObject: {fileID: 4832224162056241777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4832224162309882394}
@@ -741,8 +836,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -60, y: -140}
-  m_SizeDelta: {x: 285, y: 225}
+  m_AnchoredPosition: {x: -59, y: -132.7372}
+  m_SizeDelta: {x: 578, y: 264}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4832224162056241740
 CanvasRenderer:
@@ -772,7 +867,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 34ccdfbc0c1a5a346a35bd2a9a3d268c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ab8c04d92f19c64383e6bacb178c6f0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -851,7 +946,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1c2182104cf28d44cb309da95f7190fd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b29912e432de4b4e8caca00c7785ec7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -873,7 +968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365a8fb236faa864faab2abd863a9e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSprite: {fileID: 21300000, guid: a8cc52f3e5ea4ed4cb6a9802b19c0a06, type: 3}
+  hoverSprite: {fileID: 21300000, guid: f4736610a56570f468dcd150f4bf666a, type: 3}
   speechBubble: {fileID: 4832224162056241777}
 --- !u!114 &4832224162309882390
 MonoBehaviour:
@@ -918,4 +1013,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4832224162309882395}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4832224162309882393}
+        m_TargetAssemblyTypeName: ExitButton, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

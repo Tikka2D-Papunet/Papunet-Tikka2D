@@ -92,7 +92,7 @@ public class MouseAndSpawnManager : MonoBehaviour
     bool isThrownPastSoundPlayed = false;
     bool isWauSoundPlayed = false;
 
-    public GameObject listenButton;
+    public ListenButton listenButton;
     public bool dontThrowFetch; // from CursorManager
 
     private void Awake()
@@ -108,6 +108,7 @@ public class MouseAndSpawnManager : MonoBehaviour
         Instantiate(dartPrefab);
         dart = FindObjectOfType<Dart>();
         dartObject = GameObject.FindGameObjectWithTag("Dart");
+        listenButton = FindObjectOfType<ListenButton>();
         handAnim.GetComponent<Animator>();
     }
 
