@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class AutomaticAimingButton : MonoBehaviour
 {
-    public static bool controlMouseTargeting = true;
-    public static bool automaticMouseTargeting;
+    public static bool controlMouseTargeting;
+    public static bool automaticMouseTargeting = true;
 
     Button button;
     Image buttonImage;
