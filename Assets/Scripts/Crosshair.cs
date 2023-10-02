@@ -52,13 +52,21 @@ public class Crosshair : MonoBehaviour
 
     Vector3 wayPoint;
     [SerializeField] Transform followCursor;
+    [SerializeField] Transform touchScreenFollow;
     float minRange = 0.5f;
     float range;
     float randomX, randomY;
     float distanceToCursor;
 
+    int screenWidth;
+    int screenHeight;
+
     private void Start()
     {
+        screenWidth = Screen.width;
+        screenHeight = Screen.height;
+        Debug.Log("Screen resolution: " + screenWidth + "x" + screenHeight);
+
         originalSpeed = moveSpeed;
         if(automaticMouseTargeting)
         {
@@ -93,7 +101,15 @@ public class Crosshair : MonoBehaviour
         startThrowCountFetch = manager.GetComponent<MouseAndSpawnManager>().startThrowCount;
 
         range = Vector2.Distance(transform.position, wayPoint);
-        distanceToCursor = Vector2.Distance(transform.position, followCursor.position);
+
+        if (screenWidth < 600)
+        {
+            distanceToCursor = Vector2.Distance(transform.position, touchScreenFollow.position);
+        }
+        else
+        {
+            distanceToCursor = Vector2.Distance(transform.position, followCursor.position);
+        }
 
         transform.position = Vector2.MoveTowards(transform.position, wayPoint, moveSpeed * Time.deltaTime);
 
