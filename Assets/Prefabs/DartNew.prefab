@@ -132,7 +132,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 7490814125153776434}
   m_Bounds:
-    m_Center: {x: -1.3307972, y: 2.2711165, z: 0}
+    m_Center: {x: -1.3307967, y: 2.2711165, z: 0}
     m_Extent: {x: 1.1175599, y: 0.71879506, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -321,7 +321,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6068130632813544644}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 6265e42e7c002064487a2cb4bbe09251, type: 2}
   m_CullingMode: 0
@@ -435,7 +435,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 4049049900097820625}
   m_Bounds:
-    m_Center: {x: -0.00000047683716, y: -0.0017094612, z: 0}
+    m_Center: {x: -0.0000009536743, y: -0.0017094612, z: 0}
     m_Extent: {x: 2.52, y: 2.99457, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1

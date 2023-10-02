@@ -51,6 +51,8 @@ public class Dart : MonoBehaviour
     [SerializeField] GameObject childShadow;
     SpriteRenderer shadowSprite;
 
+    int changeThrowAnimation;
+
     public Transform GetChildObjectTransform()
     {
         return castPoint;
@@ -106,7 +108,17 @@ public class Dart : MonoBehaviour
         if (throwed)
         {
             Invoke("ShowDart", 0.2f);
-            childAnim.enabled = true;
+
+            changeThrowAnimation = Random.Range(0, 1);
+            if(changeThrowAnimation == 0)
+            {
+                childAnim.SetTrigger("Throw1");
+            }
+            else
+            {
+                childAnim.SetTrigger("Throw2");
+            }
+
             if (maxTime > timer)
             {
                 timer += Time.deltaTime;
