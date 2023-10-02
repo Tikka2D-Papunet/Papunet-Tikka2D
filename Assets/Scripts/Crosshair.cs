@@ -58,15 +58,8 @@ public class Crosshair : MonoBehaviour
     float randomX, randomY;
     float distanceToCursor;
 
-    int screenWidth;
-    int screenHeight;
-
     private void Start()
     {
-        screenWidth = Screen.width;
-        screenHeight = Screen.height;
-        Debug.Log("Screen resolution: " + screenWidth + "x" + screenHeight);
-
         originalSpeed = moveSpeed;
         if(automaticMouseTargeting)
         {
@@ -102,14 +95,7 @@ public class Crosshair : MonoBehaviour
 
         range = Vector2.Distance(transform.position, wayPoint);
 
-        if (screenWidth < 600)
-        {
-            distanceToCursor = Vector2.Distance(transform.position, touchScreenFollow.position);
-        }
-        else
-        {
-            distanceToCursor = Vector2.Distance(transform.position, followCursor.position);
-        }
+        distanceToCursor = Vector2.Distance(transform.position, followCursor.position);
 
         transform.position = Vector2.MoveTowards(transform.position, wayPoint, moveSpeed * Time.deltaTime);
 

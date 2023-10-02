@@ -13,6 +13,21 @@ public class FollowCursor : MonoBehaviour
     float maxDistance = 0; // max distance to cursor
     float followSpeed = 10; // crosshair cursor follow speed
 
+    int screenWidth;
+    int screenHeight;
+
+    private void Start()
+    {
+        screenWidth = Screen.width;
+        screenHeight = Screen.height;
+        Debug.Log("Screen resolution: " + screenWidth + "x" + screenHeight);
+
+        if(screenWidth < 721)
+        {
+            maxDistance = 5;
+        }
+    }
+
     private void Update()
     {
         if(controlMouseTargeting)
@@ -21,6 +36,7 @@ public class FollowCursor : MonoBehaviour
             mousePosition.z = 0;
 
             distance = Vector3.Distance(mousePosition, transform.position);
+
 
             if(distance > maxDistance)
             {
