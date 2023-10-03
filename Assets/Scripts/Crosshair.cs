@@ -18,7 +18,7 @@ public class Crosshair : MonoBehaviour
 
     [Header("Crosshair Distances")]
     float distance;
-    float maxDistance = 2f;
+    float maxDistance = 4f;
 
     public Vector3 direction = Vector3.up; // (0, 0, 0)
     bool running = false;
