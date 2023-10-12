@@ -146,6 +146,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1133662134791288250}
     m_Modifications:
+    - target: {fileID: 3253767994983347686, guid: 4b482338fb6ef0247bca44c3a570ad6d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 06660e77c49cadb419fdd5cd70182213, type: 3}
     - target: {fileID: 6308336799057840218, guid: 4b482338fb6ef0247bca44c3a570ad6d, type: 3}
       propertyPath: m_Name
       value: RotatingStar
