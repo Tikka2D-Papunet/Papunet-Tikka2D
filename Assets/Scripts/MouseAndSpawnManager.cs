@@ -476,7 +476,8 @@ public class MouseAndSpawnManager : MonoBehaviour
 
             if (startThrowCount == false)
             {
-                if (Input.GetMouseButtonDown(0) && releaseMouse == false && dontThrowFetch == false)
+                if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return) ||
+                    Input.GetKeyDown(KeyCode.Space) && releaseMouse == false && dontThrowFetch == false)
                 {
                     if(controlledThrowForce)
                     {
@@ -488,12 +489,14 @@ public class MouseAndSpawnManager : MonoBehaviour
                     pressMouse = true;
                 }
 
-                if (Input.GetMouseButton(0) && flying && releaseMouse == false && dontThrowFetch == false)
+                if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Return) ||
+                    Input.GetKey(KeyCode.Space) && flying && releaseMouse == false && dontThrowFetch == false)
                 {
                     IncreaseForce();
                 }
 
-                if (Input.GetMouseButtonUp(0) && pressMouse && dontThrowFetch == false)
+                if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Return) ||
+                    Input.GetKeyUp(KeyCode.Space) && pressMouse && dontThrowFetch == false)
                 {
                     handAnim.GetComponent<Animator>().SetTrigger("Throw");
                     SoundManager.instance.PlaySound(ähSound);
