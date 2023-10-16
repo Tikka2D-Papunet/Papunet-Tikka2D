@@ -94,14 +94,12 @@ public class Dart : MonoBehaviour
 
         if(!dontThrowManagerFetch)
         {
-            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return) ||
-                    Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetMouseButtonDown(0))
             {
                 Fly();
             }
 
-            if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Return) ||
-                Input.GetKeyUp(KeyCode.Space) && flying)
+            if (Input.GetMouseButtonUp(0) && flying)
             {
                 ThrowDart();
             }
