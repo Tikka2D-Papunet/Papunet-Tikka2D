@@ -485,8 +485,8 @@ public class MouseAndSpawnManager : MonoBehaviour
 
             if (startThrowCount == false)
             {
-                if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return) ||
-                Input.GetKeyDown(KeyCode.Space) && releaseMouse == false && dontThrowFetch == false)
+                if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+                    && releaseMouse == false && dontThrowFetch == false)
                 {
                     if (controlledThrowForce)
                     {
@@ -498,14 +498,14 @@ public class MouseAndSpawnManager : MonoBehaviour
                     pressMouse = true;
                 }
 
-                if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Return) ||
-                Input.GetKey(KeyCode.Space) && flying && releaseMouse == false && dontThrowFetch == false)
+                if ((Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Return))
+                    && flying && releaseMouse == false && dontThrowFetch == false)
                 {
                     IncreaseForce();
                 }
 
-                if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Return) ||
-                Input.GetKeyUp(KeyCode.Space) && pressMouse && dontThrowFetch == false)
+                if ((Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Return))
+                    && pressMouse && dontThrowFetch == false)
                 {
                     handAnim.GetComponent<Animator>().SetTrigger("Throw");
                     SoundManager.instance.PlaySound(ähSound);
@@ -584,7 +584,6 @@ public class MouseAndSpawnManager : MonoBehaviour
         isLeftMouseButtonDown = Input.GetMouseButtonDown(0);
         isReturnPressed = Input.GetKeyDown(KeyCode.Return);
         isSpacePressed = Input.GetKeyDown(KeyCode.Space);
-        mouse = Event.current;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -601,10 +600,12 @@ public class MouseAndSpawnManager : MonoBehaviour
         }
         else if(isReturnPressed)
         {
-            if(mouse != null && mouse.isMouse)
+            mouse = Event.current;
+            if (mouse != null && mouse.isMouse)
             {
                 mouse.Use();
             }
+            spa = Event.current;
             if (spa != null && (spa.isKey && spa.keyCode == KeyCode.Space))
             {
                 spa.Use();
@@ -612,10 +613,12 @@ public class MouseAndSpawnManager : MonoBehaviour
         }
         else if(isSpacePressed)
         {
+            mouse = Event.current;
             if (mouse != null && mouse.isMouse)
             {
                 mouse.Use();
             }
+            ret = Event.current;
             if (ret != null && (ret.isKey && ret.keyCode == KeyCode.Return))
             {
                 ret.Use();

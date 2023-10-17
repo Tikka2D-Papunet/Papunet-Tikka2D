@@ -109,8 +109,8 @@ public class Dart : MonoBehaviour
                 Fly();
             }
 
-            if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Return) ||
-                Input.GetKeyUp(KeyCode.Space) && flying)
+            if ((Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Return) ||
+                Input.GetKeyUp(KeyCode.Space)) && flying)
             {
                 ThrowDart();
             }
@@ -202,7 +202,6 @@ public class Dart : MonoBehaviour
         isLeftMouseButtonDown = Input.GetMouseButtonDown(0);
         isReturnPressed = Input.GetKeyDown(KeyCode.Return);
         isSpacePressed = Input.GetKeyDown(KeyCode.Space);
-        mouse = Event.current;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -219,10 +218,12 @@ public class Dart : MonoBehaviour
         }
         else if (isReturnPressed)
         {
+            mouse = Event.current;
             if (mouse != null && mouse.isMouse)
             {
                 mouse.Use();
             }
+            spa = Event.current;
             if (spa != null && (spa.isKey && spa.keyCode == KeyCode.Space))
             {
                 spa.Use();
@@ -230,10 +231,12 @@ public class Dart : MonoBehaviour
         }
         else if (isSpacePressed)
         {
+            mouse = Event.current;
             if (mouse != null && mouse.isMouse)
             {
                 mouse.Use();
             }
+            ret = Event.current;
             if (ret != null && (ret.isKey && ret.keyCode == KeyCode.Return))
             {
                 ret.Use();
