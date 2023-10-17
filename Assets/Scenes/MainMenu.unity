@@ -1569,7 +1569,7 @@ RectTransform:
   m_GameObject: {fileID: 1503893588}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1370320764}
@@ -1577,8 +1577,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -233, y: -204}
-  m_SizeDelta: {x: 330, y: 174}
+  m_AnchoredPosition: {x: -230.4, y: -187.1}
+  m_SizeDelta: {x: 578, y: 264}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1503893590
 MonoBehaviour:
@@ -1656,7 +1656,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 508316c76de23834ca249bd70a0b8bd2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4891649235c5b1e49a08543dc3f28b90, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1686,7 +1686,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0c8e9a72b60f1d40bc03075fab6fdfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSprite: {fileID: 21300000, guid: a79540376d3ab5040b6f24afda70e292, type: 3}
+  hoverSprite: {fileID: 21300000, guid: e2e189b9b3dfc0b4f9dc1719c9338282, type: 3}
+  mouse_over: 0
 --- !u!1 &1598600752
 GameObject:
   m_ObjectHideFlags: 0

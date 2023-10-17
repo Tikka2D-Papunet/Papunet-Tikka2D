@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverSprite: {fileID: 21300000, guid: a2eeeca288bd6634b89a3290af659105, type: 3}
+  mouse_over: 0
 --- !u!1 &121871630
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverSprite: {fileID: 21300000, guid: 159ea4853de15bc42a31ef904c15f277, type: 3}
+  mouse_over: 0
 --- !u!1 &123237109
 GameObject:
   m_ObjectHideFlags: 0
