@@ -27,8 +27,6 @@ public class AgainButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         if (mouse_over)
         {
-            Debug.Log("Mouse Over");
-
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
             {
                 button.onClick.Invoke();

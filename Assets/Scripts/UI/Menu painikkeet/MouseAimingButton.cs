@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class MouseAimingButton : MonoBehaviour
+public class MouseAimingButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public static bool controlMouseTargeting;
     public static bool automaticMouseTargeting = true;
@@ -13,16 +14,30 @@ public class MouseAimingButton : MonoBehaviour
     Sprite originalSprite;
     public Sprite spriteClicked;
 
+    RectTransform buttonRect;
+    Vector2 localMousePosition;
+    public bool mouse_over = false;
+
     void Start()
     {
         button = GetComponent<Button>();
+        buttonRect = GetComponent<RectTransform>();
         buttonImage = button.image;
         originalSprite = buttonImage.sprite;
     }
 
     private void Update()
     {
-        if(controlMouseTargeting)
+        if (mouse_over)
+        {
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+            {
+                button.onClick.Invoke();
+
+            }
+        }
+
+        if (controlMouseTargeting)
         {
             buttonImage.sprite = spriteClicked;
         }
@@ -30,5 +45,17 @@ public class MouseAimingButton : MonoBehaviour
         {
             buttonImage.sprite = originalSprite;
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        mouse_over = true;
+        Debug.Log("Mouse enter");
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        mouse_over = false;
+        Debug.Log("Mouse exit");
     }
 }
