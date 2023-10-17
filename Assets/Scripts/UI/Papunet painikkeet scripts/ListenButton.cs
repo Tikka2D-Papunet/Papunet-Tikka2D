@@ -38,15 +38,6 @@ public class ListenButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void Update()
     {
         isMutedFetch = soundManager.GetComponent<SoundManager>().isMuted;
-        /*currentScene = SceneManager.GetActiveScene();
-        if(currentScene.name == "MainMenu")
-        {
-            canUseReturnAndSpace = true;
-        }
-        else
-        {
-            canUseReturnAndSpace = false;
-        }*/
 
         if(!isMutedFetch)
         {
@@ -57,42 +48,6 @@ public class ListenButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             soundOn = false;
         }
 
-        /*if(soundOn)
-        {
-            soundOffSpeechBubble.gameObject.SetActive(false);
-
-            if (RectTransformUtility.RectangleContainsScreenPoint(buttonImage.rectTransform,
-    Input.mousePosition))
-            {
-                dontThrow = true;
-                buttonImage.sprite = soundOnHoverSprite;
-                soundOnSpeechBubble.gameObject.SetActive(true);
-
-            }
-            else
-            {
-                dontThrow = false;
-                buttonImage.sprite = soundOnOriginalSprite;
-                soundOnSpeechBubble.gameObject.SetActive(false);
-            }
-        }
-        else
-        {
-            if (RectTransformUtility.RectangleContainsScreenPoint(buttonImage.rectTransform,
-    Input.mousePosition))
-            {
-                dontThrow = true;
-                buttonImage.sprite = soundOffHoverSprite;
-                soundOffSpeechBubble.gameObject.SetActive(true);
-
-            }
-            else
-            {
-                dontThrow = false;
-                buttonImage.sprite = soundOffOriginalSprite;
-                soundOffSpeechBubble.gameObject.SetActive(false);
-            }
-        }*/
 
         if(mouse_over)
         {
