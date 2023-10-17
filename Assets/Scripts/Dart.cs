@@ -53,6 +53,13 @@ public class Dart : MonoBehaviour
 
     int changeThrowAnimation;
 
+    Event ret;
+    Event spa;
+    Event mouse;
+    bool isLeftMouseButtonDown;
+    bool isReturnPressed;
+    bool isSpacePressed;
+
     public Transform GetChildObjectTransform()
     {
         return castPoint;
@@ -80,6 +87,8 @@ public class Dart : MonoBehaviour
         enoughPowerOnThrowFetch = manager.GetComponent<MouseAndSpawnManager>().enoughPowerOnThrow;
         dontThrowManagerFetch = manager.GetComponent<MouseAndSpawnManager>().dontThrowFetch;
 
+        PreventUsingMouseAndKeyBoardInputAtTheSameTime();
+
         if (DartsThrown == 5)
         {
             Invoke("DestroyDart", 2);
@@ -94,12 +103,14 @@ public class Dart : MonoBehaviour
 
         if(!dontThrowManagerFetch)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return) ||
+                Input.GetKeyDown(KeyCode.Space))
             {
                 Fly();
             }
 
-            if (Input.GetMouseButtonUp(0) && flying)
+            if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Return) ||
+                Input.GetKeyUp(KeyCode.Space) && flying)
             {
                 ThrowDart();
             }
@@ -184,5 +195,49 @@ public class Dart : MonoBehaviour
     {
         childSprite.enabled = true;
         //shadowSprite.enabled = true;
+    }
+
+    void PreventUsingMouseAndKeyBoardInputAtTheSameTime()
+    {
+        isLeftMouseButtonDown = Input.GetMouseButtonDown(0);
+        isReturnPressed = Input.GetKeyDown(KeyCode.Return);
+        isSpacePressed = Input.GetKeyDown(KeyCode.Space);
+        mouse = Event.current;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            ret = Event.current;
+            if (ret != null && (ret.isKey && ret.keyCode == KeyCode.Return))
+            {
+                ret.Use();
+            }
+            spa = Event.current;
+            if (spa != null && (spa.isKey && spa.keyCode == KeyCode.Space))
+            {
+                spa.Use();
+            }
+        }
+        else if (isReturnPressed)
+        {
+            if (mouse != null && mouse.isMouse)
+            {
+                mouse.Use();
+            }
+            if (spa != null && (spa.isKey && spa.keyCode == KeyCode.Space))
+            {
+                spa.Use();
+            }
+        }
+        else if (isSpacePressed)
+        {
+            if (mouse != null && mouse.isMouse)
+            {
+                mouse.Use();
+            }
+            if (ret != null && (ret.isKey && ret.keyCode == KeyCode.Return))
+            {
+                ret.Use();
+            }
+        }
     }
 }

@@ -95,6 +95,13 @@ public class MouseAndSpawnManager : MonoBehaviour
     public ListenButton listenButton;
     public bool dontThrowFetch; // from CursorManager
 
+    Event ret;
+    Event spa;
+    Event mouse;
+    bool isLeftMouseButtonDown;
+    bool isReturnPressed;
+    bool isSpacePressed;
+
     private void Awake()
     {
         energybar = FindObjectOfType<Energybar>();
@@ -459,6 +466,8 @@ public class MouseAndSpawnManager : MonoBehaviour
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector3(mousePos.x + 2, mousePos.y, transform.position.z);
 
+        PreventUsingMouseAndKeyBoardInputAtTheSameTime();
+
         if (howManyDartsThrown < 5)
         {
             if (startThrowCount == true)
@@ -476,7 +485,8 @@ public class MouseAndSpawnManager : MonoBehaviour
 
             if (startThrowCount == false)
             {
-                if (Input.GetMouseButtonDown(0) && releaseMouse == false && dontThrowFetch == false)
+                if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return) ||
+                Input.GetKeyDown(KeyCode.Space) && releaseMouse == false && dontThrowFetch == false)
                 {
                     if (controlledThrowForce)
                     {
@@ -488,12 +498,14 @@ public class MouseAndSpawnManager : MonoBehaviour
                     pressMouse = true;
                 }
 
-                if (Input.GetMouseButton(0) && flying && releaseMouse == false && dontThrowFetch == false)
+                if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Return) ||
+                Input.GetKey(KeyCode.Space) && flying && releaseMouse == false && dontThrowFetch == false)
                 {
                     IncreaseForce();
                 }
 
-                if (Input.GetMouseButtonUp(0) && pressMouse && dontThrowFetch == false)
+                if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Return) ||
+                Input.GetKeyUp(KeyCode.Space) && pressMouse && dontThrowFetch == false)
                 {
                     handAnim.GetComponent<Animator>().SetTrigger("Throw");
                     SoundManager.instance.PlaySound(ähSound);
@@ -564,6 +576,50 @@ public class MouseAndSpawnManager : MonoBehaviour
         {
             SoundManager.instance.PlaySound(wauSound);
             isWauSoundPlayed = true;
+        }
+    }
+
+    void PreventUsingMouseAndKeyBoardInputAtTheSameTime()
+    {
+        isLeftMouseButtonDown = Input.GetMouseButtonDown(0);
+        isReturnPressed = Input.GetKeyDown(KeyCode.Return);
+        isSpacePressed = Input.GetKeyDown(KeyCode.Space);
+        mouse = Event.current;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            ret = Event.current;
+            if (ret != null && (ret.isKey && ret.keyCode == KeyCode.Return))
+            {
+                ret.Use();
+            }
+            spa = Event.current;
+            if (spa != null && (spa.isKey && spa.keyCode == KeyCode.Space))
+            {
+                spa.Use();
+            }
+        }
+        else if(isReturnPressed)
+        {
+            if(mouse != null && mouse.isMouse)
+            {
+                mouse.Use();
+            }
+            if (spa != null && (spa.isKey && spa.keyCode == KeyCode.Space))
+            {
+                spa.Use();
+            }
+        }
+        else if(isSpacePressed)
+        {
+            if (mouse != null && mouse.isMouse)
+            {
+                mouse.Use();
+            }
+            if (ret != null && (ret.isKey && ret.keyCode == KeyCode.Return))
+            {
+                ret.Use();
+            }
         }
     }
 }
