@@ -23,7 +23,7 @@ public class MenuControl : MonoBehaviour
     {
         buttonsArray = FindObjectsOfType<Button>();
         listenButton = FindObjectOfType<ListenButton>();
-        SelectButton(selectedButtonIndex);
+        //SelectButton(selectedButtonIndex);
     }
 
     private void Update()
@@ -37,14 +37,16 @@ public class MenuControl : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             //selectedButtonIndex = (selectedButtonIndex + 1) % buttons.Length;
-            DeselectButton(selectedButtonIndex);
+            //DeselectButton(selectedButtonIndex);
+            //ChangeButtonSprite(selectedButtonIndex, null);
             selectedButtonIndex++;
             Debug.Log("Selected button index: " + selectedButtonIndex);
             if(selectedButtonIndex >= buttonsArray.Length)
             {
                 selectedButtonIndex = 0;
             }
-            SelectButton(selectedButtonIndex);
+            //SelectButton(selectedButtonIndex);
+            //ChangeButtonSprite(selectedButtonIndex, hoverSprite)
         }
     }
 
@@ -56,6 +58,18 @@ public class MenuControl : MonoBehaviour
     void DeselectButton(int index)
     {
         buttonsArray[index].image.color = Color.white;
+    }
+
+    void ChangeButtonSprite(int index, SpriteRenderer sprite)
+    {
+        Image buttonImage = buttonsArray[index].GetComponent<Image>();
+        if(buttonImage != null)
+        {
+            if(index == 2)
+            {
+                buttonImage.sprite = SoundOnSprite;
+            }
+        }
     }
 
     public void LoadGame()
