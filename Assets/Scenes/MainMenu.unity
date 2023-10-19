@@ -418,6 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteClicked: {fileID: 21300000, guid: dc357aa6201d2c24b8d0458c81c5ff00, type: 3}
+  mouse_over: 0
 --- !u!1 &488562179
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,6 +567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteClicked: {fileID: 21300000, guid: dc357aa6201d2c24b8d0458c81c5ff00, type: 3}
+  mouse_over: 0
 --- !u!1 &518911005
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,6 +929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteClicked: {fileID: 21300000, guid: dc357aa6201d2c24b8d0458c81c5ff00, type: 3}
+  mouse_over: 0
 --- !u!1 &783936085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1213,6 +1216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteClicked: {fileID: 21300000, guid: dc357aa6201d2c24b8d0458c81c5ff00, type: 3}
+  mouse_over: 0
 --- !u!1 &1213131163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,6 +1290,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc8a94e9993082c49ace4aba895a8cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 488562181}
+  - {fileID: 313165630}
+  - {fileID: 981714245}
+  - {fileID: 769526091}
 --- !u!4 &1252226071
 Transform:
   m_ObjectHideFlags: 0

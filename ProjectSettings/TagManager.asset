@@ -9,6 +9,9 @@ TagManager:
   - Crosshair
   - DartBoard
   - ListenButton
+  - GuideButton
+  - AgainButton
+  - ExitButton
   layers:
   - Default
   - TransparentFX

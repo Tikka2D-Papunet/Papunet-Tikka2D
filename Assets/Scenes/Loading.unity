@@ -738,6 +738,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 895267300}
+    - target: {fileID: 2356601815760992296, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
+      propertyPath: m_TagString
+      value: ListenButton
+      objectReference: {fileID: 0}
     - target: {fileID: 2356601815760992297, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -758,6 +762,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 895267300}
+    - target: {fileID: 2356601816133096389, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
+      propertyPath: m_TagString
+      value: AgainButton
+      objectReference: {fileID: 0}
     - target: {fileID: 2356601816133096390, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -774,6 +782,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2356601816887700691, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
+      propertyPath: m_TagString
+      value: GuideButton
+      objectReference: {fileID: 0}
     - target: {fileID: 2356601816887700716, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -805,6 +817,10 @@ PrefabInstance:
     - target: {fileID: 2356601817011778552, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2356601817011778559, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
+      propertyPath: m_TagString
+      value: ExitButton
       objectReference: {fileID: 0}
     - target: {fileID: 7186573580849548313, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
       propertyPath: m_Pivot.x
