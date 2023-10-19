@@ -16,7 +16,7 @@ public class ListenButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public GameObject soundManager;
     bool isMutedFetch;
-    bool soundOn = true;
+    public bool soundOn = true;
     public bool dontThrow = false;
 
     //Scene currentScene;
@@ -25,6 +25,9 @@ public class ListenButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     Vector2 localMousePosition;
 
     public bool mouse_over = false;
+
+    MenuControl menuControl;
+    int menuIndex = 2;
 
     void Start()
     {
@@ -49,7 +52,7 @@ public class ListenButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         }
 
 
-        if(mouse_over)
+        /*if(mouse_over)
         {
             Debug.Log("Mouse Over");
             if (soundOn)
@@ -91,7 +94,7 @@ public class ListenButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             {
                 soundOnSpeechBubble.gameObject.SetActive(false);
             }
-        }
+        }*/
 
 
         if (soundOn)

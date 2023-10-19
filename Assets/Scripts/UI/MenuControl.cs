@@ -7,21 +7,23 @@ using UnityEngine.EventSystems;
 public class MenuControl : MonoBehaviour
 {
     //public Button[] buttonsList;
-    public List<Button> buttonsList = new List<Button>();
-    int selectedButtonIndex = 0;
-    public Button listen;
-    public Button guide;
-    public Button again;
-    public Button exit;
+    public Button[] buttonsArray;
+    public int selectedButtonIndex = 0;
+
+    ListenButton listenButton;
+    public Sprite soundOnHover;
+    public Sprite SoundOnSprite;
+    public Sprite soundOffHover;
+    public Sprite soundOffSprite;
+    public Sprite soundOnSpeechBubble;
+    public Sprite soundOffSpeechBubble;
+    bool soundOn;
 
     private void Start()
     {
-        //listen = FindObjectOfType<ListenButton>();
-        Button[] foundButtons = FindObjectsOfType<Button>();
-        for(int i = 0; i < foundButtons.Length; i++)
-        {
-            buttonsList.Add(foundButtons[i]);
-        }
+        buttonsArray = FindObjectsOfType<Button>();
+        listenButton = FindObjectOfType<ListenButton>();
+        SelectButton(selectedButtonIndex);
     }
 
     private void Update()
@@ -29,19 +31,31 @@ public class MenuControl : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Return))
         {
             //buttons[selectedButtonIndex].onClick.Invoke();
-            buttonsList[selectedButtonIndex].onClick.Invoke();
+            buttonsArray[selectedButtonIndex].onClick.Invoke();
         }
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
             //selectedButtonIndex = (selectedButtonIndex + 1) % buttons.Length;
-            //selectedButtonIndex++;
-            /*if(selectedButtonIndex >= buttons.Length)
+            DeselectButton(selectedButtonIndex);
+            selectedButtonIndex++;
+            Debug.Log("Selected button index: " + selectedButtonIndex);
+            if(selectedButtonIndex >= buttonsArray.Length)
             {
                 selectedButtonIndex = 0;
-            }*/
-            selectedButtonIndex = (selectedButtonIndex + 1) % buttonsList.Count;
+            }
+            SelectButton(selectedButtonIndex);
         }
+    }
+
+    void SelectButton(int index)
+    {
+        buttonsArray[index].image.color = Color.green;
+    }
+
+    void DeselectButton(int index)
+    {
+        buttonsArray[index].image.color = Color.white;
     }
 
     public void LoadGame()

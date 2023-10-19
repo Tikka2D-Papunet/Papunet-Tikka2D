@@ -25,7 +25,7 @@ public class AgainButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void Update()
     {
-        if (mouse_over)
+        /*if (mouse_over)
         {
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
             {
@@ -38,7 +38,7 @@ public class AgainButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 buttonImage.sprite = originalSprite;
                 speechBubble.gameObject.SetActive(false);
             }
-        }
+        }*/
 
         if (IsMouseOverButton())
         {

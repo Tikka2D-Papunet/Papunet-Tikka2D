@@ -25,7 +25,7 @@ public class ExitButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void Update()
     {
-        if (mouse_over)
+        /*if (mouse_over)
         {
             Debug.Log("Mouse Over");
 
@@ -40,7 +40,7 @@ public class ExitButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
                 buttonImage.sprite = originalSprite;
                 speechBubble.gameObject.SetActive(false);
             }
-        }
+        }*/
 
 
         if (IsMouseOverButton())
