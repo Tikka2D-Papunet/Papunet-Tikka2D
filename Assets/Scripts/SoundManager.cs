@@ -19,6 +19,11 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         isMuted = source.mute;
+
+        if(PlayerPrefs.HasKey("IsMuted"))
+        {
+            isMuted = PlayerPrefs.GetInt("IsMuted") == 1;
+        }
     }
 
     public void PlaySound(AudioClip sound)
@@ -30,6 +35,9 @@ public class SoundManager : MonoBehaviour
     {
         isMuted = !isMuted;
         source.mute = isMuted;
+
+        PlayerPrefs.SetInt("IsMuted", isMuted ? 1 : 0);
+        PlayerPrefs.Save();
     }
 
     public void AgainButtonFunction()
