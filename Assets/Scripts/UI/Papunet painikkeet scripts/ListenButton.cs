@@ -14,7 +14,7 @@ public class ListenButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public Sprite soundOffHoverSprite;
     public GameObject soundOffSpeechBubble;
 
-    public GameObject soundManager;
+    public SoundManager soundManager;
     bool isMutedFetch;
     public bool soundOn = true;
     public bool dontThrow = false;
@@ -36,6 +36,7 @@ public class ListenButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         buttonImage = button.image;
         soundOnOriginalSprite = buttonImage.sprite;
         soundOnSpeechBubble.gameObject.SetActive(false);
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     public void Update()

@@ -7,8 +7,8 @@ using UnityEngine.EventSystems;
 public class MenuControl : MonoBehaviour
 {
     //public Button[] buttonsList;
-    public Button[] buttonsArray;
-    public int selectedButtonIndex = 0;
+    //public Button[] buttonsArray;
+    //public int selectedButtonIndex = 0;
 
     ListenButton listenButton;
     public Sprite soundOnHover;
@@ -21,14 +21,15 @@ public class MenuControl : MonoBehaviour
 
     private void Start()
     {
-        buttonsArray = FindObjectsOfType<Button>();
-        listenButton = FindObjectOfType<ListenButton>();
+        //buttonsArray = FindObjectsOfType<Button>();
+        //listenButton = FindObjectOfType<ListenButton>();
+        //buttonsArray = FindObjectsOfType<Button>();
         //SelectButton(selectedButtonIndex);
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return))
+        /*if(Input.GetKeyDown(KeyCode.Return))
         {
             //buttons[selectedButtonIndex].onClick.Invoke();
             buttonsArray[selectedButtonIndex].onClick.Invoke();
@@ -47,29 +48,29 @@ public class MenuControl : MonoBehaviour
             }
             //SelectButton(selectedButtonIndex);
             //ChangeButtonSprite(selectedButtonIndex, hoverSprite)
-        }
+        }*/
     }
 
     void SelectButton(int index)
     {
-        buttonsArray[index].image.color = Color.green;
+        //buttonsArray[index].image.color = Color.green;
     }
 
     void DeselectButton(int index)
     {
-        buttonsArray[index].image.color = Color.white;
+        //buttonsArray[index].image.color = Color.white;
     }
 
     void ChangeButtonSprite(int index, SpriteRenderer sprite)
     {
-        Image buttonImage = buttonsArray[index].GetComponent<Image>();
+        /*Image buttonImage = buttonsArray[index].GetComponent<Image>();
         if(buttonImage != null)
         {
             if(index == 2)
             {
                 buttonImage.sprite = SoundOnSprite;
             }
-        }
+        }*/
     }
 
     public void LoadGame()
