@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
-
 public class EndingScript : MonoBehaviour
 {
     public MouseAndSpawnManager MaSmanager;
@@ -18,26 +17,20 @@ public class EndingScript : MonoBehaviour
     public TextMeshProUGUI scoreText4;
     public Button playAgain;
     public Button backToMenu;
-
     float counter;
     float maxTime = 2;
-
     private void Start()
     {
         publicScore = score;
     }
-
     private void Update()
     {
         howManyDartsThrown = MaSmanager.GetComponent<MouseAndSpawnManager>().howManyDartsThrown;
         score = MaSmanager.GetComponent<MouseAndSpawnManager>().score;
-
         if(howManyDartsThrown == 5)
         {
             if(counter < maxTime)
-            {
                 counter += Time.deltaTime;
-            }
             else
             {
                 playAgain.gameObject.SetActive(true);
@@ -66,12 +59,10 @@ public class EndingScript : MonoBehaviour
             }
         }
     }
-
     public void LoadGameAgain()
     {
         SceneManager.LoadScene("Dart");
     }
-
     public void GoBackToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");

@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-
 public class GuideButton : MonoBehaviour
 {
     Button button;
@@ -8,7 +7,6 @@ public class GuideButton : MonoBehaviour
     Sprite originalSprite;
     public Sprite hoverSprite;
     public GameObject speechBubble;
-
     void Start()
     {
         button = GetComponent<Button>();
@@ -16,7 +14,6 @@ public class GuideButton : MonoBehaviour
         originalSprite = buttonImage.sprite;
         speechBubble.gameObject.SetActive(false);
     }
-
     public void Update()
     {
         if (RectTransformUtility.RectangleContainsScreenPoint(buttonImage.rectTransform,
@@ -24,7 +21,6 @@ public class GuideButton : MonoBehaviour
         {
             buttonImage.sprite = hoverSprite;
             speechBubble.gameObject.SetActive(true);
-
         }
         else
         {

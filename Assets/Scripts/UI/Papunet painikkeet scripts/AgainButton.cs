@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-
 public class AgainButton : MonoBehaviour
 {
     Button button;
@@ -8,7 +7,6 @@ public class AgainButton : MonoBehaviour
     Sprite originalSprite;
     public Sprite hoverSprite;
     public GameObject speechBubble;
-
     void Start()
     {
         button = GetComponent<Button>();
@@ -16,7 +14,6 @@ public class AgainButton : MonoBehaviour
         originalSprite = buttonImage.sprite;
         speechBubble.gameObject.SetActive(false);
     }
-
     public void Update()
     {
         if (RectTransformUtility.RectangleContainsScreenPoint(buttonImage.rectTransform,

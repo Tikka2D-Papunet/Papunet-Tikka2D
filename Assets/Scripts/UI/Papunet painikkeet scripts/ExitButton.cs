@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-
 public class ExitButton : MonoBehaviour
 {
     Button button;
@@ -8,7 +7,6 @@ public class ExitButton : MonoBehaviour
     Sprite originalSprite;
     public Sprite hoverSprite;
     public GameObject speechBubble;
-
     void Start()
     {
         button = GetComponent<Button>();
@@ -16,7 +14,6 @@ public class ExitButton : MonoBehaviour
         originalSprite = buttonImage.sprite;
         speechBubble.gameObject.SetActive(false);
     }
-
     public void Update()
     {
         if (RectTransformUtility.RectangleContainsScreenPoint(buttonImage.rectTransform,
@@ -24,7 +21,6 @@ public class ExitButton : MonoBehaviour
         {
             buttonImage.sprite = hoverSprite;
             speechBubble.gameObject.SetActive(true);
-
         }
         else
         {
@@ -32,7 +28,6 @@ public class ExitButton : MonoBehaviour
             speechBubble.gameObject.SetActive(false);
         }
     }
-
     public void QuitGame()
     {
         Application.Quit();

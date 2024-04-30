@@ -1,24 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class HowManyThrowsLeft : MonoBehaviour
 {
     public MouseAndSpawnManager manager;
     int howManyDartsThrownFetch; // fetch from MouseAndSpawnManager -script
-
     [SerializeField] GameObject dart1;
     [SerializeField] GameObject dart2;
     [SerializeField] GameObject dart3;
     [SerializeField] GameObject dart4;
     [SerializeField] GameObject dart5;
-
     private void Update()
     {
         howManyDartsThrownFetch = manager.GetComponent<MouseAndSpawnManager>().howManyDartsThrown;
-
         if(howManyDartsThrownFetch == 1)
         {
             Image childImage = dart1.GetComponent<Image>();
