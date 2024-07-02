@@ -34,8 +34,8 @@ public class MenuControl : MonoBehaviour
     }
     public void AutomaticThrowForce()
     {
-        MouseAndSpawnManager.automaticThrowForce = true;
-        MouseAndSpawnManager.controlledThrowForce = false;
+        MouseAndDartManager.automaticThrowForce = true;
+        MouseAndDartManager.controlledThrowForce = false;
         Dart.automaticThrowForce = true;
         Dart.controlledThrowForce = false;
         AutomaticThrowForceButton.automaticThrowForce = true;
@@ -45,8 +45,8 @@ public class MenuControl : MonoBehaviour
     }
     public void ControlledThrowForce()
     {
-        MouseAndSpawnManager.controlledThrowForce = true;
-        MouseAndSpawnManager.automaticThrowForce = false;
+        MouseAndDartManager.controlledThrowForce = true;
+        MouseAndDartManager.automaticThrowForce = false;
         Dart.controlledThrowForce = true;
         Dart.automaticThrowForce = false;
         AutomaticThrowForceButton.controlledThrowForce = true;

@@ -10,7 +10,6 @@ public class ListenButton : MonoBehaviour
     public GameObject soundOnSpeechBubble;
     public Sprite soundOffHoverSprite;
     public GameObject soundOffSpeechBubble;
-    public GameObject soundManager;
     bool isMutedFetch;
     bool soundOn = true;
     public bool dontThrow = false;
@@ -23,7 +22,7 @@ public class ListenButton : MonoBehaviour
     }
     public void Update()
     {
-        isMutedFetch = soundManager.GetComponent<SoundManager>().isMuted;
+        isMutedFetch = SoundManager.Instance.isMuted;
 
         if(!isMutedFetch)
             soundOn = true;

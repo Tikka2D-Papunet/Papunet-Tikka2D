@@ -16,8 +16,8 @@ public class Crosshair : MonoBehaviour
     float maxDistance = 4f;
     public Vector3 direction = Vector3.up; // (0, 0, 0)
     bool running = false;
-    [Header("MouseAndSpawnManager Boolean Fetches")]
-    public MouseAndSpawnManager manager;
+    [Header("MouseAndDartManager Boolean Fetches")]
+    public MouseAndDartManager manager;
     public bool mouseDown;
     bool startThrowCountFetch;
     [Header("Automatic Crosshair Parameters")]
@@ -52,20 +52,14 @@ public class Crosshair : MonoBehaviour
     private void Update()
     {
         if(controlMouseTargeting)
-        {
-            Debug.Log("controlMouseTargetin p‰‰ll‰");
             ControlMouseTargeting();
-        }
-        if(automaticMouseTargeting)
-        {
-            Debug.Log("automaticMouseTargeting p‰‰ll‰");
+        if (automaticMouseTargeting)
             AutomaticMouseTargeting();
-        }
     }
     void ControlMouseTargeting()
     {
-        mouseDown = manager.GetComponent<MouseAndSpawnManager>().mouseDown;
-        startThrowCountFetch = manager.GetComponent<MouseAndSpawnManager>().startThrowCount;
+        mouseDown = manager.GetComponent<MouseAndDartManager>().mouseDown;
+        startThrowCountFetch = manager.GetComponent<MouseAndDartManager>().startThrowCount;
         range = Vector2.Distance(transform.position, wayPoint);
         distanceToCursor = Vector2.Distance(transform.position, followCursor.position);
         transform.position = Vector2.MoveTowards(transform.position, wayPoint, moveSpeed * Time.deltaTime);
@@ -93,8 +87,8 @@ public class Crosshair : MonoBehaviour
     }
     void AutomaticMouseTargeting()
     {
-        mouseDown = manager.GetComponent<MouseAndSpawnManager>().mouseDown;
-        startThrowCountFetch = manager.GetComponent<MouseAndSpawnManager>().startThrowCount;
+        mouseDown = manager.GetComponent<MouseAndDartManager>().mouseDown;
+        startThrowCountFetch = manager.GetComponent<MouseAndDartManager>().startThrowCount;
         if (startThrowCountFetch)
             sprite.enabled = false;
         else

@@ -2,26 +2,35 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager instance; //{ get; private set; }
-    AudioSource source;
-    public bool isMuted = false;
+    #region Singleton
+    public static SoundManager Instance; //{ get; private set; }
     private void Awake()
     {
-        instance = this;
-        source = GetComponent<AudioSource>();
+        if (Instance != null && Instance != this)
+            Destroy(this);
+        else
+            Instance = this;
     }
+    #endregion
+    AudioSource source;
+    public bool isMuted = false;
     private void Start()
     {
-        isMuted = source.mute;
+        source = GetComponent<AudioSource>();
+        isMuted = PlayerPrefs.GetInt("isMuted", 0) == 1;
+        source.mute = isMuted;
     }
     public void PlaySound(AudioClip sound)
     {
-        source.PlayOneShot(sound);
+        if(!isMuted)
+            source.PlayOneShot(sound);
     }
-    public void SoundOn()
+    public void ToggleSoundOnOrOff()
     {
         isMuted = !isMuted;
         source.mute = isMuted;
+        PlayerPrefs.SetInt("isMuted", isMuted ? 1 : 0);
+        PlayerPrefs.Save();
     }
     public void AgainButtonFunction()
     {

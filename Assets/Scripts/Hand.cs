@@ -13,7 +13,7 @@ public class Hand : MonoBehaviour
     }
     private void Update()
     {
-        dartsThrown = manager.GetComponent<MouseAndSpawnManager>().howManyDartsThrown;
+        dartsThrown = manager.GetComponent<MouseAndDartManager>().howManyDartsThrown;
         if (dartsThrown == 5)
             StartCoroutine(HandDisappearAfterGame());
         FollowCrosshair();

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 public class Dart : MonoBehaviour
 {
     public static bool automaticThrowForce = true;
@@ -10,7 +11,7 @@ public class Dart : MonoBehaviour
     float maxTime = 0.5f;
     public float timer = 0;
     public Camera cam;
-    public MouseAndSpawnManager manager;
+    public MouseAndDartManager manager;
     float throwForce;
     //float lateralForce = 7f;
     float lateralDirection; // don't delete
@@ -27,7 +28,7 @@ public class Dart : MonoBehaviour
     int DartsThrown;
     [SerializeField] SpriteRenderer sprite;
     public GameObject childObject;
-    SpriteRenderer childSprite;
+    [HideInInspector] public SpriteRenderer childSprite;
     public GameObject childObjectAnimator;
     Animator childAnim;
     [Header("Fetch Current Dart Index")]
@@ -44,7 +45,7 @@ public class Dart : MonoBehaviour
     private void Awake()
     {
         cam = FindObjectOfType<Camera>();
-        manager = FindObjectOfType<MouseAndSpawnManager>();
+        manager = FindObjectOfType<MouseAndDartManager>();
         crosshair = GameObject.FindGameObjectWithTag("Crosshair");
     }
     private void Start()
@@ -57,15 +58,14 @@ public class Dart : MonoBehaviour
     }
     public void Update()
     {
-        DartsThrown = manager.GetComponent<MouseAndSpawnManager>().howManyDartsThrown;
-        enoughPowerOnThrowFetch = manager.GetComponent<MouseAndSpawnManager>().enoughPowerOnThrow;
-        dontThrowManagerFetch = manager.GetComponent<MouseAndSpawnManager>().dontThrowFetch;
-
+        DartsThrown = manager.GetComponent<MouseAndDartManager>().howManyDartsThrown;
+        enoughPowerOnThrowFetch = manager.GetComponent<MouseAndDartManager>().enoughPowerOnThrow;
+        dontThrowManagerFetch = manager.GetComponent<MouseAndDartManager>().dontThrowFetch;
         if (DartsThrown == 5)
             Invoke("DestroyDart", 2);
         if (crosshair == null)
             crosshair = GameObject.FindGameObjectWithTag("Crosshair");
-        throwForce = manager.GetComponent<MouseAndSpawnManager>().throwForce;
+        throwForce = manager.GetComponent<MouseAndDartManager>().throwForce;
         if(!dontThrowManagerFetch)
         {
             if (Input.GetMouseButtonDown(0))
@@ -84,12 +84,16 @@ public class Dart : MonoBehaviour
                 childAnim.SetTrigger("Throw2");
 
             if (maxTime > timer)
+            {
                 timer += Time.deltaTime;
-            else if (enoughPowerOnThrowFetch | automaticThrowForce)
+                checkDistance = true;
+            }
+            else if (enoughPowerOnThrowFetch | automaticThrowForce && checkDistance)
             {
                 rb2d.bodyType = RigidbodyType2D.Static;
                 rb2d.AddForce(Vector2.zero);
-                checkDistance = true;
+                MouseAndDartManager.Instance.CalculateDistance();
+                checkDistance = false;
                 StartCoroutine(ChangeLayerOrder());
                 StartCoroutine(ShowShadow());
             }

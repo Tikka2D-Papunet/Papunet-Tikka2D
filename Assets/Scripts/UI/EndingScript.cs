@@ -4,8 +4,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 public class EndingScript : MonoBehaviour
 {
-    public MouseAndSpawnManager MaSmanager;
-    //public static int score;
+    public MouseAndDartManager MaDmanager;
     public int score;
     public int publicScore;
     int howManyDartsThrown;
@@ -25,8 +24,8 @@ public class EndingScript : MonoBehaviour
     }
     private void Update()
     {
-        howManyDartsThrown = MaSmanager.GetComponent<MouseAndSpawnManager>().howManyDartsThrown;
-        score = MaSmanager.GetComponent<MouseAndSpawnManager>().score;
+        howManyDartsThrown = MaDmanager.GetComponent<MouseAndDartManager>().howManyDartsThrown;
+        score = MaDmanager.GetComponent<MouseAndDartManager>().score;
         if(howManyDartsThrown == 5)
         {
             if(counter < maxTime)

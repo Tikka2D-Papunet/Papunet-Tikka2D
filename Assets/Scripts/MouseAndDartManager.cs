@@ -1,7 +1,19 @@
 using UnityEngine;
 using TMPro;
-public class MouseAndSpawnManager : MonoBehaviour
+using System.Collections;
+using System.Collections.Generic;
+public class MouseAndDartManager : MonoBehaviour
 {
+    #region Singleton
+    public static MouseAndDartManager Instance;
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+            Destroy(this);
+        else
+            Instance = this;
+    }
+    #endregion
     public static bool automaticThrowForce = true;
     public static bool controlledThrowForce;
     public Camera cam;
@@ -22,27 +34,7 @@ public class MouseAndSpawnManager : MonoBehaviour
     public bool mouseDown = false;
     [Header("Scoring")]
     [SerializeField] public int score = 0;
-    public bool scoreBool1 = false;
-    public bool scoreBool2 = false;
-    public bool scoreBool3 = false;
-    public bool scoreBool4 = false;
-    public bool scoreBool5 = false;
-    public bool scoreBool6 = false;
-    public bool scoreBool7 = false;
-    public bool scoreBool8 = false;
-    public bool scoreBool9 = false;
-    public bool scoreBool10 = false;
-    float scoreCounter1;
-    float scoreCounter2;
-    float scoreCounter3;
-    float scoreCounter4;
-    float scoreCounter5;
-    float scoreCounter6;
-    float scoreCounter7;
-    float scoreCounter8;
-    float scoreCounter9;
-    float scoreCounter10;
-    float scoreMaxTime = 0.00005f;
+    [SerializeField] StarSpawnManager starSpawnManager;
     [Header("UI Score")]
     public TextMeshProUGUI scoreText;
     [Header("Public Bools")]
@@ -73,20 +65,18 @@ public class MouseAndSpawnManager : MonoBehaviour
     bool isWauSoundPlayed = false;
     public ListenButton listenButton;
     public bool dontThrowFetch; // from CursorManager
-    private void Awake()
+    private void Start()
     {
         energybar = FindObjectOfType<Energybar>();
         energybar.SetMaxEnergy(maxEnergy);
         currentEnergy = 100;
         cam = FindObjectOfType<Camera>();
-    }
-    private void Start()
-    {
         Instantiate(dartPrefab);
         dart = FindObjectOfType<Dart>();
         dartObject = GameObject.FindGameObjectWithTag("Dart");
         listenButton = FindObjectOfType<ListenButton>();
         handAnim.GetComponent<Animator>();
+        starSpawnManager.GetComponent<StarSpawnManager>();
     }
     private void Update()
     {
@@ -96,7 +86,6 @@ public class MouseAndSpawnManager : MonoBehaviour
         dontThrowFetch = listenButton.GetComponent<ListenButton>().dontThrow;
         MouseLogic();
         EnergyBarLogic();
-        CalculateDistance();
     }
 
     void EnergyBarLogic()
@@ -120,202 +109,46 @@ public class MouseAndSpawnManager : MonoBehaviour
             energybar.SetEnergy(currentEnergy);
         }
     }
-    void CalculateDistance()
+    public void CalculateDistance()
     {
         childTransform = dart.GetChildObjectTransform();
         childCastpointPosition = childTransform.position;
-        if (checkDistance)
+        float distance = Vector3.Distance(childCastpointPosition, dartBoardCenter.transform.position);
+        if (distance < 4.851f)
         {
-            float distance = Vector3.Distance(childCastpointPosition, dartBoardCenter.transform.position);
-            if (distance < 4.851f)
+            PlayDartHitsBoardSound();
+            if (distance < 0.475f)
             {
-                DartHitsBoard();
-                if (distance < 0.475f)
-                {
-                    scoreBool10 = true;
-                    Debug.Log("Hit 10");
-                    WauSound();
-                }
-                else if (distance > 0.475f && distance < 0.966f)
-                {
-                    scoreBool9 = true;
-                    Debug.Log("Hit 9");
-                }
-                else if (distance > 0.966f && distance < 1.442f)
-                {
-                    scoreBool8 = true;
-                    Debug.Log("Hit 8");
-                }
-                else if (distance > 1.442f && distance < 1.95f)
-                {
-                    scoreBool7 = true;
-                    Debug.Log("Hit 7");
-                }
-                else if (distance > 1.95f && distance < 2.421f)
-                {
-                    scoreBool6 = true;
-                    Debug.Log("Hit 6");
-                }
-                else if (distance > 2.421f && distance < 2.912f)
-                {
-                    scoreBool5 = true;
-                    Debug.Log("Hit 5");
-                }
-                else if (distance > 2.912f && distance < 3.394f)
-                {
-                    scoreBool4 = true;
-                    Debug.Log("Hit 4");
-                }
-                else if (distance > 3.394f && distance < 3.885f)
-                {
-                    scoreBool3 = true;
-                    Debug.Log("Hit 3");
-                }
-                else if (distance > 3.885f && distance < 4.363f)
-                {
-                    scoreBool2 = true;
-                    Debug.Log("Hit 2");
-                }
-                else if(distance > 4.363f && distance < 4.851f)
-                {
-                    scoreBool1 = true;
-                    Debug.Log("Hit 1");
-                }
+                ScoreAndSpawnStar(10);
+                WauSound();
             }
-            else
-                DartThrownPastTheBoard();
-        }
-        if (scoreBool10)
-        {
-            if (scoreCounter10 < scoreMaxTime)
-            {
-                scoreCounter10 += Time.deltaTime;
-                score += 10;
-                scoreText.text = score + " pistettä";
-            }
-            else
-                scoreBool10 = false;
+            else if (distance > 0.475f && distance < 0.966f)
+                ScoreAndSpawnStar(9);
+            else if (distance > 0.966f && distance < 1.442f)
+                ScoreAndSpawnStar(8);
+            else if (distance > 1.442f && distance < 1.95f)
+                ScoreAndSpawnStar(7);
+            else if (distance > 1.95f && distance < 2.421f)
+                ScoreAndSpawnStar(6);
+            else if (distance > 2.421f && distance < 2.912f)
+                ScoreAndSpawnStar(5);
+            else if (distance > 2.912f && distance < 3.394f)
+                ScoreAndSpawnStar(4);
+            else if (distance > 3.394f && distance < 3.885f)
+                ScoreAndSpawnStar(3);
+            else if (distance > 3.885f && distance < 4.363f)
+                ScoreAndSpawnStar(2);
+            else if (distance > 4.363f && distance < 4.851f)
+                ScoreAndSpawnStar(1);
+            scoreText.text = score + " pistettä";
         }
         else
-            scoreCounter10 = 0;
-        if (scoreBool9)
-        {
-            if (scoreCounter9 < scoreMaxTime)
-            {
-                scoreCounter9 += Time.deltaTime;
-                score += 9;
-                scoreText.text = score + " pistettä";
-            }
-            else
-                scoreBool9 = false;
-        }
-        else
-            scoreCounter9 = 0;
-        if (scoreBool8)
-        {
-            if (scoreCounter8 < scoreMaxTime)
-            {
-                scoreCounter8 += Time.deltaTime;
-                score += 8;
-                scoreText.text = score + " pistettä";
-            }
-            else
-                scoreBool8 = false;
-        }
-        else
-            scoreCounter8 = 0;
-        if (scoreBool7)
-        {
-            if (scoreCounter7 < scoreMaxTime)
-            {
-                scoreCounter7 += Time.deltaTime;
-                score += 7;
-                scoreText.text = score + " pistettä";
-            }
-            else
-                scoreBool7 = false;
-        }
-        else
-            scoreCounter7 = 0;
-
-        if (scoreBool6)
-        {
-            if (scoreCounter6 < scoreMaxTime)
-            {
-                scoreCounter6 += Time.deltaTime;
-                score += 6;
-                scoreText.text = score + " pistettä";
-            }
-            else
-                scoreBool6 = false;
-        }
-        else
-            scoreCounter6 = 0;
-        if (scoreBool5)
-        {
-            if (scoreCounter5 < scoreMaxTime)
-            {
-                scoreCounter5 += Time.deltaTime;
-                score += 5;
-                scoreText.text = score + " pistettä";
-            }
-            else
-                scoreBool5 = false;
-        }
-        else
-            scoreCounter5 = 0;
-        if (scoreBool4)
-        {
-            if (scoreCounter4 < scoreMaxTime)
-            {
-                scoreCounter4 += Time.deltaTime;
-                score += 4;
-                scoreText.text = score + " pistettä";
-            }
-            else
-                scoreBool4 = false;
-        }
-        else
-            scoreCounter4 = 0;
-        if (scoreBool3)
-        {
-            if (scoreCounter3 < scoreMaxTime)
-            {
-                scoreCounter3 += Time.deltaTime;
-                score += 3;
-                scoreText.text = score + " pistettä";
-            }
-            else
-                scoreBool3 = false;
-        }
-        else
-            scoreCounter3 = 0;
-        if (scoreBool2)
-        {
-            if (scoreCounter2 < scoreMaxTime)
-            {
-                scoreCounter2 += Time.deltaTime;
-                score += 2;
-                scoreText.text = score + " pistettä";
-            }
-            else
-                scoreBool2 = false;
-        }
-        else
-            scoreCounter2 = 0;
-        if (scoreBool1)
-        {
-            if (scoreCounter1 < scoreMaxTime)
-            {
-                scoreCounter1 += Time.deltaTime;
-                score += 1;
-                scoreText.text = score + " pistettä";
-            }
-            else
-                scoreBool1 = false;
-        }
-        else
-            scoreCounter1 = 0;
+            PlayDartThrownPastTheBoardSound();
+    }
+    void ScoreAndSpawnStar(int num)
+    {
+        score += num;
+        starSpawnManager.StarSpawner(num);
     }
     void FindNewDart()
     {
@@ -382,7 +215,7 @@ public class MouseAndSpawnManager : MonoBehaviour
                 if (Input.GetMouseButtonUp(0) && pressMouse && dontThrowFetch == false)
                 {
                     handAnim.GetComponent<Animator>().SetTrigger("Throw");
-                    SoundManager.instance.PlaySound(ähSound);
+                    SoundManager.Instance.PlaySound(ähSound);
                     isHitSoundPlayed = false;
                     isThrownPastSoundPlayed = false;
                     isWauSoundPlayed = false;
@@ -399,6 +232,8 @@ public class MouseAndSpawnManager : MonoBehaviour
                         enoughPowerOnThrow = true;
                     if (controlledThrowForce)
                         showEnergybar = false;
+                    HowManyThrowsLeft.Instance.HowManyDartsThrown();
+                    StartCoroutine(CountDartLayerOrders());
                 }
             }
             if (pressMouse && releaseMouse && startThrowCount == false)
@@ -411,23 +246,32 @@ public class MouseAndSpawnManager : MonoBehaviour
             }
         }
     }
+    IEnumerator CountDartLayerOrders()
+    {
+        yield return new WaitForSeconds(0.08f);
+        GameObject[] throwedDarts = GameObject.FindGameObjectsWithTag("Dart");
+        List<GameObject> dartObjectListX = new List<GameObject>(throwedDarts);
+        dartObjectListX.Sort((a, b) => a.transform.position.x.CompareTo(b.transform.position.x));
+        for(int i = 0; i < dartObjectListX.Count; i++)
+            dartObjectListX[i].GetComponent<Dart>().childSprite.sortingOrder = 3 + i;
+    }
     void Throw()
     {
         GameObject dart = Instantiate(dartPrefab, mousePos, Quaternion.identity);
     }
-    void DartHitsBoard()
+    void PlayDartHitsBoardSound()
     {
         if(!isHitSoundPlayed)
         {
-            SoundManager.instance.PlaySound(hitSound);
+            SoundManager.Instance.PlaySound(hitSound);
             isHitSoundPlayed = true;
         }
     }
-    void DartThrownPastTheBoard()
+    void PlayDartThrownPastTheBoardSound()
     {
         if(!isThrownPastSoundPlayed)
         {
-            SoundManager.instance.PlaySound(throwPastSound);
+            SoundManager.Instance.PlaySound(throwPastSound);
             isThrownPastSoundPlayed = true;
         }
     }
@@ -435,7 +279,7 @@ public class MouseAndSpawnManager : MonoBehaviour
     {
         if(!isWauSoundPlayed)
         {
-            SoundManager.instance.PlaySound(wauSound);
+            SoundManager.Instance.PlaySound(wauSound);
             isWauSoundPlayed = true;
         }
     }

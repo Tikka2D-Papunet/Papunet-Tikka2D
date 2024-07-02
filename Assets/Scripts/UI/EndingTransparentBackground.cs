@@ -3,7 +3,7 @@ using UnityEngine.UI;
 public class EndingTransparentBackground : MonoBehaviour
 {
     Image backgroundImage;
-    public MouseAndSpawnManager MaSmanager;
+    public MouseAndDartManager MaSmanager;
     int howManyDartsThrownFetch;
     float counter;
     float maxTime = 2;
@@ -13,7 +13,7 @@ public class EndingTransparentBackground : MonoBehaviour
     }
     private void Update()
     {
-        howManyDartsThrownFetch = MaSmanager.GetComponent<MouseAndSpawnManager>().howManyDartsThrown;
+        howManyDartsThrownFetch = MaSmanager.GetComponent<MouseAndDartManager>().howManyDartsThrown;
         if (howManyDartsThrownFetch == 5)
         {
             if (counter < maxTime)

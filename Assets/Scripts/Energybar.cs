@@ -5,12 +5,12 @@ public class Energybar : MonoBehaviour
     public Slider slider;
     public Image fill;
     public Image border;
-    public MouseAndSpawnManager MaSmanager;
+    public MouseAndDartManager mouseAndDartManager;
     int howManyDartsThrown;
     bool showEnergybarFetch; // fetches boolean from MouseAndSpawnManager
     private void Start()
     {
-        if(MouseAndSpawnManager.automaticThrowForce)
+        if(MouseAndDartManager.automaticThrowForce)
         {
             fill.enabled = false;
             border.enabled = false;
@@ -18,8 +18,8 @@ public class Energybar : MonoBehaviour
     }
     private void Update()
     {
-        howManyDartsThrown = MaSmanager.GetComponent<MouseAndSpawnManager>().howManyDartsThrown;
-        showEnergybarFetch = MaSmanager.GetComponent<MouseAndSpawnManager>().showEnergybar;
+        howManyDartsThrown = mouseAndDartManager.GetComponent<MouseAndDartManager>().howManyDartsThrown;
+        showEnergybarFetch = mouseAndDartManager.GetComponent<MouseAndDartManager>().showEnergybar;
         if(howManyDartsThrown > 4)
         {
             fill.enabled = false;

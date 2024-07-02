@@ -2,17 +2,27 @@ using UnityEngine;
 using UnityEngine.UI;
 public class HowManyThrowsLeft : MonoBehaviour
 {
-    public MouseAndSpawnManager manager;
+    #region Singleton
+    public static HowManyThrowsLeft Instance;
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+            Destroy(this);
+        else
+            Instance = this;
+    }
+    #endregion
+    public MouseAndDartManager manager;
     int howManyDartsThrownFetch; // fetch from MouseAndSpawnManager -script
     [SerializeField] GameObject dart1;
     [SerializeField] GameObject dart2;
     [SerializeField] GameObject dart3;
     [SerializeField] GameObject dart4;
     [SerializeField] GameObject dart5;
-    private void Update()
+    public void HowManyDartsThrown()
     {
-        howManyDartsThrownFetch = manager.GetComponent<MouseAndSpawnManager>().howManyDartsThrown;
-        if(howManyDartsThrownFetch == 1)
+        howManyDartsThrownFetch = manager.GetComponent<MouseAndDartManager>().howManyDartsThrown;
+        if (howManyDartsThrownFetch == 1)
         {
             Image childImage = dart1.GetComponent<Image>();
             childImage.enabled = false;

@@ -1,7 +1,7 @@
 using UnityEngine;
 public class BlurEndingScreen : MonoBehaviour
 {
-    [SerializeField] MouseAndSpawnManager manager;
+    [SerializeField] MouseAndDartManager manager;
     int howManyDartsThrownFetch; // fetch from MouseAndSpawnManager -script
     [SerializeField] GameObject originalBackground;
     SpriteRenderer originalBackgroundSprite;
@@ -20,7 +20,7 @@ public class BlurEndingScreen : MonoBehaviour
     }
     private void Update()
     {
-        howManyDartsThrownFetch = manager.GetComponent<MouseAndSpawnManager>().howManyDartsThrown;
+        howManyDartsThrownFetch = manager.GetComponent<MouseAndDartManager>().howManyDartsThrown;
         if (howManyDartsThrownFetch >= 5)
         {
             Invoke("ShowBlurSprites", 2);
