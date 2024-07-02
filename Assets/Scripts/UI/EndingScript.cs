@@ -28,6 +28,7 @@ public class EndingScript : MonoBehaviour
     public Button backToMenu;
     float counter;
     float maxTime = 2;
+    [SerializeField] InputManager inputManager;
     public void IfEndingConditionsAreMet(int throwCount, int score)
     {
         publicScore = score;
@@ -38,10 +39,9 @@ public class EndingScript : MonoBehaviour
     }
     IEnumerator EndGame(int newScore)
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
         playAgain.gameObject.SetActive(true);
         backToMenu.gameObject.SetActive(true);
-
         if (newScore < 25)
         {
             endings[0].SetActive(isActiveAndEnabled);
@@ -62,6 +62,9 @@ public class EndingScript : MonoBehaviour
             endings[3].SetActive(isActiveAndEnabled);
             scoreText4.text = "SAIT YHTEENSÄ " + newScore + " PISTETTÄ.";
         }
+        yield return new WaitForSeconds(0.5f);
+        inputManager.GetComponent<InputManager>().isEndingMenuOpen = true;
+        inputManager.GetComponent<InputManager>().SelectFirstButton();
     }
     public void LoadGameAgain()
     {
