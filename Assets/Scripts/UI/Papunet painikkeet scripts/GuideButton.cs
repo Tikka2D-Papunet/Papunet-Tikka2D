@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class GuideButton : MonoBehaviour
+public class GuideButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
 {
     Button button;
-    Image buttonImage;
-    Sprite originalSprite;
+    [HideInInspector] public Image buttonImage;
+    [HideInInspector] public Sprite originalSprite;
     public Sprite hoverSprite;
     public GameObject speechBubble;
     void Start()
@@ -14,18 +15,24 @@ public class GuideButton : MonoBehaviour
         originalSprite = buttonImage.sprite;
         speechBubble.gameObject.SetActive(false);
     }
-    public void Update()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        if (RectTransformUtility.RectangleContainsScreenPoint(buttonImage.rectTransform,
-            Input.mousePosition))
-        {
+        if (buttonImage != null)
             buttonImage.sprite = hoverSprite;
-            speechBubble.gameObject.SetActive(true);
-        }
-        else
-        {
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (buttonImage != null)
             buttonImage.sprite = originalSprite;
-            speechBubble.gameObject.SetActive(false);
-        }
+    }
+    public void OnSelect(BaseEventData eventData)
+    {
+        if (buttonImage != null)
+            buttonImage.sprite = hoverSprite;
+    }
+    public void OnDeselect(BaseEventData eventData)
+    {
+        if (buttonImage != null)
+            buttonImage.sprite = originalSprite;
     }
 }

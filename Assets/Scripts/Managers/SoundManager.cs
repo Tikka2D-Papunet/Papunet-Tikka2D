@@ -12,7 +12,7 @@ public class SoundManager : MonoBehaviour
             Instance = this;
     }
     #endregion
-    AudioSource source;
+    [HideInInspector] public AudioSource source;
     public bool isMuted = false;
     private void Start()
     {
@@ -25,13 +25,13 @@ public class SoundManager : MonoBehaviour
         if(!isMuted)
             source.PlayOneShot(sound);
     }
-    public void ToggleSoundOnOrOff()
+    /*public void ToggleSoundOnOrOff()
     {
         isMuted = !isMuted;
         source.mute = isMuted;
         PlayerPrefs.SetInt("isMuted", isMuted ? 1 : 0);
         PlayerPrefs.Save();
-    }
+    }*/
     public void AgainButtonFunction()
     {
         SceneManager.LoadScene(1);

@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class ListenButton : MonoBehaviour
+public class ListenButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
 {
     Button button;
     Image buttonImage;
@@ -18,51 +19,47 @@ public class ListenButton : MonoBehaviour
         button = GetComponent<Button>();
         buttonImage = button.image;
         soundOnOriginalSprite = buttonImage.sprite;
+        if (SoundManager.Instance.isMuted)
+            buttonImage.sprite = soundOffOriginalSprite;
         soundOnSpeechBubble.gameObject.SetActive(false);
     }
-    public void Update()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        isMutedFetch = SoundManager.Instance.isMuted;
-
-        if(!isMutedFetch)
-            soundOn = true;
+        if(!SoundManager.Instance.isMuted)
+            buttonImage.sprite = soundOnHoverSprite;
         else
-            soundOn = false;
-        if (soundOn)
-        {
-            soundOffSpeechBubble.gameObject.SetActive(false);
-            if (RectTransformUtility.RectangleContainsScreenPoint(buttonImage.rectTransform, Input.mousePosition))
-            {
-                dontThrow = true;
-                buttonImage.sprite = soundOnHoverSprite;
-                soundOnSpeechBubble.gameObject.SetActive(true);
-            }
-            else
-            {
-                dontThrow = false;
-                buttonImage.sprite = soundOnOriginalSprite;
-                soundOnSpeechBubble.gameObject.SetActive(false);
-            }
-        }
+            buttonImage.sprite = soundOffHoverSprite;
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (!SoundManager.Instance.isMuted)
+            buttonImage.sprite = soundOnOriginalSprite;
         else
-        {
-            if (RectTransformUtility.RectangleContainsScreenPoint(buttonImage.rectTransform, Input.mousePosition))
-            {
-                dontThrow = true;
-                buttonImage.sprite = soundOffHoverSprite;
-                soundOffSpeechBubble.gameObject.SetActive(true);
-
-            }
-            else
-            {
-                dontThrow = false;
-                buttonImage.sprite = soundOffOriginalSprite;
-                soundOffSpeechBubble.gameObject.SetActive(false);
-            }
-        }
-        if(!soundOn)
-        {
-            soundOnSpeechBubble.gameObject.SetActive(false);
-        }
+            buttonImage.sprite = soundOffOriginalSprite;
+    }
+    public void OnSelect(BaseEventData eventData)
+    {
+        if (!SoundManager.Instance.isMuted)
+            buttonImage.sprite = soundOnHoverSprite;
+        else
+            buttonImage.sprite = soundOffHoverSprite;
+    }
+    public void OnDeselect(BaseEventData eventData)
+    {
+        if (!SoundManager.Instance.isMuted)
+            buttonImage.sprite = soundOnOriginalSprite;
+        else
+            buttonImage.sprite = soundOffOriginalSprite;
+    }
+    public void ToggleSoundOnOrOff()
+    {
+        SoundManager.Instance.isMuted = !SoundManager.Instance.isMuted;
+        SoundManager.Instance.source.mute = SoundManager.Instance.isMuted;
+        PlayerPrefs.SetInt("isMuted", SoundManager.Instance.isMuted ? 1 : 0);
+        PlayerPrefs.Save();
+        if (!SoundManager.Instance.isMuted)
+            buttonImage.sprite = soundOnHoverSprite;
+        else
+            buttonImage.sprite = soundOffHoverSprite;
     }
 }
