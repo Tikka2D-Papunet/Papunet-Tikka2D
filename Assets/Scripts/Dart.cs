@@ -98,7 +98,11 @@ public class Dart : MonoBehaviour
                 StartCoroutine(ShowShadow());
             }
             else
+            {
+                checkDistance = false;
+                EndingScript.Instance.IfEndingConditionsAreMet(MouseAndDartManager.Instance.howManyDartsThrown, MouseAndDartManager.Instance.score);
                 StartCoroutine(ChangeLayerOrder());
+            }
         }
         else
         {

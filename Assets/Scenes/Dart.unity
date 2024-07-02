@@ -760,6 +760,7 @@ MonoBehaviour:
   mouseDown: 0
   score: 0
   starSpawnManager: {fileID: 405263513}
+  endingScript: {fileID: 1147914201}
   scoreText: {fileID: 835765289}
   dartBoardCenter: {fileID: 1465137918}
   dartObject: {fileID: 316487305377593182, guid: 9c3044217db65c340895de1d156e6caa, type: 3}
@@ -2206,15 +2207,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4727051849432216691, guid: b1888cfb525358d449c92464580bba19, type: 3}
       propertyPath: m_SortingOrder
-      value: 11
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: -3878225341629980973, guid: b1888cfb525358d449c92464580bba19, type: 3}
       propertyPath: m_SortingOrder
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 101536917449271288, guid: b1888cfb525358d449c92464580bba19, type: 3}
       propertyPath: m_SortingOrder
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 4843985084834002234, guid: b1888cfb525358d449c92464580bba19, type: 3}
@@ -2575,7 +2576,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaDmanager: {fileID: 249641581}
-  score: 0
   publicScore: 0
   endings:
   - {fileID: 768768448}

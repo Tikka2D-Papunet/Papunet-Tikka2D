@@ -35,6 +35,7 @@ public class MouseAndDartManager : MonoBehaviour
     [Header("Scoring")]
     [SerializeField] public int score = 0;
     [SerializeField] StarSpawnManager starSpawnManager;
+    [SerializeField] EndingScript endingScript;
     [Header("UI Score")]
     public TextMeshProUGUI scoreText;
     [Header("Public Bools")]
@@ -77,6 +78,7 @@ public class MouseAndDartManager : MonoBehaviour
         listenButton = FindObjectOfType<ListenButton>();
         handAnim.GetComponent<Animator>();
         starSpawnManager.GetComponent<StarSpawnManager>();
+        endingScript.GetComponent<EndingScript>();
     }
     private void Update()
     {
@@ -116,11 +118,11 @@ public class MouseAndDartManager : MonoBehaviour
         float distance = Vector3.Distance(childCastpointPosition, dartBoardCenter.transform.position);
         if (distance < 4.851f)
         {
-            PlayDartHitsBoardSound();
+            SoundManager.Instance.PlaySound(hitSound);
             if (distance < 0.475f)
             {
                 ScoreAndSpawnStar(10);
-                WauSound();
+                SoundManager.Instance.PlaySound(wauSound);
             }
             else if (distance > 0.475f && distance < 0.966f)
                 ScoreAndSpawnStar(9);
@@ -143,7 +145,8 @@ public class MouseAndDartManager : MonoBehaviour
             scoreText.text = score + " pistettä";
         }
         else
-            PlayDartThrownPastTheBoardSound();
+            SoundManager.Instance.PlaySound(throwPastSound);
+        endingScript.IfEndingConditionsAreMet(howManyDartsThrown, score);
     }
     void ScoreAndSpawnStar(int num)
     {
@@ -216,9 +219,6 @@ public class MouseAndDartManager : MonoBehaviour
                 {
                     handAnim.GetComponent<Animator>().SetTrigger("Throw");
                     SoundManager.Instance.PlaySound(ähSound);
-                    isHitSoundPlayed = false;
-                    isThrownPastSoundPlayed = false;
-                    isWauSoundPlayed = false;
                     dart.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                     dart.GetComponent<Rigidbody2D>().AddForce(Vector2.up * throwForce, ForceMode2D.Impulse);
                     increaseEnergy = false;
@@ -250,37 +250,16 @@ public class MouseAndDartManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.08f);
         GameObject[] throwedDarts = GameObject.FindGameObjectsWithTag("Dart");
-        List<GameObject> dartObjectListX = new List<GameObject>(throwedDarts);
-        dartObjectListX.Sort((a, b) => a.transform.position.x.CompareTo(b.transform.position.x));
-        for(int i = 0; i < dartObjectListX.Count; i++)
-            dartObjectListX[i].GetComponent<Dart>().childSprite.sortingOrder = 3 + i;
+        List<GameObject> dartObjectListY = new List<GameObject>(throwedDarts);
+        dartObjectListY.Sort((a, b) => a.transform.position.y.CompareTo(b.transform.position.y));
+        for (int i = 0; i < dartObjectListY.Count; i++)
+        {
+            if (dartObjectListY[i] != null)
+                dartObjectListY[i].GetComponent<Dart>().childSprite.sortingOrder = 8 - i;
+        }
     }
     void Throw()
     {
         GameObject dart = Instantiate(dartPrefab, mousePos, Quaternion.identity);
-    }
-    void PlayDartHitsBoardSound()
-    {
-        if(!isHitSoundPlayed)
-        {
-            SoundManager.Instance.PlaySound(hitSound);
-            isHitSoundPlayed = true;
-        }
-    }
-    void PlayDartThrownPastTheBoardSound()
-    {
-        if(!isThrownPastSoundPlayed)
-        {
-            SoundManager.Instance.PlaySound(throwPastSound);
-            isThrownPastSoundPlayed = true;
-        }
-    }
-    void WauSound()
-    {
-        if(!isWauSoundPlayed)
-        {
-            SoundManager.Instance.PlaySound(wauSound);
-            isWauSoundPlayed = true;
-        }
     }
 }

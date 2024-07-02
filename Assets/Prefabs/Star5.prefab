@@ -127,7 +127,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 10
   m_Sprite: {fileID: 560369748, guid: cf372f1d620b54c4cb9c0b5011b48fcd, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -150,6 +150,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 06660e77c49cadb419fdd5cd70182213, type: 3}
+    - target: {fileID: 3253767994983347686, guid: 4b482338fb6ef0247bca44c3a570ad6d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 6308336799057840218, guid: 4b482338fb6ef0247bca44c3a570ad6d, type: 3}
       propertyPath: m_Name
       value: RotatingStar
