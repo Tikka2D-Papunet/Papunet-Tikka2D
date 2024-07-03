@@ -727,6 +727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteClicked: {fileID: 21300000, guid: dc357aa6201d2c24b8d0458c81c5ff00, type: 3}
+  cursor: {fileID: 1103850085}
 --- !u!114 &478069859 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2356601815760992293, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
@@ -886,6 +887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteClicked: {fileID: 21300000, guid: dc357aa6201d2c24b8d0458c81c5ff00, type: 3}
+  cursor: {fileID: 1103850085}
 --- !u!1 &518911005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,6 +1249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteClicked: {fileID: 21300000, guid: dc357aa6201d2c24b8d0458c81c5ff00, type: 3}
+  cursor: {fileID: 1103850085}
 --- !u!1 &783936085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,6 +1536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteClicked: {fileID: 21300000, guid: dc357aa6201d2c24b8d0458c81c5ff00, type: 3}
+  cursor: {fileID: 1103850085}
 --- !u!1001 &1018427205
 PrefabInstance:
   m_ObjectHideFlags: 0
