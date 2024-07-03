@@ -6,7 +6,7 @@ public class Dart : MonoBehaviour
     public static bool automaticThrowForce = true;
     public static bool controlledThrowForce;
     Rigidbody2D rb2d;
-    public bool flying = false;
+    public bool readyToThrow = false;
     bool throwed = false;
     float maxTime = 0.5f;
     public float timer = 0;
@@ -63,7 +63,6 @@ public class Dart : MonoBehaviour
         DartsThrown = manager.GetComponent<MouseAndDartManager>().howManyDartsThrown;
         enoughPowerOnThrowFetch = manager.GetComponent<MouseAndDartManager>().enoughPowerOnThrow;
         canThrowFetch = inputManager.canThrow;
-
         if (DartsThrown == 5)
             Invoke("DestroyDart", 2);
         if (crosshair == null)
@@ -71,10 +70,9 @@ public class Dart : MonoBehaviour
         throwForce = manager.GetComponent<MouseAndDartManager>().throwForce;
         if(canThrowFetch)
         {
-            if (Input.GetMouseButtonDown(0))
-                Fly();
-
-            if (Input.GetMouseButtonUp(0) && flying)
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return))
+                ReadyToThrow();
+            if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Return) && readyToThrow)
                 ThrowDart();
         }
         if (throwed)
@@ -115,14 +113,14 @@ public class Dart : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
-    void Fly()
+    void ReadyToThrow()
     {
-        flying = true;
+        readyToThrow = true;
         throwForce = 0;
     }
     void ThrowDart()
     {
-        flying = false;
+        readyToThrow = false;
         lateralDirection = Random.Range(6.5f, 7.5f);
         rb2d.velocity = new Vector2(-lateralDirection, rb2d.velocity.y);
         throwed = true;
