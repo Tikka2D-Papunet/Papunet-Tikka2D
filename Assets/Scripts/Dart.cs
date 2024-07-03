@@ -35,7 +35,7 @@ public class Dart : MonoBehaviour
     int currentDartIndex;
     public bool enoughPowerOnThrowFetch;
     [SerializeField] InputManager inputManager;
-    bool canThrowFetch;
+    public bool canThrowFetch;
     [SerializeField] GameObject childShadow;
     SpriteRenderer shadowSprite;
     int changeThrowAnimation;

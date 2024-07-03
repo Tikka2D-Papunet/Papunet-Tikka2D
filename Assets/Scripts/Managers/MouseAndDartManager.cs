@@ -91,7 +91,6 @@ public class MouseAndDartManager : MonoBehaviour
         MouseLogic();
         EnergyBarLogic();
     }
-
     void EnergyBarLogic()
     {
         if (controlledThrowForce)
@@ -187,12 +186,11 @@ public class MouseAndDartManager : MonoBehaviour
         else
             throwForce = 4.0f;
     }
-
     void MouseLogic() // throwing darts by using mouse (left click) or keyboard (enter) input
     {
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector3(mousePos.x + 2, mousePos.y, transform.position.z);
-        if (howManyDartsThrown < 5)
+        if (howManyDartsThrown < 5 && canThrowFetch)
         {
             if (startThrowCount == true)
             {
@@ -206,7 +204,7 @@ public class MouseAndDartManager : MonoBehaviour
             }
             if (startThrowCount == false)
             {
-                if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return) && releaseMouse == false && canThrowFetch == true)
+                if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return) && !releaseMouse && canThrowFetch)
                 {
                     if (controlledThrowForce)
                         showEnergybar = true;
@@ -215,9 +213,9 @@ public class MouseAndDartManager : MonoBehaviour
                     increaseEnergy = true;
                     pressMouse = true;
                 }
-                if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Return) && flying && releaseMouse == false && canThrowFetch == true)
+                if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Return) && flying && !releaseMouse&& canThrowFetch)
                     IncreaseForce();
-                if (Input.GetMouseButtonUp(0) ||Input.GetKeyUp(KeyCode.Return) && pressMouse && canThrowFetch == true)
+                if (Input.GetMouseButtonUp(0) ||Input.GetKeyUp(KeyCode.Return) && pressMouse && canThrowFetch)
                 {
                     handAnim.GetComponent<Animator>().SetTrigger("Throw");
                     SoundManager.Instance.PlaySound(ähSound);

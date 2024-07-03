@@ -9,6 +9,7 @@ public class GuideButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public Sprite hoverSprite;
     public GameObject speechBubble;
     [SerializeField] InputManager inputManager;
+    [SerializeField] CursorController cursor;
     void Start()
     {
         button = GetComponent<Button>();
@@ -17,6 +18,7 @@ public class GuideButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         speechBubble.gameObject.SetActive(false);
         if (inputManager != null)
             inputManager.GetComponent<InputManager>();
+        cursor.GetComponent<CursorController>();
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -24,6 +26,7 @@ public class GuideButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             inputManager.canThrow = false;
         if (buttonImage != null)
             buttonImage.sprite = hoverSprite;
+        cursor.ChangeCursor(cursor.cursorHover);
     }
     public void OnPointerExit(PointerEventData eventData)
     {
@@ -31,6 +34,7 @@ public class GuideButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             inputManager.canThrow = true;
         if (buttonImage != null)
             buttonImage.sprite = originalSprite;
+        cursor.ChangeCursor(cursor.cursorOriginal);
     }
     public void OnSelect(BaseEventData eventData)
     {
