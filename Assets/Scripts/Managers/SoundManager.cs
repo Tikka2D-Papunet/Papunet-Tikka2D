@@ -10,28 +10,18 @@ public class SoundManager : MonoBehaviour
             Destroy(this);
         else
             Instance = this;
-    }
-    #endregion
-    [HideInInspector] public AudioSource source;
-    public bool isMuted = false;
-    private void Start()
-    {
         source = GetComponent<AudioSource>();
         isMuted = PlayerPrefs.GetInt("isMuted", 0) == 1;
         source.mute = isMuted;
     }
+    #endregion
+    [HideInInspector] public AudioSource source;
+    public bool isMuted = false;
     public void PlaySound(AudioClip sound)
     {
         if(!isMuted)
             source.PlayOneShot(sound);
     }
-    /*public void ToggleSoundOnOrOff()
-    {
-        isMuted = !isMuted;
-        source.mute = isMuted;
-        PlayerPrefs.SetInt("isMuted", isMuted ? 1 : 0);
-        PlayerPrefs.Save();
-    }*/
     public void AgainButtonFunction()
     {
         SceneManager.LoadScene(1);
