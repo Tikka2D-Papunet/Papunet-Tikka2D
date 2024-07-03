@@ -5,49 +5,44 @@ public class AutomaticAimingButton : MonoBehaviour, IPointerEnterHandler, IPoint
 {
     public static bool controlMouseTargeting;
     public static bool automaticMouseTargeting = true;
-    [HideInInspector] public Button button;
-    [HideInInspector] public Image buttonImage;
-    [HideInInspector] public Sprite originalSprite;
+    Button button;
+    Image buttonImage;
+    Sprite originalSprite;
     public Sprite spriteClicked;
     [SerializeField] CursorController cursor;
-    [SerializeField] Image img;
-    [SerializeField] MouseAimingButton mouseAimingButton;
     void Start()
     {
         button = GetComponent<Button>();
         buttonImage = button.image;
         originalSprite = buttonImage.sprite;
-        if (automaticMouseTargeting)
-            buttonImage.sprite = spriteClicked;
-        else
-            buttonImage.sprite = originalSprite;
-        mouseAimingButton.GetComponent<MouseAimingButton>();
-        button.onClick.AddListener(OnButtonClick);
     }
-    void OnButtonClick()
+    private void Update()
     {
         if (automaticMouseTargeting)
             buttonImage.sprite = spriteClicked;
         else
             buttonImage.sprite = originalSprite;
-        mouseAimingButton.buttonImage.sprite = mouseAimingButton.originalSprite;
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
+        //if (buttonImage != null)
+        //buttonImage.sprite = hoverSprite;
         cursor.ChangeCursor(cursor.cursorHover);
-        img.enabled = true;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (buttonImage != null)
+            buttonImage.sprite = originalSprite;
         cursor.ChangeCursor(cursor.cursorOriginal);
-        img.enabled = false;
     }
     public void OnSelect(BaseEventData eventData)
     {
-        img.enabled = true;
+        //if (buttonImage != null)
+        //buttonImage.sprite = hoverSprite;
     }
     public void OnDeselect(BaseEventData eventData)
     {
-        img.enabled = false;
+        if (buttonImage != null)
+            buttonImage.sprite = originalSprite;
     }
 }
