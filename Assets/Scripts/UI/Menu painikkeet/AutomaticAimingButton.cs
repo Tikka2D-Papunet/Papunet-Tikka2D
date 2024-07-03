@@ -5,44 +5,49 @@ public class AutomaticAimingButton : MonoBehaviour, IPointerEnterHandler, IPoint
 {
     public static bool controlMouseTargeting;
     public static bool automaticMouseTargeting = true;
-    Button button;
-    Image buttonImage;
-    Sprite originalSprite;
+    [HideInInspector] public Button button;
+    [HideInInspector] public Image buttonImage;
+    [HideInInspector] public Sprite originalSprite;
     public Sprite spriteClicked;
     [SerializeField] CursorController cursor;
+    [SerializeField] Image img;
+    [SerializeField] MouseAimingButton mouseAimingButton;
     void Start()
     {
         button = GetComponent<Button>();
         buttonImage = button.image;
         originalSprite = buttonImage.sprite;
+        if (automaticMouseTargeting)
+            buttonImage.sprite = spriteClicked;
+        else
+            buttonImage.sprite = originalSprite;
+        mouseAimingButton.GetComponent<MouseAimingButton>();
+        button.onClick.AddListener(OnButtonClick);
     }
-    private void Update()
+    void OnButtonClick()
     {
         if (automaticMouseTargeting)
             buttonImage.sprite = spriteClicked;
         else
             buttonImage.sprite = originalSprite;
+        mouseAimingButton.buttonImage.sprite = mouseAimingButton.originalSprite;
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //if (buttonImage != null)
-        //buttonImage.sprite = hoverSprite;
         cursor.ChangeCursor(cursor.cursorHover);
+        img.enabled = true;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (buttonImage != null)
-            buttonImage.sprite = originalSprite;
         cursor.ChangeCursor(cursor.cursorOriginal);
+        img.enabled = false;
     }
     public void OnSelect(BaseEventData eventData)
     {
-        //if (buttonImage != null)
-        //buttonImage.sprite = hoverSprite;
+        img.enabled = true;
     }
     public void OnDeselect(BaseEventData eventData)
     {
-        if (buttonImage != null)
-            buttonImage.sprite = originalSprite;
+        img.enabled = false;
     }
 }
