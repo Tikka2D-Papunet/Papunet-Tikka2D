@@ -34,7 +34,8 @@ public class Dart : MonoBehaviour
     [Header("Fetch Current Dart Index")]
     int currentDartIndex;
     public bool enoughPowerOnThrowFetch;
-    bool dontThrowManagerFetch; // fetching dont throw from MouseAndSpawnManager that fetches original dont throw from ListenButton
+    [SerializeField] InputManager inputManager;
+    bool canThrowFetch;
     [SerializeField] GameObject childShadow;
     SpriteRenderer shadowSprite;
     int changeThrowAnimation;
@@ -55,18 +56,20 @@ public class Dart : MonoBehaviour
         childSprite = childObject.GetComponent<SpriteRenderer>();
         childAnim = childObjectAnimator.GetComponent<Animator>();
         shadowSprite = childShadow.GetComponent<SpriteRenderer>();
+        inputManager = FindObjectOfType<InputManager>();
     }
     public void Update()
     {
         DartsThrown = manager.GetComponent<MouseAndDartManager>().howManyDartsThrown;
         enoughPowerOnThrowFetch = manager.GetComponent<MouseAndDartManager>().enoughPowerOnThrow;
-        dontThrowManagerFetch = manager.GetComponent<MouseAndDartManager>().dontThrowFetch;
+        canThrowFetch = inputManager.canThrow;
+
         if (DartsThrown == 5)
             Invoke("DestroyDart", 2);
         if (crosshair == null)
             crosshair = GameObject.FindGameObjectWithTag("Crosshair");
         throwForce = manager.GetComponent<MouseAndDartManager>().throwForce;
-        if(!dontThrowManagerFetch)
+        if(canThrowFetch)
         {
             if (Input.GetMouseButtonDown(0))
                 Fly();

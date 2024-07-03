@@ -65,7 +65,8 @@ public class MouseAndDartManager : MonoBehaviour
     bool isThrownPastSoundPlayed = false;
     bool isWauSoundPlayed = false;
     public ListenButton listenButton;
-    public bool dontThrowFetch; // from CursorManager
+    [SerializeField] InputManager inputManager;
+    public bool canThrowFetch; // from InputManager
     private void Start()
     {
         energybar = FindObjectOfType<Energybar>();
@@ -79,13 +80,14 @@ public class MouseAndDartManager : MonoBehaviour
         handAnim.GetComponent<Animator>();
         starSpawnManager.GetComponent<StarSpawnManager>();
         endingScript.GetComponent<EndingScript>();
+        inputManager.GetComponent<InputManager>();
     }
     private void Update()
     {
         flying = dart.GetComponent<Dart>().flying;
         checkDistance = dart.GetComponent<Dart>().checkDistance;
         float distance = Vector3.Distance(testDistance.transform.position, dartBoardCenter.transform.position);
-        dontThrowFetch = listenButton.GetComponent<ListenButton>().dontThrow;
+        canThrowFetch = inputManager.canThrow;
         MouseLogic();
         EnergyBarLogic();
     }
@@ -204,7 +206,7 @@ public class MouseAndDartManager : MonoBehaviour
             }
             if (startThrowCount == false)
             {
-                if (Input.GetMouseButtonDown(0) && releaseMouse == false && dontThrowFetch == false)
+                if (Input.GetMouseButtonDown(0) && releaseMouse == false && canThrowFetch == true)
                 {
                     if (controlledThrowForce)
                         showEnergybar = true;
@@ -213,9 +215,9 @@ public class MouseAndDartManager : MonoBehaviour
                     increaseEnergy = true;
                     pressMouse = true;
                 }
-                if (Input.GetMouseButton(0) && flying && releaseMouse == false && dontThrowFetch == false)
+                if (Input.GetMouseButton(0) && flying && releaseMouse == false && canThrowFetch == true)
                     IncreaseForce();
-                if (Input.GetMouseButtonUp(0) && pressMouse && dontThrowFetch == false)
+                if (Input.GetMouseButtonUp(0) && pressMouse && canThrowFetch == true)
                 {
                     handAnim.GetComponent<Animator>().SetTrigger("Throw");
                     SoundManager.Instance.PlaySound(ähSound);

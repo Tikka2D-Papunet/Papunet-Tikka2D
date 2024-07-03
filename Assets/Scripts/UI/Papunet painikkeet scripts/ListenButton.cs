@@ -13,7 +13,7 @@ public class ListenButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public GameObject soundOffSpeechBubble;
     bool isMutedFetch;
     bool soundOn = true;
-    public bool dontThrow = false;
+    [SerializeField] InputManager inputManager;
     void Start()
     {
         button = GetComponent<Button>();
@@ -22,9 +22,13 @@ public class ListenButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         if (SoundManager.Instance.isMuted)
             buttonImage.sprite = soundOffOriginalSprite;
         soundOnSpeechBubble.gameObject.SetActive(false);
+        if (inputManager != null)
+            inputManager.GetComponent<InputManager>();
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if(inputManager != null)
+            inputManager.canThrow = false;
         if(!SoundManager.Instance.isMuted)
             buttonImage.sprite = soundOnHoverSprite;
         else
@@ -32,6 +36,8 @@ public class ListenButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     }
     public void OnPointerExit(PointerEventData eventData)
     {
+        if(inputManager != null)
+            inputManager.canThrow = true;
         if (!SoundManager.Instance.isMuted)
             buttonImage.sprite = soundOnOriginalSprite;
         else

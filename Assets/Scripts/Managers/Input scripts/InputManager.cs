@@ -10,6 +10,7 @@ public class InputManager : MonoBehaviour
     public Button[] buttons;
     private int currentButtonIndex = 0;
     public bool isEndingMenuOpen;
+    public bool canThrow = true;
     private void Awake()
     {
         inputMenuState = new InputMenuState(this);

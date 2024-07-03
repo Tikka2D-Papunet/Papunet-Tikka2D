@@ -873,7 +873,8 @@ MonoBehaviour:
   throwPastSound: {fileID: 8300000, guid: 090d22b9f768fe64b95d91f63c0821fb, type: 3}
   wauSound: {fileID: 8300000, guid: a31dd75339e1cc24aba584b877f39898, type: 3}
   listenButton: {fileID: 0}
-  dontThrowFetch: 0
+  inputManager: {fileID: 144892823}
+  canThrowFetch: 0
 --- !u!4 &249641582
 Transform:
   m_ObjectHideFlags: 0
@@ -3159,6 +3160,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2356601815760992292, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
+      propertyPath: inputManager
+      value: 
+      objectReference: {fileID: 144892823}
     - target: {fileID: 2356601815760992293, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 4
@@ -3203,6 +3208,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2356601816133096385, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
+      propertyPath: inputManager
+      value: 
+      objectReference: {fileID: 144892823}
     - target: {fileID: 2356601816133096386, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 4
@@ -3275,6 +3284,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2356601816887700717, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
+      propertyPath: inputManager
+      value: 
+      objectReference: {fileID: 144892823}
     - target: {fileID: 2356601817011778548, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 4
@@ -3307,6 +3320,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2356601817011778555, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
+      propertyPath: inputManager
+      value: 
+      objectReference: {fileID: 144892823}
     - target: {fileID: 7186573580849548313, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
       propertyPath: m_Pivot.x
       value: 0

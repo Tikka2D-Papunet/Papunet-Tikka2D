@@ -9,20 +9,27 @@ public class AgainButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public Sprite hoverSprite;
     public GameObject speechBubble;
     private bool isSelected;
+    [SerializeField] InputManager inputManager;
     void Start()
     {
         button = GetComponent<Button>();
         buttonImage = button.image;
         originalSprite = buttonImage.sprite;
         speechBubble.gameObject.SetActive(false);
+        if (inputManager != null)
+            inputManager.GetComponent<InputManager>();
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (inputManager != null)
+            inputManager.canThrow = false;
         if (buttonImage != null)
             buttonImage.sprite = hoverSprite;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (inputManager != null)
+            inputManager.canThrow = true;
         if (buttonImage != null)
             buttonImage.sprite = originalSprite;
     }

@@ -8,20 +8,27 @@ public class ExitButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [HideInInspector] public Sprite originalSprite;
     public Sprite hoverSprite;
     public GameObject speechBubble;
+    [SerializeField] InputManager inputManager;
     void Start()
     {
         button = GetComponent<Button>();
         buttonImage = button.image;
         originalSprite = buttonImage.sprite;
         speechBubble.gameObject.SetActive(false);
+        if (inputManager != null)
+            inputManager.GetComponent<InputManager>();
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (inputManager != null)
+            inputManager.canThrow = false;
         if (buttonImage != null)
             buttonImage.sprite = hoverSprite;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (inputManager != null)
+            inputManager.canThrow = true;
         if (buttonImage != null)
             buttonImage.sprite = originalSprite;
     }
