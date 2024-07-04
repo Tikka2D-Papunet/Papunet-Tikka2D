@@ -1,4 +1,5 @@
 using UnityEngine;
+//using UnityEngine.UIElements;
 public class CursorController : MonoBehaviour
 {
     CursorControls controls;
@@ -9,7 +10,6 @@ public class CursorController : MonoBehaviour
     {
         controls = new CursorControls();
         ChangeCursor(cursorOriginal);
-        //ChangeCursor(cursorOriginal, new Vector2(32, 32)); // 32, 32 original values
         Cursor.lockState = CursorLockMode.Confined;
         mainCamera = Camera.main;
     }
@@ -23,10 +23,8 @@ public class CursorController : MonoBehaviour
     }
     public void ChangeCursor(Texture2D cursorType)
     {
-        Vector2 hotspot = new Vector2(cursorType.width / 2, cursorType.height / 2);
+        //Vector2 hotspot = new Vector2(cursorType.width / 2, cursorType.height / 2);
         Cursor.SetCursor(cursorType, Vector2.zero, CursorMode.Auto);
-        //Vector2 hotspot = new Vector2(cursorSize.x / 2, cursorSize.y / 2); // divided by 2 is the original value
-        //Cursor.SetCursor(cursorType, hotspot, CursorMode.ForceSoftware);
     }
     private void Start()
     {
