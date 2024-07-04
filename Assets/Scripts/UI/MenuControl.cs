@@ -1,7 +1,20 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class MenuControl : MonoBehaviour
 {
+    [SerializeField] AutomaticAimingButton automaticAimingButton;
+    [SerializeField] MouseAimingButton manualAimingButton;
+    [SerializeField] AutomaticThrowForceButton automaticThrowForceButton;
+    [SerializeField] ControlledThrowForceButton manualThrowForceButton;
+    private void Start()
+    {
+        automaticAimingButton.GetComponent<AutomaticAimingButton>();
+        manualAimingButton.GetComponent<MouseAimingButton>();
+        automaticThrowForceButton.GetComponent<AutomaticThrowForceButton>();
+        manualThrowForceButton.GetComponent<ControlledThrowForceButton>();
+
+    }
     public void LoadGame()
     {
         SceneManager.LoadScene("Dart");
@@ -18,6 +31,8 @@ public class MenuControl : MonoBehaviour
         MouseAimingButton.automaticMouseTargeting = false;
         AutomaticAimingButton.controlMouseTargeting = true;
         AutomaticAimingButton.automaticMouseTargeting = false;
+        manualAimingButton.buttonImage.sprite = manualAimingButton.spriteClicked;
+        automaticAimingButton.buttonImage.sprite = automaticAimingButton.originalSprite;
     }
     public void LoadAutomaticMouseTargeting()
     {
@@ -31,6 +46,8 @@ public class MenuControl : MonoBehaviour
         MouseAimingButton.controlMouseTargeting = false;
         AutomaticAimingButton.automaticMouseTargeting = true;
         AutomaticAimingButton.controlMouseTargeting = false;
+        automaticAimingButton.buttonImage.sprite = automaticAimingButton.spriteClicked;
+        manualAimingButton.buttonImage.sprite = automaticAimingButton.originalSprite;
     }
     public void AutomaticThrowForce()
     {
@@ -42,6 +59,8 @@ public class MenuControl : MonoBehaviour
         AutomaticThrowForceButton.controlledThrowForce = false;
         ControlledThrowForceButton.automaticThrowForce = true;
         ControlledThrowForceButton.controlledThrowForce = false;
+        automaticThrowForceButton.buttonImage.sprite = automaticThrowForceButton.spriteClicked;
+        manualThrowForceButton.buttonImage.sprite = manualThrowForceButton.originalSprite;
     }
     public void ControlledThrowForce()
     {
@@ -53,5 +72,7 @@ public class MenuControl : MonoBehaviour
         AutomaticThrowForceButton.automaticThrowForce = false;
         ControlledThrowForceButton.controlledThrowForce = true;
         ControlledThrowForceButton.automaticThrowForce = false;
+        manualThrowForceButton.buttonImage.sprite = manualThrowForceButton.spriteClicked;
+        automaticThrowForceButton.buttonImage.sprite = automaticThrowForceButton.originalSprite;
     }
 }
