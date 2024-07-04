@@ -39,6 +39,7 @@ public class Dart : MonoBehaviour
     [SerializeField] GameObject childShadow;
     SpriteRenderer shadowSprite;
     int changeThrowAnimation;
+    bool releaseMouseFetch; // from MouseAndDartManager -script
     public Transform GetChildObjectTransform()
     {
         return castPoint;
@@ -63,6 +64,7 @@ public class Dart : MonoBehaviour
         DartsThrown = manager.GetComponent<MouseAndDartManager>().howManyDartsThrown;
         enoughPowerOnThrowFetch = manager.GetComponent<MouseAndDartManager>().enoughPowerOnThrow;
         canThrowFetch = inputManager.canThrow;
+        releaseMouseFetch = manager.GetComponent<MouseAndDartManager>().releaseMouse;
         if (DartsThrown == 5)
             Invoke("DestroyDart", 2);
         if (crosshair == null)
@@ -72,7 +74,7 @@ public class Dart : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return))
                 ReadyToThrow();
-            if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Return) && readyToThrow)
+            if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Return) && readyToThrow && releaseMouseFetch)
                 ThrowDart();
         }
         if (throwed)
