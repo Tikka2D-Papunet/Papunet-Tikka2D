@@ -44,12 +44,12 @@ public class MouseAndDartManager : MonoBehaviour
     public GameObject dartObject;
     public GameObject testDistance;
     [Header("Timer between throws")]
-    float maxThrowTime = 1f;
+    float maxThrowTime = 1;
     float throwCounter = 0;
     public bool startThrowCount = false;
     [Header("Spawn And Find New Darts Booleans")]
     bool pressMouse = false;
-    public bool releaseMouse = false;
+    bool releaseMouse = false;
     public int howManyDartsThrown = 0; // Counter for dart throws.
     public bool enoughPowerOnThrow;
     float lateralDirection;
@@ -192,7 +192,7 @@ public class MouseAndDartManager : MonoBehaviour
         transform.position = new Vector3(mousePos.x + 2, mousePos.y, transform.position.z);
         if (howManyDartsThrown < 5 && canThrowFetch)
         {
-            if (startThrowCount)
+            if (startThrowCount == true)
             {
                 if (throwCounter < maxThrowTime)
                     throwCounter += Time.deltaTime;
@@ -202,7 +202,7 @@ public class MouseAndDartManager : MonoBehaviour
                     startThrowCount = false;
                 }
             }
-            else if (!startThrowCount)
+            if (startThrowCount == false)
             {
                 if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return) && !releaseMouse && canThrowFetch)
                 {
