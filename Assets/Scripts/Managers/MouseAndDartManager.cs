@@ -49,7 +49,7 @@ public class MouseAndDartManager : MonoBehaviour
     public bool startThrowCount = false;
     [Header("Spawn And Find New Darts Booleans")]
     bool pressMouse = false;
-    bool releaseMouse = false;
+    public bool releaseMouse = false;
     public int howManyDartsThrown = 0; // Counter for dart throws.
     public bool enoughPowerOnThrow;
     float lateralDirection;
