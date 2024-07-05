@@ -847,6 +847,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 519420031}
   throwForce: 0
+  crosshair: {fileID: 891485669}
   dartPrefab: {fileID: 5699712521307408954, guid: 6265d1d07b1811a4f99a8a14f5b19841, type: 3}
   currentDartIndex: 0
   dart: {fileID: 316487305377593179, guid: 9c3044217db65c340895de1d156e6caa, type: 3}
@@ -864,6 +865,7 @@ MonoBehaviour:
   dartObject: {fileID: 316487305377593182, guid: 9c3044217db65c340895de1d156e6caa, type: 3}
   testDistance: {fileID: 1985271975}
   startThrowCount: 0
+  releaseMouse: 0
   howManyDartsThrown: 0
   enoughPowerOnThrow: 0
   showEnergybar: 0

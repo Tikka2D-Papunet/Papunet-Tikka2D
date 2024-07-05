@@ -19,6 +19,7 @@ public class MouseAndDartManager : MonoBehaviour
     public Camera cam;
     Vector2 mousePos;
     public float throwForce;
+    public Crosshair crosshair;
     [Header("Dartprefab Parameters")]
     public GameObject dartPrefab;
     public int currentDartIndex = 0;
@@ -112,9 +113,9 @@ public class MouseAndDartManager : MonoBehaviour
             energybar.SetEnergy(currentEnergy);
         }
     }
-    public void CalculateDistance()
+    public void CalculateDistance(Dart newDart)
     {
-        childTransform = dart.GetChildObjectTransform();
+        childTransform = newDart.GetChildObjectTransform();
         childCastpointPosition = childTransform.position;
         float distance = Vector3.Distance(childCastpointPosition, dartBoardCenter.transform.position);
         if (distance < 4.851f)
@@ -153,10 +154,6 @@ public class MouseAndDartManager : MonoBehaviour
     {
         score += num;
         starSpawnManager.StarSpawner(num);
-    }
-    void FindNewDart()
-    {
-        dart = FindObjectOfType<Dart>();
     }
     public void IncreaseForce()
     {
@@ -219,8 +216,7 @@ public class MouseAndDartManager : MonoBehaviour
                 {
                     handAnim.GetComponent<Animator>().SetTrigger("Throw");
                     SoundManager.Instance.PlaySound(ähSound);
-                    dart.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                    dart.GetComponent<Rigidbody2D>().AddForce(Vector2.up * throwForce, ForceMode2D.Impulse);
+                    ThrowDart(dart);
                     increaseEnergy = false;
                     increasingForce = true;
                     mouseDown = false;
@@ -233,12 +229,11 @@ public class MouseAndDartManager : MonoBehaviour
                     if (controlledThrowForce)
                         showEnergybar = false;
                     HowManyThrowsLeft.Instance.HowManyDartsThrown();
-                    //StartCoroutine(CountDartLayerOrders());
                 }
             }
             if (pressMouse && releaseMouse && startThrowCount == false)
             {
-                Invoke("Throw", 0.1f);
+                Invoke("SpawnNewDart", 0.1f);
                 Invoke("FindNewDart", 0.1f);
                 pressMouse = false;
                 releaseMouse = false;
@@ -258,8 +253,55 @@ public class MouseAndDartManager : MonoBehaviour
                 dartObjectListY[i].GetComponent<Dart>().childSprite.sortingOrder = 8 - i;
         }
     }
-    void Throw()
+    void SpawnNewDart()
     {
         GameObject dart = Instantiate(dartPrefab, mousePos, Quaternion.identity);
+    }
+    void FindNewDart()
+    {
+        dart = FindObjectOfType<Dart>();
+    }
+    void ThrowDart(Dart newDart)
+    {
+        newDart.throwed = true;
+        newDart.rb2d.bodyType = RigidbodyType2D.Dynamic;
+        newDart.rb2d.AddForce(Vector2.up * throwForce, ForceMode2D.Impulse);
+        float lateralDirection = Random.Range(6.5f, 7.5f);
+        newDart.rb2d.velocity = new Vector2(-lateralDirection, newDart.rb2d.velocity.y);
+        int changeThrowAnimation = Random.Range(0, 1);
+        if(changeThrowAnimation == 0)
+            newDart.childAnim.SetTrigger("Throw1");
+        else
+            newDart.childAnim.SetTrigger("Throw2");
+        StartCoroutine(ShowDart(newDart));
+        StartCoroutine(StopDart(newDart));
+    }
+    IEnumerator ShowDart(Dart newDart)
+    {
+        yield return new WaitForSeconds(0.2f);
+        newDart.childSprite.enabled = true;
+    }
+    IEnumerator StopDart(Dart newDart)
+    {
+        yield return new WaitForSeconds(0.5f);
+        if(enoughPowerOnThrow || automaticThrowForce)
+        {
+            newDart.rb2d.bodyType = RigidbodyType2D.Static;
+            newDart.rb2d.AddForce(Vector2.zero);
+            CalculateDistance(newDart);
+            StartCoroutine(ChangeLayerOrder(newDart));
+            StartCoroutine(ShowShadow(newDart));
+            EndingScript.Instance.IfEndingConditionsAreMet(howManyDartsThrown, score);
+        }
+    }
+    IEnumerator ChangeLayerOrder(Dart newDart)
+    {
+        yield return new WaitForSeconds(0.4f);
+        newDart.childSprite.sortingOrder = 3;
+    }
+    IEnumerator ShowShadow(Dart newDart)
+    {
+        yield return new WaitForSeconds(0.08f);
+        newDart.shadowSprite.sortingOrder = 2;
     }
 }

@@ -5,9 +5,9 @@ public class Dart : MonoBehaviour
 {
     public static bool automaticThrowForce = true;
     public static bool controlledThrowForce;
-    Rigidbody2D rb2d;
+    [HideInInspector] public Rigidbody2D rb2d;
     public bool readyToThrow = false;
-    bool throwed = false;
+    public bool throwed = false;
     float maxTime = 0.5f;
     public float timer = 0;
     public Camera cam;
@@ -30,14 +30,14 @@ public class Dart : MonoBehaviour
     public GameObject childObject;
     [HideInInspector] public SpriteRenderer childSprite;
     public GameObject childObjectAnimator;
-    Animator childAnim;
+    [HideInInspector] public Animator childAnim;
     [Header("Fetch Current Dart Index")]
     int currentDartIndex;
     public bool enoughPowerOnThrowFetch;
     [SerializeField] InputManager inputManager;
     public bool canThrowFetch;
-    [SerializeField] GameObject childShadow;
-    SpriteRenderer shadowSprite;
+    [SerializeField] public GameObject childShadow;
+    [HideInInspector] public SpriteRenderer shadowSprite;
     int changeThrowAnimation;
     bool releaseMouseFetch; // from MouseAndDartManager -script
     public Transform GetChildObjectTransform()
@@ -61,53 +61,7 @@ public class Dart : MonoBehaviour
     }
     public void Update()
     {
-        DartsThrown = manager.GetComponent<MouseAndDartManager>().howManyDartsThrown;
-        enoughPowerOnThrowFetch = manager.GetComponent<MouseAndDartManager>().enoughPowerOnThrow;
-        canThrowFetch = inputManager.canThrow;
-        releaseMouseFetch = manager.GetComponent<MouseAndDartManager>().releaseMouse;
-        if (DartsThrown == 5)
-            Invoke("DestroyDart", 2);
-        if (crosshair == null)
-            crosshair = GameObject.FindGameObjectWithTag("Crosshair");
-        throwForce = manager.GetComponent<MouseAndDartManager>().throwForce;
-        if(canThrowFetch)
-        {
-            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return))
-                ReadyToThrow();
-            if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Return) && readyToThrow && !releaseMouseFetch)
-                ThrowDart();
-        }
-        if (throwed)
-        {
-            Invoke("ShowDart", 0.2f);
-            changeThrowAnimation = Random.Range(0, 1);
-            if(changeThrowAnimation == 0)
-                childAnim.SetTrigger("Throw1");
-            else
-                childAnim.SetTrigger("Throw2");
-
-            if (maxTime > timer)
-            {
-                timer += Time.deltaTime;
-                checkDistance = true;
-            }
-            else if (enoughPowerOnThrowFetch | automaticThrowForce && checkDistance)
-            {
-                rb2d.bodyType = RigidbodyType2D.Static;
-                rb2d.AddForce(Vector2.zero);
-                MouseAndDartManager.Instance.CalculateDistance();
-                checkDistance = false;
-                StartCoroutine(ChangeLayerOrder());
-                StartCoroutine(ShowShadow());
-            }
-            else if(checkDistance)
-            {
-                checkDistance = false;
-                EndingScript.Instance.IfEndingConditionsAreMet(MouseAndDartManager.Instance.howManyDartsThrown, MouseAndDartManager.Instance.score);
-                StartCoroutine(ChangeLayerOrder());
-            }
-        }
-        else
+        if (!throwed)
         {
             Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
             transform.position = new Vector3(crosshair.transform.position.x + 3.4f, crosshair.transform.position.y - 0.75f,
@@ -115,35 +69,9 @@ public class Dart : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
-    void ReadyToThrow()
-    {
-        readyToThrow = true;
-        throwForce = 0;
-    }
-    void ThrowDart()
-    {
-        readyToThrow = false;
-        lateralDirection = Random.Range(6.5f, 7.5f);
-        rb2d.velocity = new Vector2(-lateralDirection, rb2d.velocity.y);
-        throwed = true;
-    }
-    IEnumerator ChangeLayerOrder()
-    {
-        yield return new WaitForSeconds(0.4f);
-        childSprite.sortingOrder = 3;
-    }
-    IEnumerator ShowShadow()
-    {
-        yield return new WaitForSeconds(0.08f);
-        shadowSprite.sortingOrder = 2;
-    }
     void DestroyDart()
     {
         childSprite.enabled = false;
         shadowSprite.enabled = false;
-    }
-    void ShowDart()
-    {
-        childSprite.enabled = true;
     }
 }
