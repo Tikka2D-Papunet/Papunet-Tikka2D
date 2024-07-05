@@ -6,7 +6,6 @@ public class Dart : MonoBehaviour
     public static bool automaticThrowForce = true;
     public static bool controlledThrowForce;
     [HideInInspector] public Rigidbody2D rb2d;
-    public bool readyToThrow = false;
     public bool throwed = false;
     float maxTime = 0.5f;
     public float timer = 0;
@@ -21,7 +20,6 @@ public class Dart : MonoBehaviour
     public int score;
     public float checkIfHitCounter;
     [Header("Public Bools")]
-    public bool checkDistance = false;
     [Header("Fetching Crosshair")]
     public GameObject crosshair;
     [Header("Fetch if Game Has Ended")]

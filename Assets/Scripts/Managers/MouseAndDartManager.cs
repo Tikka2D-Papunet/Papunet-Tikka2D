@@ -24,7 +24,6 @@ public class MouseAndDartManager : MonoBehaviour
     public GameObject dartPrefab;
     public int currentDartIndex = 0;
     public Dart dart;
-    bool flying;
     float maxForce = 15;
     float forceFactor = 8;
     public Energybar energybar;
@@ -85,8 +84,6 @@ public class MouseAndDartManager : MonoBehaviour
     }
     private void Update()
     {
-        flying = dart.GetComponent<Dart>().readyToThrow;
-        checkDistance = dart.GetComponent<Dart>().checkDistance;
         float distance = Vector3.Distance(testDistance.transform.position, dartBoardCenter.transform.position);
         canThrowFetch = inputManager.canThrow;
         MouseLogic();
@@ -199,9 +196,12 @@ public class MouseAndDartManager : MonoBehaviour
                     startThrowCount = false;
                 }
             }
-            if (startThrowCount == false)
+            if (!startThrowCount)
             {
-                if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return) && !releaseMouse && canThrowFetch)
+                bool inputDown = Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return);
+                bool inputHeld = Input.GetMouseButton(0) || Input.GetKey(KeyCode.Return);
+                bool inputUp = Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Return);
+                if (inputDown && !releaseMouse && canThrowFetch)
                 {
                     if (controlledThrowForce)
                         showEnergybar = true;
@@ -210,13 +210,12 @@ public class MouseAndDartManager : MonoBehaviour
                     increaseEnergy = true;
                     pressMouse = true;
                 }
-                if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Return) && flying && !releaseMouse&& canThrowFetch)
+                if (inputHeld && !releaseMouse&& canThrowFetch)
                     IncreaseForce();
-                if (Input.GetMouseButtonUp(0) ||Input.GetKeyUp(KeyCode.Return) && pressMouse && canThrowFetch)
+                if (inputUp && pressMouse && canThrowFetch)
                 {
                     handAnim.GetComponent<Animator>().SetTrigger("Throw");
                     SoundManager.Instance.PlaySound(ähSound);
-                    ThrowDart(dart);
                     increaseEnergy = false;
                     increasingForce = true;
                     mouseDown = false;
@@ -228,6 +227,7 @@ public class MouseAndDartManager : MonoBehaviour
                         enoughPowerOnThrow = true;
                     if (controlledThrowForce)
                         showEnergybar = false;
+                    ThrowDart(dart);
                     HowManyThrowsLeft.Instance.HowManyDartsThrown();
                 }
             }
