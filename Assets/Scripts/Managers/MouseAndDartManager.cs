@@ -68,13 +68,8 @@ public class MouseAndDartManager : MonoBehaviour
     {
         energybar.SetMaxEnergy(maxEnergy);
         currentEnergy = 100;
-        //cam = FindObjectOfType<Camera>();
-        //Instantiate(dartPrefab);
-        //dart = FindObjectOfType<Dart>();
-        //dartObject = GameObject.FindGameObjectWithTag("Dart");
         SpawnNewDart();
         FindNewDart();
-        listenButton = FindObjectOfType<ListenButton>();
         handAnim.GetComponent<Animator>();
         starSpawnManager.GetComponent<StarSpawnManager>();
         endingScript.GetComponent<EndingScript>();
