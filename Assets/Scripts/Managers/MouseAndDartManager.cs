@@ -66,13 +66,14 @@ public class MouseAndDartManager : MonoBehaviour
     public bool canThrowFetch; // from InputManager
     private void Start()
     {
-        energybar = FindObjectOfType<Energybar>();
         energybar.SetMaxEnergy(maxEnergy);
         currentEnergy = 100;
-        cam = FindObjectOfType<Camera>();
-        Instantiate(dartPrefab);
-        dart = FindObjectOfType<Dart>();
-        dartObject = GameObject.FindGameObjectWithTag("Dart");
+        //cam = FindObjectOfType<Camera>();
+        //Instantiate(dartPrefab);
+        //dart = FindObjectOfType<Dart>();
+        //dartObject = GameObject.FindGameObjectWithTag("Dart");
+        SpawnNewDart();
+        FindNewDart();
         listenButton = FindObjectOfType<ListenButton>();
         handAnim.GetComponent<Animator>();
         starSpawnManager.GetComponent<StarSpawnManager>();
@@ -281,15 +282,15 @@ public class MouseAndDartManager : MonoBehaviour
     IEnumerator StopDart(Dart newDart)
     {
         yield return new WaitForSeconds(0.5f);
-        if(enoughPowerOnThrow || automaticThrowForce)
+        if (enoughPowerOnThrow || automaticThrowForce)
         {
             newDart.rb2d.bodyType = RigidbodyType2D.Static;
             newDart.rb2d.AddForce(Vector2.zero);
             CalculateDistance(newDart);
             StartCoroutine(ChangeLayerOrder(newDart));
             StartCoroutine(ShowShadow(newDart));
-            EndingScript.Instance.IfEndingConditionsAreMet(howManyDartsThrown, score);
         }
+        EndingScript.Instance.IfEndingConditionsAreMet(howManyDartsThrown, score);
     }
     IEnumerator ChangeLayerOrder(Dart newDart)
     {

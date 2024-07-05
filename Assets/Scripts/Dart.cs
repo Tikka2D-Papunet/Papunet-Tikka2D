@@ -1,6 +1,4 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 public class Dart : MonoBehaviour
 {
     [HideInInspector] public Rigidbody2D rb2d;
@@ -41,10 +39,5 @@ public class Dart : MonoBehaviour
                 transform.position.z);
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-    }
-    void DestroyDart()
-    {
-        childSprite.enabled = false;
-        shadowSprite.enabled = false;
     }
 }
