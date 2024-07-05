@@ -23,29 +23,19 @@ public class HowManyThrowsLeft : MonoBehaviour
     {
         howManyDartsThrownFetch = manager.GetComponent<MouseAndDartManager>().howManyDartsThrown;
         if (howManyDartsThrownFetch == 1)
-        {
-            Image childImage = dart1.GetComponent<Image>();
-            childImage.enabled = false;
-        }
+            HideImage(dart1);
         if (howManyDartsThrownFetch == 2)
-        {
-            Image childImage = dart2.GetComponent<Image>();
-            childImage.enabled = false;
-        }
+            HideImage(dart2);
         if (howManyDartsThrownFetch == 3)
-        {
-            Image childImage = dart3.GetComponent<Image>();
-            childImage.enabled = false;
-        }
+            HideImage(dart3);
         if (howManyDartsThrownFetch == 4)
-        {
-            Image childImage = dart4.GetComponent<Image>();
-            childImage.enabled = false;
-        }
+            HideImage(dart4);
         if (howManyDartsThrownFetch == 5)
-        {
-            Image childImage = dart5.GetComponent<Image>();
-            childImage.enabled = false;
-        }
+            HideImage(dart5);
+    }
+    void HideImage(GameObject newDart)
+    {
+        Image childImage = newDart.GetComponent<Image>();
+        childImage.enabled = false;
     }
 }
