@@ -13,6 +13,7 @@ public class Dart : MonoBehaviour
     [HideInInspector] public Animator childAnim;
     [SerializeField] public GameObject childShadow;
     [HideInInspector] public SpriteRenderer shadowSprite;
+    float timer;
     public Transform GetChildObjectTransform()
     {
         return castPoint;
@@ -38,6 +39,14 @@ public class Dart : MonoBehaviour
             transform.position = new Vector3(crosshair.transform.position.x + 3.4f, crosshair.transform.position.y - 0.75f,
                 transform.position.z);
             transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else
+        {
+            timer += Time.deltaTime;
+            if(4 > timer)
+                timer += Time.deltaTime;
+            else
+                this.enabled = false;
         }
     }
 }
