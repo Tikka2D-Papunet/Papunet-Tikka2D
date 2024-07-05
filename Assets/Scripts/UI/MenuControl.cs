@@ -53,8 +53,6 @@ public class MenuControl : MonoBehaviour
     {
         MouseAndDartManager.automaticThrowForce = true;
         MouseAndDartManager.controlledThrowForce = false;
-        Dart.automaticThrowForce = true;
-        Dart.controlledThrowForce = false;
         AutomaticThrowForceButton.automaticThrowForce = true;
         AutomaticThrowForceButton.controlledThrowForce = false;
         ControlledThrowForceButton.automaticThrowForce = true;
@@ -66,8 +64,6 @@ public class MenuControl : MonoBehaviour
     {
         MouseAndDartManager.controlledThrowForce = true;
         MouseAndDartManager.automaticThrowForce = false;
-        Dart.controlledThrowForce = true;
-        Dart.automaticThrowForce = false;
         AutomaticThrowForceButton.controlledThrowForce = true;
         AutomaticThrowForceButton.automaticThrowForce = false;
         ControlledThrowForceButton.controlledThrowForce = true;

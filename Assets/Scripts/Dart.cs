@@ -3,41 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 public class Dart : MonoBehaviour
 {
-    public static bool automaticThrowForce = true;
-    public static bool controlledThrowForce;
     [HideInInspector] public Rigidbody2D rb2d;
     public bool throwed = false;
-    float maxTime = 0.5f;
-    public float timer = 0;
     public Camera cam;
-    public MouseAndDartManager manager;
-    float throwForce;
-    //float lateralForce = 7f;
-    float lateralDirection; // don't delete
-    //float shrinkinSpeed = 0.6f; // Dart shrinking speed after throwed 0.6f original
-    [Header("Dart Hit Parameters")]
     public Transform castPoint;
-    public int score;
-    public float checkIfHitCounter;
-    [Header("Public Bools")]
-    [Header("Fetching Crosshair")]
-    public GameObject crosshair;
-    [Header("Fetch if Game Has Ended")]
-    int DartsThrown;
+    GameObject crosshair;
     [SerializeField] SpriteRenderer sprite;
     public GameObject childObject;
     [HideInInspector] public SpriteRenderer childSprite;
     public GameObject childObjectAnimator;
     [HideInInspector] public Animator childAnim;
-    [Header("Fetch Current Dart Index")]
-    int currentDartIndex;
-    public bool enoughPowerOnThrowFetch;
-    [SerializeField] InputManager inputManager;
-    public bool canThrowFetch;
     [SerializeField] public GameObject childShadow;
     [HideInInspector] public SpriteRenderer shadowSprite;
-    int changeThrowAnimation;
-    bool releaseMouseFetch; // from MouseAndDartManager -script
     public Transform GetChildObjectTransform()
     {
         return castPoint;
@@ -45,7 +22,6 @@ public class Dart : MonoBehaviour
     private void Awake()
     {
         cam = FindObjectOfType<Camera>();
-        manager = FindObjectOfType<MouseAndDartManager>();
         crosshair = GameObject.FindGameObjectWithTag("Crosshair");
     }
     private void Start()
@@ -55,7 +31,6 @@ public class Dart : MonoBehaviour
         childSprite = childObject.GetComponent<SpriteRenderer>();
         childAnim = childObjectAnimator.GetComponent<Animator>();
         shadowSprite = childShadow.GetComponent<SpriteRenderer>();
-        inputManager = FindObjectOfType<InputManager>();
     }
     public void Update()
     {

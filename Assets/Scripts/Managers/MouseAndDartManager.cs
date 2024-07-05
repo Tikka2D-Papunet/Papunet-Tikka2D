@@ -61,9 +61,6 @@ public class MouseAndDartManager : MonoBehaviour
     [SerializeField] AudioClip hitSound;
     [SerializeField] AudioClip throwPastSound;
     [SerializeField] AudioClip wauSound;
-    bool isHitSoundPlayed = false;
-    bool isThrownPastSoundPlayed = false;
-    bool isWauSoundPlayed = false;
     public ListenButton listenButton;
     [SerializeField] InputManager inputManager;
     public bool canThrowFetch; // from InputManager
