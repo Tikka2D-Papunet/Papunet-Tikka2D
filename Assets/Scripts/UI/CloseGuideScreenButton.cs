@@ -17,12 +17,14 @@ public class CloseGuideScreenButton : MonoBehaviour, IPointerEnterHandler, IPoin
         button = GetComponent<Button>();
         buttonImage = button.image;
         originalSprite = buttonImage.sprite;
-        if (inputManager.keyboardInput)
-            buttonImage.sprite = hoverSprite;
-        else
-            buttonImage.sprite = originalSprite;
         if (inputManager != null)
+        {
             inputManager.GetComponent<InputManager>();
+            if (inputManager.keyboardInput)
+                buttonImage.sprite = hoverSprite;
+            else
+                buttonImage.sprite = originalSprite;
+        }
         cursor.GetComponent<CursorController>();
     }
     public void OnPointerEnter(PointerEventData eventData)
