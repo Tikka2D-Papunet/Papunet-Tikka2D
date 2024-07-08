@@ -38,7 +38,6 @@ public class GuideButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         inputManager.keyboardInput = false;
         guideScreen.SetActive(true);
         guideScreenOpen = true;
-        closeButton.GetComponent<CloseGuideScreenButton>().buttonImage.sprite = closeButton.GetComponent<CloseGuideScreenButton>().originalSprite;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
