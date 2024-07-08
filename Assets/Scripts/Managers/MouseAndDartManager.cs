@@ -179,6 +179,7 @@ public class MouseAndDartManager : MonoBehaviour
         transform.position = new Vector3(mousePos.x + 2, mousePos.y, transform.position.z);
         if (howManyDartsThrown < 5 && canThrowFetch)
         {
+            HoldDart(dart);
             if (startThrowCount == true)
             {
                 if (throwCounter < maxThrowTime)
@@ -244,6 +245,15 @@ public class MouseAndDartManager : MonoBehaviour
         {
             if (dartObjectListY[i] != null)
                 dartObjectListY[i].GetComponent<Dart>().childSprite.sortingOrder = 8 - i;
+        }
+    }
+    void HoldDart(Dart newDart)
+    {
+        if(!newDart.throwed)
+        {
+            newDart.transform.position = new Vector3(newDart.crosshair.transform.position.x + 3.4f, newDart.crosshair.transform.position.y - 0.75f,
+    newDart.transform.position.z);
+            newDart.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
     void SpawnNewDart()

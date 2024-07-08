@@ -5,7 +5,7 @@ public class Dart : MonoBehaviour
     public bool throwed = false;
     public Camera cam;
     public Transform castPoint;
-    GameObject crosshair;
+    [HideInInspector] public GameObject crosshair;
     [SerializeField] SpriteRenderer sprite;
     public GameObject childObject;
     [HideInInspector] public SpriteRenderer childSprite;
@@ -30,23 +30,5 @@ public class Dart : MonoBehaviour
         childSprite = childObject.GetComponent<SpriteRenderer>();
         childAnim = childObjectAnimator.GetComponent<Animator>();
         shadowSprite = childShadow.GetComponent<SpriteRenderer>();
-    }
-    public void Update()
-    {
-        if (!throwed)
-        {
-            Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = new Vector3(crosshair.transform.position.x + 3.4f, crosshair.transform.position.y - 0.75f,
-                transform.position.z);
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        else
-        {
-            timer += Time.deltaTime;
-            if(4 > timer)
-                timer += Time.deltaTime;
-            else
-                this.enabled = false;
-        }
     }
 }
