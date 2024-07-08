@@ -28,6 +28,7 @@ public class AgainButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         if (buttonImage != null)
             buttonImage.sprite = hoverSprite;
         cursor.ChangeCursor(cursor.cursorHover);
+        speechBubble.SetActive(true);
     }
     public void OnPointerExit(PointerEventData eventData)
     {
@@ -36,15 +37,18 @@ public class AgainButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         if (buttonImage != null)
             buttonImage.sprite = originalSprite;
         cursor.ChangeCursor(cursor.cursorOriginal);
+        speechBubble.SetActive(false);
     }
     public void OnSelect(BaseEventData eventData)
     {
         if (buttonImage != null)
             buttonImage.sprite = hoverSprite;
+        speechBubble.SetActive(true);
     }
     public void OnDeselect(BaseEventData eventData)
     {
         if (buttonImage != null)
             buttonImage.sprite = originalSprite;
+        speechBubble.SetActive(false);
     }
 }
