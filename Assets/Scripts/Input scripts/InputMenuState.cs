@@ -8,7 +8,8 @@ public class InputMenuState : InputState
     }
     public void UpdateState()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        bool input = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Tab);
+        if (input)
             manager.NavigateToNextButton();
     }
     public void EnterMenuState()
