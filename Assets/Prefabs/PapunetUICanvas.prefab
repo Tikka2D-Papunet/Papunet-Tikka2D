@@ -657,6 +657,7 @@ MonoBehaviour:
   inputManager: {fileID: 0}
   cursor: {fileID: 0}
   guideAudioClip: {fileID: 8300000, guid: 33504c0dbbf2aff4aafc0519f8c80c1c, type: 3}
+  guideAudioOn: 0
 --- !u!1 &1229093725
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,14 +1358,14 @@ PrefabInstance:
     - target: {fileID: 4832224161364253962, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2356601816887700717}
+      objectReference: {fileID: 0}
     - target: {fileID: 4832224161364253962, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4832224161364253962, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenGuideScreen
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4832224161364253962, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -1390,6 +1391,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4832224161364253967, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
+      propertyPath: closeButton
+      value: 
+      objectReference: {fileID: 4210761795843319860}
     - target: {fileID: 4832224161364253967, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
       propertyPath: guideScreen
       value: 

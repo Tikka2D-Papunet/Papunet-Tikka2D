@@ -1,7 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class InputManager : MonoBehaviour
 {
     [HideInInspector] public InputState currentInputState;
@@ -13,6 +13,7 @@ public class InputManager : MonoBehaviour
     public bool isEndingMenuOpen;
     public bool canThrow = true;
     [SerializeField] GuideButton guideButton;
+    public bool keyboardInput;
     private void Awake()
     {
         inputMenuState = new InputMenuState(this);
@@ -38,6 +39,11 @@ public class InputManager : MonoBehaviour
     public void SelectFirstButton()
     {
         EventSystem.current.SetSelectedGameObject(buttons[0].gameObject);
+    }
+    public void SelectSecondGuideButton()
+    {
+        EventSystem.current.SetSelectedGameObject(guideButtons[1].gameObject);
+        keyboardInput = true;
     }
     public void NavigateToNextButton()
     {

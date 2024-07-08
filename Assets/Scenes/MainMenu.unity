@@ -817,6 +817,10 @@ PrefabInstance:
       propertyPath: cursor
       value: 
       objectReference: {fileID: 1103850085}
+    - target: {fileID: 2356601816887700717, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
+      propertyPath: inputManager
+      value: 
+      objectReference: {fileID: 1448053429}
     - target: {fileID: 2356601817011778548, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
@@ -825,10 +829,18 @@ PrefabInstance:
       propertyPath: cursor
       value: 
       objectReference: {fileID: 1103850085}
+    - target: {fileID: 2356601817011778555, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
+      propertyPath: inputManager
+      value: 
+      objectReference: {fileID: 1448053429}
     - target: {fileID: 4210761795843319860, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
       propertyPath: cursor
       value: 
       objectReference: {fileID: 1103850085}
+    - target: {fileID: 4210761795843319860, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
+      propertyPath: inputManager
+      value: 
+      objectReference: {fileID: 1448053429}
     - target: {fileID: 7186573580849548313, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2053,6 +2065,17 @@ MonoBehaviour:
   spriteClicked: {fileID: 21300000, guid: dc357aa6201d2c24b8d0458c81c5ff00, type: 3}
   hoverImg: {fileID: 1881474766}
   cursor: {fileID: 1103850085}
+--- !u!114 &990473875 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4210761795843319860, guid: 7b07cc30339b8794fbf688bca8352ab7, type: 3}
+  m_PrefabInstance: {fileID: 295659386}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9436eb17aa056604c84c96b4d232ed06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1018427205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3100,6 +3123,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437736961}
   m_CullTransparentMesh: 1
+--- !u!114 &1448053429 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5657347956040863241, guid: 64bd0b15ff29b4d44b2fd28ccf022044, type: 3}
+  m_PrefabInstance: {fileID: 5657347954056197193}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74e0e6e960802ee4489e64c1c4b60dd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1503893588
 GameObject:
   m_ObjectHideFlags: 0
@@ -3825,6 +3859,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5657347956040863241, guid: 64bd0b15ff29b4d44b2fd28ccf022044, type: 3}
+      propertyPath: closeButton
+      value: 
+      objectReference: {fileID: 990473875}
     - target: {fileID: 5657347956040863241, guid: 64bd0b15ff29b4d44b2fd28ccf022044, type: 3}
       propertyPath: guideButton
       value: 

@@ -60,3 +60,4 @@ MonoBehaviour:
   isEndingMenuOpen: 0
   canThrow: 1
   guideButton: {fileID: 0}
+  closeButton: {fileID: 0}
