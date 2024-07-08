@@ -8,9 +8,11 @@ public class InputManager : MonoBehaviour
     [HideInInspector] public InputMenuState inputMenuState;
     [HideInInspector] public InputGameState inputGameState;
     public Button[] buttons;
+    public Button[] guideButtons;
     private int currentButtonIndex = 0;
     public bool isEndingMenuOpen;
     public bool canThrow = true;
+    [SerializeField] GuideButton guideButton;
     private void Awake()
     {
         inputMenuState = new InputMenuState(this);
@@ -27,6 +29,7 @@ public class InputManager : MonoBehaviour
         }
         else if (sceneName == "Dart")
             currentInputState = inputGameState;
+        guideButton.GetComponent<GuideButton>();
     }
     private void Update()
     {
@@ -38,9 +41,19 @@ public class InputManager : MonoBehaviour
     }
     public void NavigateToNextButton()
     {
-        currentButtonIndex++;
-        if (currentButtonIndex >= buttons.Length)
-            currentButtonIndex = 0;
-        EventSystem.current.SetSelectedGameObject(buttons[currentButtonIndex].gameObject);
+        if(!guideButton.guideScreenOpen)
+        {
+            currentButtonIndex++;
+            if (currentButtonIndex >= buttons.Length)
+                currentButtonIndex = 0;
+            EventSystem.current.SetSelectedGameObject(buttons[currentButtonIndex].gameObject);
+        }
+        else
+        {
+            currentButtonIndex++;
+            if (currentButtonIndex >= guideButtons.Length)
+                currentButtonIndex = 0;
+            EventSystem.current.SetSelectedGameObject(guideButtons[currentButtonIndex].gameObject);
+        }
     }
 }

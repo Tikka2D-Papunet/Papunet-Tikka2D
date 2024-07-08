@@ -54,3 +54,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  guideButtons:
+  - {fileID: 0}
+  - {fileID: 0}
+  isEndingMenuOpen: 0
+  canThrow: 1
+  guideButton: {fileID: 0}
