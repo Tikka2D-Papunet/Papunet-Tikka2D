@@ -14,6 +14,8 @@ public class GuideAudioButton : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private bool isSelected;
     [SerializeField] InputManager inputManager;
     [SerializeField] CursorController cursor;
+    [SerializeField] AudioClip guideAudioClip;
+    public bool guideAudioOn;
     void Start()
     {
         button = GetComponent<Button>();
@@ -28,7 +30,12 @@ public class GuideAudioButton : MonoBehaviour, IPointerEnterHandler, IPointerExi
         if (inputManager != null)
             inputManager.canThrow = false;
         if (buttonImage != null)
-            buttonImage.sprite = hoverSprite;
+        {
+            if (!guideAudioOn)
+                buttonImage.sprite = hoverSprite;
+            else
+                buttonImage.sprite = hoverStopSprite;
+        }
         cursor.ChangeCursor(cursor.cursorHover);
     }
     public void OnPointerExit(PointerEventData eventData)
@@ -36,17 +43,47 @@ public class GuideAudioButton : MonoBehaviour, IPointerEnterHandler, IPointerExi
         if (inputManager != null)
             inputManager.canThrow = true;
         if (buttonImage != null)
-            buttonImage.sprite = originalSprite;
+        {
+            if (!guideAudioOn)
+                buttonImage.sprite = originalSprite;
+            else
+                buttonImage.sprite = originalStopSprite;
+        }
         cursor.ChangeCursor(cursor.cursorOriginal);
     }
     public void OnSelect(BaseEventData eventData)
     {
         if (buttonImage != null)
-            buttonImage.sprite = hoverSprite;
+        {
+            if (!guideAudioOn)
+                buttonImage.sprite = hoverSprite;
+            else
+                buttonImage.sprite = hoverStopSprite;
+        }
     }
     public void OnDeselect(BaseEventData eventData)
     {
         if (buttonImage != null)
-            buttonImage.sprite = originalSprite;
+        {
+            if (!guideAudioOn)
+                buttonImage.sprite = originalSprite;
+            else
+                buttonImage.sprite = originalStopSprite;
+        }
+    }
+    public void PlayAudioGuide()
+    {
+        if(!guideAudioOn)
+        {
+            guideAudioOn = true;
+            SoundManager.Instance.PlaySound(guideAudioClip);
+            buttonImage.sprite = hoverStopSprite;
+        }
+        else
+        {
+            guideAudioOn = false;
+            SoundManager.Instance.source.Stop();
+            buttonImage.sprite = hoverSprite;
+        }
     }
 }

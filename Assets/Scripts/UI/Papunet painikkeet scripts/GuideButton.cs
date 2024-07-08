@@ -61,5 +61,6 @@ public class GuideButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         guideScreen.SetActive(false);
         guideScreenOpen = false;
+        SoundManager.Instance.source.Stop();
     }
 }
