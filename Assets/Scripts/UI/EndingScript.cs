@@ -39,7 +39,10 @@ public class EndingScript : MonoBehaviour
     }
     IEnumerator EndGame(int newScore)
     {
+        GameObject[] darts = GameObject.FindGameObjectsWithTag("Dart");
         yield return new WaitForSeconds(1.5f);
+        for (int i = 0; i < darts.Length; i++)
+            Destroy(darts[i]);
         playAgain.gameObject.SetActive(true);
         backToMenu.gameObject.SetActive(true);
         if (newScore < 25)
