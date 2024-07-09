@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class GuideButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler, IPointerClickHandler, ISubmitHandler
 {
@@ -14,6 +15,8 @@ public class GuideButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] GameObject transparentBG;
     public bool guideScreenOpen;
     [SerializeField] CloseGuideScreenButton closeButton;
+    [SerializeField] GameObject madeByScreen;
+    [SerializeField] MadeByButton madeByButton;
     void Start()
     {
         button = GetComponent<Button>();
@@ -24,6 +27,8 @@ public class GuideButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         if (inputManager != null)
             inputManager.GetComponent<InputManager>();
         cursor.GetComponent<CursorController>();
+        if (madeByButton != null)
+            madeByButton.GetComponent<MadeByButton>();
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -36,6 +41,9 @@ public class GuideButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     }
     public void OnPointerClick(PointerEventData eventData)
     {
+        madeByScreen.SetActive(false);
+        if(madeByButton.gameObject.activeSelf)
+            madeByButton.ButtonTextBackToNormal();
         inputManager.keyboardInput = false;
         guideScreen.SetActive(true);
         transparentBG.SetActive(true);
@@ -60,6 +68,12 @@ public class GuideButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     }
     public void OnSubmit(BaseEventData eventData)
     {
+        if (madeByScreen != null)
+        {
+            madeByScreen.SetActive(false);
+            if (madeByButton.gameObject.activeSelf)
+                madeByButton.ButtonTextBackToNormal();
+        }
         inputManager.keyboardInput = true;
         guideScreen.SetActive(true);
         transparentBG.SetActive(true);
