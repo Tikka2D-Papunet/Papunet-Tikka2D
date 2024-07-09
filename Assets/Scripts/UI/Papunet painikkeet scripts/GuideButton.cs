@@ -11,6 +11,7 @@ public class GuideButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] InputManager inputManager;
     [SerializeField] CursorController cursor;
     [SerializeField] GameObject guideScreen;
+    [SerializeField] GameObject transparentBG;
     public bool guideScreenOpen;
     [SerializeField] CloseGuideScreenButton closeButton;
     void Start()
@@ -37,9 +38,10 @@ public class GuideButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         inputManager.keyboardInput = false;
         guideScreen.SetActive(true);
+        transparentBG.SetActive(true);
         guideScreenOpen = true;
-        closeButton.GetComponent<CloseGuideScreenButton>();
-        closeButton.buttonImage.sprite = closeButton.originalSprite;
+        if (closeButton.buttonImage != null)
+            closeButton.buttonImage.sprite = closeButton.originalSprite;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
@@ -60,6 +62,7 @@ public class GuideButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         inputManager.keyboardInput = true;
         guideScreen.SetActive(true);
+        transparentBG.SetActive(true);
         guideScreenOpen = true;
         inputManager.SelectSecondGuideButton();
     }
@@ -78,6 +81,7 @@ public class GuideButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void CloseGuideScreen()
     {
         guideScreen.SetActive(false);
+        transparentBG.SetActive(false);
         guideScreenOpen = false;
         SoundManager.Instance.source.Stop();
         inputManager.keyboardInput = false;
