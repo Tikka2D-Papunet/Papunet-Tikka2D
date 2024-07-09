@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class GuideAudioButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
+public class GuideAudioButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler, IPointerClickHandler, ISubmitHandler
 {
     Button button;
     [HideInInspector] public Image buttonImage;
     [HideInInspector] public Sprite originalSprite;
-    public Sprite hoverSprite;
-    public Sprite originalStopSprite;
-    public Sprite hoverStopSprite;
-    private bool isSelected;
+    public GameObject originalBlack;
+    //public Sprite hoverSprite;
+    public Sprite stopPlaySprite;
+    //public Sprite hoverStopSprite;
+    //private bool isSelected;
     [SerializeField] InputManager inputManager;
     [SerializeField] CursorController cursor;
     [SerializeField] AudioClip guideAudioClip;
@@ -27,49 +28,41 @@ public class GuideAudioButton : MonoBehaviour, IPointerEnterHandler, IPointerExi
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (inputManager != null)
-            inputManager.canThrow = false;
-        if (buttonImage != null)
-        {
-            if (!guideAudioOn)
-                buttonImage.sprite = hoverSprite;
-            else
-                buttonImage.sprite = hoverStopSprite;
-        }
+        originalBlack.SetActive(true);
         cursor.ChangeCursor(cursor.cursorHover);
     }
-    public void OnPointerExit(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)
     {
-        if (inputManager != null)
-            inputManager.canThrow = true;
         if (buttonImage != null)
         {
             if (!guideAudioOn)
                 buttonImage.sprite = originalSprite;
             else
-                buttonImage.sprite = originalStopSprite;
+                buttonImage.sprite = stopPlaySprite;
         }
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        originalBlack.SetActive(false);
         cursor.ChangeCursor(cursor.cursorOriginal);
     }
     public void OnSelect(BaseEventData eventData)
     {
-        if (buttonImage != null)
-        {
-            if (!guideAudioOn)
-                buttonImage.sprite = hoverSprite;
-            else
-                buttonImage.sprite = hoverStopSprite;
-        }
+        originalBlack.SetActive(true);
     }
-    public void OnDeselect(BaseEventData eventData)
+    public void OnSubmit(BaseEventData eventData)
     {
         if (buttonImage != null)
         {
             if (!guideAudioOn)
                 buttonImage.sprite = originalSprite;
             else
-                buttonImage.sprite = originalStopSprite;
+                buttonImage.sprite = stopPlaySprite;
         }
+    }
+    public void OnDeselect(BaseEventData eventData)
+    {
+        originalBlack.SetActive(false);
     }
     public void PlayAudioGuide()
     {
@@ -77,13 +70,11 @@ public class GuideAudioButton : MonoBehaviour, IPointerEnterHandler, IPointerExi
         {
             guideAudioOn = true;
             SoundManager.Instance.PlaySound(guideAudioClip);
-            buttonImage.sprite = hoverStopSprite;
         }
         else
         {
             guideAudioOn = false;
             SoundManager.Instance.source.Stop();
-            buttonImage.sprite = hoverSprite;
         }
     }
 }

@@ -12,11 +12,14 @@ public class MadeByButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     [SerializeField] GameObject madeByScreen;
     [SerializeField] GameObject transparentBG;
     [SerializeField] GameObject guideScreen;
+    [SerializeField] GameObject madeByCloseButtonBlackBG;
+    [SerializeField] GuideButton guideButton;
     void Start()
     {
         button = GetComponent<Button>();
         buttonText = GetComponentInChildren<TextMeshProUGUI>();
         cursor.GetComponent<CursorController>();
+        guideButton.GetComponent<GuideButton>();
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -26,9 +29,10 @@ public class MadeByButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        guideScreen.SetActive(false);
+        guideButton.CloseGuideScreen();
         madeByScreen.SetActive(true);
         transparentBG.SetActive(true);
+        madeByCloseButtonBlackBG.SetActive(false);
     }
     public void OnPointerExit(PointerEventData eventData)
     {
@@ -45,9 +49,10 @@ public class MadeByButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     }
     public void OnSubmit(BaseEventData eventData)
     {
-        guideScreen.SetActive(false);
+        guideButton.CloseGuideScreen();
         madeByScreen.SetActive(true);
         transparentBG.SetActive(true);
+        madeByCloseButtonBlackBG.SetActive(false);
     }
     public void OnDeselect(BaseEventData eventData)
     {
