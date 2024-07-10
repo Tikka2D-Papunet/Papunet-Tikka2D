@@ -1703,11 +1703,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Peliss\xE4 yrit\xE4t saada mahdollisimman suuren pistem\xE4\xE4r\xE4n
-    viidella tikalla. Voit pelata peli\xE4 hiirell\xE4 tai painikkeilla. Pelin aloitussivulla
-    voit valita heiton t\xE4ht\xE4ystavan ja voimakkuuden.\n\nPelin aikana n\xE4et
-    pistem\xE4\xE4r\xE4si vasemmasta yl\xE4kulmasta. Vasemmasta alakulmasta n\xE4et,
-    montako heittoa sinulla on j\xE4ljell\xE4.\n\nKun peli p\xE4\xE4ttyy, voit pelata
-    uuden samanlaisen pelin tai palata takaisin aloitussivulle vaihtamaan valintojasi.\n"
+    viidell\xE4 tikalla. Voit pelata peli\xE4 hiirell\xE4 tai painikkeilla. Pelin
+    aloitussivulla voit valita heiton t\xE4ht\xE4ystavan ja voimakkuuden.\n\nPelin
+    aikana n\xE4et pistem\xE4\xE4r\xE4si vasemmasta yl\xE4kulmasta. Vasemmasta alakulmasta
+    n\xE4et, montako heittoa sinulla on j\xE4ljell\xE4.\n\nKun peli p\xE4\xE4ttyy,
+    voit pelata uuden samanlaisen pelin tai palata takaisin aloitussivulle vaihtamaan
+    valintojasi.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1ff81ada8178981459fc209e47525fa5, type: 2}
   m_sharedMaterial: {fileID: 7340358882319914615, guid: 1ff81ada8178981459fc209e47525fa5, type: 2}
@@ -2039,8 +2040,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.9179, y: -4.8284025}
-  m_SizeDelta: {x: 2370.8672, y: 1159.6652}
+  m_AnchoredPosition: {x: 27.2598, y: -50.628006}
+  m_SizeDelta: {x: 2773.817, y: 1957.8851}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3395078538487236318
 CanvasRenderer:
