@@ -651,7 +651,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Sait 35 pistett\xE4: Taidat olla jo melko hyv\xE4 heitt\xE4j\xE4?"
+  m_text: "Sait 35 pistett\xE4. Taidat olla jo melko hyv\xE4 heitt\xE4j\xE4?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1ff81ada8178981459fc209e47525fa5, type: 2}
   m_sharedMaterial: {fileID: 7340358882319914615, guid: 1ff81ada8178981459fc209e47525fa5, type: 2}
@@ -2294,7 +2294,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Sait 25 pistett\xE4: Hyv\xE4 alku!\nPienell\xE4 harjoittelulla kehityt
+  m_text: "Sait 25 pistett\xE4. Hyv\xE4 alku!\nPienell\xE4 harjoittelulla kehityt
     varmasti viel\xE4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1ff81ada8178981459fc209e47525fa5, type: 2}
@@ -2935,7 +2935,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Sait 45 pistett\xE4: Sin\xE4h\xE4n olet varsinainen tikkamestari!"
+  m_text: "Sait 45 pistett\xE4. Sin\xE4h\xE4n olet varsinainen tikkamestari!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1ff81ada8178981459fc209e47525fa5, type: 2}
   m_sharedMaterial: {fileID: 7340358882319914615, guid: 1ff81ada8178981459fc209e47525fa5, type: 2}
@@ -3470,7 +3470,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Sait 25 pistett\xE4: Olet selke\xE4sti harjoitellut heitt\xE4mist\xE4!"
+  m_text: "Sait 25 pistett\xE4. Olet selke\xE4sti harjoitellut heitt\xE4mist\xE4!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1ff81ada8178981459fc209e47525fa5, type: 2}
   m_sharedMaterial: {fileID: 7340358882319914615, guid: 1ff81ada8178981459fc209e47525fa5, type: 2}
