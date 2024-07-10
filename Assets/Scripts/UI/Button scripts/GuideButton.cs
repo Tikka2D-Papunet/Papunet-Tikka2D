@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class GuideButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler, IPointerClickHandler, ISubmitHandler
 {
@@ -96,7 +95,8 @@ public class GuideButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     }
     public void CloseGuideScreen()
     {
-        guideAudioButton.buttonImage.sprite = guideAudioButton.originalSprite;
+        if(guideAudioButton.buttonImage != null)
+            guideAudioButton.buttonImage.sprite = guideAudioButton.originalSprite;
         guideAudioButton.guideAudioOn = false;
         guideScreen.SetActive(false);
         transparentBG.SetActive(false);
