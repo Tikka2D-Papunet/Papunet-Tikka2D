@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 public class SoundManager : MonoBehaviour
 {
     #region Singleton
@@ -21,9 +20,5 @@ public class SoundManager : MonoBehaviour
     {
         if(!isMuted)
             source.PlayOneShot(sound);
-    }
-    public void AgainButtonFunction()
-    {
-        SceneManager.LoadScene(1);
     }
 }

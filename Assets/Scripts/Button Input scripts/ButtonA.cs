@@ -1,7 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class ExitButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
+public class ButtonA : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
 {
     Button button;
     [HideInInspector] public Image buttonImage;
@@ -49,9 +51,5 @@ public class ExitButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if (buttonImage != null)
             buttonImage.sprite = originalSprite;
         speechBubble.SetActive(false);
-    }
-    public void QuitGame()
-    {
-        Application.Quit();
     }
 }

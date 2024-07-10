@@ -59,5 +59,11 @@ MonoBehaviour:
   - {fileID: 0}
   isEndingMenuOpen: 0
   canThrow: 1
+  playButton: {fileID: 0}
   guideButton: {fileID: 0}
-  closeButton: {fileID: 0}
+  listenButton: {fileID: 0}
+  againButton: {fileID: 0}
+  exitButton: {fileID: 0}
+  guideAudioButton: {fileID: 0}
+  closeGuideScreenButton: {fileID: 0}
+  keyboardInput: 0

@@ -4,6 +4,19 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class InputManager : MonoBehaviour
 {
+    #region Singleton
+    public static InputManager Instance;
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+            Destroy(gameObject);
+        else
+            Instance = this;
+        inputMenuState = new InputMenuState(this);
+        inputGameState = new InputGameState(this);
+        currentInputState = inputMenuState;
+    }
+    #endregion
     [HideInInspector] public InputState currentInputState;
     [HideInInspector] public InputMenuState inputMenuState;
     [HideInInspector] public InputGameState inputGameState;
@@ -12,16 +25,24 @@ public class InputManager : MonoBehaviour
     private int currentButtonIndex = 0;
     public bool isEndingMenuOpen;
     public bool canThrow = true;
+    [SerializeField] PlayButton playButton;
     [SerializeField] GuideButton guideButton;
+    [SerializeField] ListenButton listenButton;
+    [SerializeField] ButtonA againButton;
+    [SerializeField] ButtonA exitButton;
+    [SerializeField] GuideAudioButton guideAudioButton;
+    [SerializeField] CloseGuideScreenButton closeGuideScreenButton;
     public bool keyboardInput;
-    private void Awake()
-    {
-        inputMenuState = new InputMenuState(this);
-        inputGameState = new InputGameState(this);
-        currentInputState = inputMenuState;
-    }
     private void Start()
     {
+        if(playButton != null)
+            playButton.GetComponent<PlayButton>();
+        guideButton.GetComponent<GuideButton>();
+        listenButton.GetComponent<ListenButton>();
+        againButton.GetComponent<ButtonA>();
+        exitButton.GetComponent<ButtonA>();
+        guideAudioButton.GetComponent<GuideAudioButton>();
+        closeGuideScreenButton.GetComponent<CloseGuideScreenButton>();
         string sceneName = SceneManager.GetActiveScene().name;
         if (sceneName == "MainMenu")
         {
@@ -30,7 +51,6 @@ public class InputManager : MonoBehaviour
         }
         else if (sceneName == "Dart")
             currentInputState = inputGameState;
-        guideButton.GetComponent<GuideButton>();
     }
     private void Update()
     {
@@ -47,7 +67,7 @@ public class InputManager : MonoBehaviour
     }
     public void NavigateToNextButton()
     {
-        if(!guideButton.guideScreenOpen)
+        if (!guideButton.guideScreenOpen)
         {
             currentButtonIndex++;
             if (currentButtonIndex >= buttons.Length)
@@ -61,5 +81,13 @@ public class InputManager : MonoBehaviour
                 currentButtonIndex = 0;
             EventSystem.current.SetSelectedGameObject(guideButtons[currentButtonIndex].gameObject);
         }
+    }
+    public void AgainButtonFunction()
+    {
+        SceneManager.LoadScene(1);
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
