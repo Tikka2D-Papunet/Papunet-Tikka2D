@@ -28,7 +28,7 @@ public class EndingScript : MonoBehaviour
     float counter;
     float maxTime = 2;
     [SerializeField] InputManager inputManager;
-    [SerializeField] CloseScoreText closeScoreText;
+    [SerializeField] ScoreText scoreText;
     public void IfEndingConditionsAreMet(int throwCount, int score)
     {
         publicScore = score;
@@ -41,7 +41,7 @@ public class EndingScript : MonoBehaviour
     {
         GameObject[] darts = GameObject.FindGameObjectsWithTag("Dart");
         yield return new WaitForSeconds(1.5f);
-        closeScoreText.GetComponent<CloseScoreText>().scoreText.enabled = false;
+        scoreText.GetComponent<ScoreText>().scoreText.enabled = false;
         for (int i = 0; i < darts.Length; i++)
             Destroy(darts[i]);
         playAgain.gameObject.SetActive(true);
