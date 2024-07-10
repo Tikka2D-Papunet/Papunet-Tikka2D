@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
 using System.Collections;
 public class EndingScript : MonoBehaviour
 {
@@ -68,13 +67,5 @@ public class EndingScript : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         inputManager.GetComponent<InputManager>().isEndingMenuOpen = true;
         inputManager.GetComponent<InputManager>().SelectFirstButton();
-    }
-    public void LoadGameAgain()
-    {
-        SceneManager.LoadScene("Dart");
-    }
-    public void GoBackToMainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
     }
 }

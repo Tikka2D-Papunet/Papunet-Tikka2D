@@ -94,4 +94,8 @@ public class InputManager : MonoBehaviour
     {
         SceneManager.LoadScene("Dart");
     }
+    public void GoBackToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }
