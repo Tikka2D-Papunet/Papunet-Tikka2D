@@ -25,7 +25,7 @@ public class InputManager : MonoBehaviour
     private int currentButtonIndex = 0;
     public bool isEndingMenuOpen;
     public bool canThrow = true;
-    [SerializeField] PlayButton playButton;
+    [SerializeField] ButtonA playButton;
     [SerializeField] GuideButton guideButton;
     [SerializeField] ListenButton listenButton;
     [SerializeField] ButtonA againButton;
@@ -36,7 +36,7 @@ public class InputManager : MonoBehaviour
     private void Start()
     {
         if(playButton != null)
-            playButton.GetComponent<PlayButton>();
+            playButton.GetComponent<ButtonA>();
         guideButton.GetComponent<GuideButton>();
         listenButton.GetComponent<ListenButton>();
         againButton.GetComponent<ButtonA>();
@@ -89,5 +89,9 @@ public class InputManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+    public void StartGame()
+    {
+        SceneManager.LoadScene("Dart");
     }
 }

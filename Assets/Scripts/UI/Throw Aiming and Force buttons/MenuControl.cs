@@ -15,10 +15,6 @@ public class MenuControl : MonoBehaviour
         manualThrowForceButton.GetComponent<ControlledThrowForceButton>();
 
     }
-    public void LoadGame()
-    {
-        SceneManager.LoadScene("Dart");
-    }
     public void LoadControlMouseTargeting()
     {
         Crosshair.controlMouseTargeting = true;
