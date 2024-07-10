@@ -289,7 +289,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &233133626
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1296,7 +1296,7 @@ GameObject:
   - component: {fileID: 1332320724}
   - component: {fileID: 1332320723}
   m_Layer: 5
-  m_Name: TekniikkaTeksti
+  m_Name: TekijatTeksti
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1350,9 +1350,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Tekniikka: Ville Karppinen (Taitotalo)
-
-    Grafiikka: Nea Immonen (Taitotalo)'
+  m_text: "Tekniikka: Ville Karppinen (Taitotalo)\nGrafiikka: Nea Immonen (Taitotalo)\nAlkuper\xE4inen
+    toteutus: Papunet"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1ff81ada8178981459fc209e47525fa5, type: 2}
   m_sharedMaterial: {fileID: 7340358882319914615, guid: 1ff81ada8178981459fc209e47525fa5, type: 2}
