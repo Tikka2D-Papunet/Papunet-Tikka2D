@@ -9,10 +9,7 @@ public class GuideAudioButton : MonoBehaviour, IPointerEnterHandler, IPointerExi
     [HideInInspector] public Image buttonImage;
     [HideInInspector] public Sprite originalSprite;
     public GameObject originalBlack;
-    //public Sprite hoverSprite;
     public Sprite stopPlaySprite;
-    //public Sprite hoverStopSprite;
-    //private bool isSelected;
     [SerializeField] InputManager inputManager;
     [SerializeField] CursorController cursor;
     [SerializeField] AudioClip guideAudioClip;

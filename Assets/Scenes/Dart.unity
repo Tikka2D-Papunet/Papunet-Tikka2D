@@ -2779,7 +2779,7 @@ PrefabInstance:
     - target: {fileID: 6515685118139341133, guid: 9e17809435312c1448ee95eb143e9d25, type: 3}
       propertyPath: cursorHover
       value: 
-      objectReference: {fileID: 2800000, guid: d91db37bcc8899a46a9752e3d1fccecf, type: 3}
+      objectReference: {fileID: 2800000, guid: c237fd43b90281b4b8a22961fed0de5c, type: 3}
     - target: {fileID: 6515685118139341133, guid: 9e17809435312c1448ee95eb143e9d25, type: 3}
       propertyPath: cursorOriginal
       value: 
