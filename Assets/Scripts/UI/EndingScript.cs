@@ -47,22 +47,22 @@ public class EndingScript : MonoBehaviour
         if (newScore < 25)
         {
             endings[0].SetActive(isActiveAndEnabled);
-            scoreText1.text = "alle " + newScore + " pistettä: Hyvä alku!\nPienellä harjoittelulla kehityt varmasti vielä.";
+            scoreText1.text = "Sait " + newScore + " pistettä: Hyvä alku!\nPienellä harjoittelulla kehityt varmasti vielä.";
         }
         else if (newScore >= 25 && newScore < 35)
         {
             endings[1].SetActive(isActiveAndEnabled);
-            scoreText2.text = "tasan tai yli " + newScore + " pistettä: Olet selkeästi harjoitellut heittämistä!";
+            scoreText2.text = "Sait " + newScore + " pistettä: Olet selkeästi harjoitellut heittämistä!";
         }
         else if (newScore > 34 && newScore < 45)
         {
             endings[2].SetActive(isActiveAndEnabled);
-            scoreText3.text = "tasan tai yli " + newScore + " pistettä: Taidat olla jo melko hyvä heittäjä?";
+            scoreText3.text = "Sait " + newScore + " pistettä: Taidat olla jo melko hyvä heittäjä?";
         }
         else if (newScore > 44)
         {
             endings[3].SetActive(isActiveAndEnabled);
-            scoreText4.text = "tasan tai yli " + newScore + " pistettä: Sinähän olet varsinainen tikkamestari!";
+            scoreText4.text = "Sait " + newScore + " pistettä: Sinähän olet varsinainen tikkamestari!";
         }
         yield return new WaitForSeconds(0.5f);
         inputManager.GetComponent<InputManager>().isEndingMenuOpen = true;
