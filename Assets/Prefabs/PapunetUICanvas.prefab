@@ -368,7 +368,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -805,7 +805,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 826690835}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
@@ -961,7 +961,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 772443637}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1521,7 +1521,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
@@ -2061,6 +2061,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 7186573580849548313}
     m_Modifications:
     - target: {fileID: 4832224160219777479, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832224160219777479, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 4
       objectReference: {fileID: 0}
@@ -2209,6 +2213,10 @@ PrefabInstance:
       value: Hlayoutgroup
       objectReference: {fileID: 0}
     - target: {fileID: 4832224161112515104, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832224161112515104, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 4
       objectReference: {fileID: 0}
@@ -2266,6 +2274,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4832224161112515108, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832224161364253962, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
+      propertyPath: m_Transition
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4832224161364253962, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
@@ -2356,6 +2368,10 @@ PrefabInstance:
       propertyPath: guideAudioButton
       value: 
       objectReference: {fileID: 8970845194554179307}
+    - target: {fileID: 4832224162309882390, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4832224162309882390, guid: 45152a022a45e854cbb50c31fcf983a6, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 4
