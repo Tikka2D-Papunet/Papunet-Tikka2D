@@ -48,7 +48,6 @@ public class MadeByButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         guideButton.CloseGuideScreen();
         madeByScreen.SetActive(true);
         transparentBG.SetActive(true);
-        //madeByCloseButtonBlackBG.SetActive(false);
     }
     public void OnDeselect(BaseEventData eventData)
     {
