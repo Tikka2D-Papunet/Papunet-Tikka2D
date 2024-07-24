@@ -50,7 +50,6 @@ public class GuideButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         guideScreen.SetActive(true);
         transparentBG.SetActive(true);
         guideScreenOpen = true;
-        closeButton.closeBlackBG.SetActive(false);
     }
     public void OnPointerExit(PointerEventData eventData)
     {
@@ -97,6 +96,8 @@ public class GuideButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         if(guideAudioButton.buttonImage != null)
             guideAudioButton.buttonImage.sprite = guideAudioButton.originalSprite;
+        if (closeButton != null)
+            closeButton.SetButton(closeButton.originalSprite, closeButton.originalSpriteWidth, closeButton.originalSpriteHeight);
         guideAudioButton.guideAudioOn = false;
         guideScreen.SetActive(false);
         transparentBG.SetActive(false);
