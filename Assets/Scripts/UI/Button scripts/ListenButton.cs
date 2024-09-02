@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class ListenButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
+public class ListenButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler, IPointerClickHandler, ISubmitHandler
 {
     Button button;
     Image buttonImage;
@@ -43,41 +43,7 @@ public class ListenButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         }
         cursor.ChangeCursor(cursor.cursorHover);
     }
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if(inputManager != null)
-            inputManager.canThrow = true;
-        if (!SoundManager.Instance.isMuted)
-            buttonImage.sprite = soundOnOriginalSprite;
-        else
-            buttonImage.sprite = soundOffOriginalSprite;
-        cursor.ChangeCursor(cursor.cursorOriginal);
-        soundOffSpeechBubble.SetActive(false);
-        soundOnSpeechBubble.SetActive(false);
-    }
-    public void OnSelect(BaseEventData eventData)
-    {
-        if (!SoundManager.Instance.isMuted)
-        {
-            buttonImage.sprite = soundOnHoverSprite;
-            SoundOnSpeechBubble();
-        }
-        else
-        {
-            buttonImage.sprite = soundOffHoverSprite;
-            SoundOffSpeechBubble();
-        }
-    }
-    public void OnDeselect(BaseEventData eventData)
-    {
-        if (!SoundManager.Instance.isMuted)
-            buttonImage.sprite = soundOnOriginalSprite;
-        else
-            buttonImage.sprite = soundOffOriginalSprite;
-        soundOffSpeechBubble.SetActive(false);
-        soundOnSpeechBubble.SetActive(false);
-    }
-    public void ToggleSoundOnOrOff()
+    public void OnPointerClick(PointerEventData eventData)
     {
         SoundManager.Instance.isMuted = !SoundManager.Instance.isMuted;
         SoundManager.Instance.source.mute = SoundManager.Instance.isMuted;
@@ -92,6 +58,66 @@ public class ListenButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         {
             buttonImage.sprite = soundOffHoverSprite;
             SoundOffSpeechBubble();
+        }
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (!SoundManager.Instance.isMuted)
+            buttonImage.sprite = soundOnOriginalSprite;
+        else
+            buttonImage.sprite = soundOffOriginalSprite;
+        cursor.ChangeCursor(cursor.cursorOriginal);
+        soundOffSpeechBubble.SetActive(false);
+        soundOnSpeechBubble.SetActive(false);
+        if (inputManager != null)
+            inputManager.canThrow = true;
+    }
+    public void OnSelect(BaseEventData eventData)
+    {
+        if(inputManager.isEndingMenuOpen)
+        {
+            if (!SoundManager.Instance.isMuted)
+            {
+                buttonImage.sprite = soundOnHoverSprite;
+                SoundOnSpeechBubble();
+            }
+            else
+            {
+                buttonImage.sprite = soundOffHoverSprite;
+                SoundOffSpeechBubble();
+            }
+        }
+    }
+    public void OnSubmit(BaseEventData eventData)
+    {
+        if (inputManager.isEndingMenuOpen)
+        {
+            SoundManager.Instance.isMuted = !SoundManager.Instance.isMuted;
+            SoundManager.Instance.source.mute = SoundManager.Instance.isMuted;
+            PlayerPrefs.SetInt("isMuted", SoundManager.Instance.isMuted ? 1 : 0);
+            PlayerPrefs.Save();
+            if (!SoundManager.Instance.isMuted)
+            {
+                buttonImage.sprite = soundOnHoverSprite;
+                SoundOnSpeechBubble();
+            }
+            else
+            {
+                buttonImage.sprite = soundOffHoverSprite;
+                SoundOffSpeechBubble();
+            }
+        }
+    }
+    public void OnDeselect(BaseEventData eventData)
+    {
+        if(inputManager.isEndingMenuOpen)
+        {
+            if (!SoundManager.Instance.isMuted)
+                buttonImage.sprite = soundOnOriginalSprite;
+            else
+                buttonImage.sprite = soundOffOriginalSprite;
+            soundOffSpeechBubble.SetActive(false);
+            soundOnSpeechBubble.SetActive(false);
         }
     }
     void SoundOnSpeechBubble()
